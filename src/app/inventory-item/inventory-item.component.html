@@ -1,0 +1,101 @@
+<section>
+  <form>
+    <table cellspacing="0">
+      <tr>
+        <td> 
+          <div>
+            <button md-raised-button>Save</button>
+            <button md-raised-button>New</button>
+            <button md-raised-button>Save + New</button>
+          </div>
+        </td>
+      </tr>
+    </table>
+
+    <md-card>
+      <md-card-header>
+        <div md-card-avatar></div>
+        <md-card-title>Inventory Item</md-card-title>
+        <md-card-subtitle>New Inventory Item</md-card-subtitle>
+      </md-card-header>
+      <md-card-content>
+        <table cellspacing="0">
+          <tr>
+            <td> 
+              <md-input-container>
+                <input mdInput placeholder="Code" >
+              </md-input-container>
+            </td>
+            <td>
+              <md-input-container>
+                <input mdInput placeholder="Description" >
+              </md-input-container>
+            </td>
+            <td>
+              <md-checkbox>Active</md-checkbox>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <md-input-container>
+                <input mdInput placeholder="Brand Name" >
+              </md-input-container>
+            </td>
+            <td>
+              <md-input-container>
+                <input mdInput placeholder="Generic Name">
+              </md-input-container>
+            </td>
+            <td>
+              <md-input-container>
+                <input mdInput placeholder="Other Name">
+              </md-input-container>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <md-input-container>
+                <input mdInput placeholder="ATC Classification">
+              </md-input-container>
+            </td>
+            <td>
+              <md-input-container>
+                <input mdInput placeholder="Category">
+              </md-input-container>
+            </td>
+            <td>
+              <md-input-container>
+                <input mdInput placeholder="Sub Category">
+              </md-input-container>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <md-select placeholder="Medication Class" name="medicationClass" >
+                <md-option *ngFor="let medicationClass of medicationClasses" [value]="medicationClass.value">
+                  {{medicationClass.viewValue}}
+                </md-option>
+              </md-select>
+            </td>
+            <td>
+              <md-select placeholder="Pregnancy Category" name="pregnancyCategory" >
+                <md-option *ngFor="let pregnancyCategory of pregnancyCategories" [value]="pregnancyCategory.value">
+                  {{pregnancyCategory.viewValue}}
+                </md-option>
+              </md-select>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="3">
+              <md-checkbox>Over The Counter</md-checkbox>
+              <md-checkbox>Use Batch</md-checkbox>
+              <md-checkbox>Expiry Control</md-checkbox>
+              <md-checkbox>Chargeable</md-checkbox>
+            </td>
+          </tr>
+        </table>
+      </md-card-content>
+    </md-card>
+
+  </form>
+</section>

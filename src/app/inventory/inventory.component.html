@@ -1,0 +1,95 @@
+<section class="example-section">
+  
+
+  <form>
+    <table cellspacing="0">
+      <tr>
+        <td> 
+          <div>
+            <button md-raised-button>Save</button>
+            <button md-raised-button>New</button>
+          </div>
+        </td>
+      </tr>
+    </table>
+
+    <md-card>
+      <md-card-header>
+        <div md-card-avatar></div>
+        <md-card-title>Visit</md-card-title>
+        <md-card-subtitle>New Visit</md-card-subtitle>
+      </md-card-header>
+      <md-card-content>
+        <table cellspacing="0">
+          <tr>
+            <td colspan="2"> 
+              <md-input-container>
+                <input mdInput placeholder="Patient" >
+              </md-input-container>
+            </td>
+            <td>
+              <md-radio-group>
+                <md-radio-button *ngFor="let visitType of visitTypes" [value]="visitType">
+                  {{visitType}}
+                </md-radio-button>
+              </md-radio-group>
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              <md-input-container>
+                <input mdInput placeholder="Visit Date-Time" >
+              </md-input-container>
+            </td>
+            <td>
+              <md-input-container>
+                <input mdInput placeholder="Department">
+              </md-input-container>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <md-checkbox>Cash Patient</md-checkbox>
+            </td>
+            <td>
+              <md-input-container>
+                <input mdInput placeholder="Policy">
+              </md-input-container>
+            </td>
+            <td>
+              <md-input-container>
+                <input mdInput placeholder="Payor">
+              </md-input-container>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <md-input-container>
+                <input mdInput placeholder="Visit Doctor">
+              </md-input-container>
+            </td>
+            <td>
+              <md-input-container>
+                <input mdInput placeholder="Purpose of visit">
+              </md-input-container>
+            </td>
+            <td>
+              <md-input-container>
+                <input mdInput placeholder="MOH Visit type">
+              </md-input-container>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="3">
+            <md-input-container>
+              <textarea mdInput placeholder="Remark"></textarea>
+            </md-input-container>
+            </td>
+          </tr>
+        </table>
+      </md-card-content>
+    </md-card>
+
+  </form>
+</section>
