@@ -9,7 +9,8 @@ import { Component, AnimationTransitionEvent, ViewEncapsulation, ElementRef } fr
 export class AppComponent {
   navItems = [
     {name: 'Landing', route: 'autocomplete'},
-    {name: 'Episode/Visit', route: 'visit'},
+    {name: 'Episode', route: 'episode'},
+    {name: 'Visit', route: 'visit'},
     {name: 'Patient', route: 'patient'},
     {name: 'User', route: 'user'},
     {name: 'Vital Signs', route: 'vital'},
@@ -17,7 +18,7 @@ export class AppComponent {
     {name: 'Inventory', route: 'inventory-item'},
     {name: 'Medical Record', route: 'card'},
     {name: 'Medical Calculator', route: 'card'},
-    {name: 'Labrotary', route: 'chips'},
+    {name: 'Laboratory', route: 'chips'},
     {name: 'Radiology', route: 'checkbox'}
   ];
 

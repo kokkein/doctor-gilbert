@@ -1,19 +1,14 @@
 <section>
   <form>
-    <table  cellspacing="0">
-      <tr>
-        <td> 
-          <div>
-            <button md-raised-button>Save</button>
-            <button md-raised-button [routerLink]="visit">Save & Create User</button>
-          </div>
-        </td>
-      </tr>
-    </table>
+    <div class="container">
+      <div>
+        <button md-raised-button>Save</button>
+        <button md-raised-button [routerLink]="visit">Save & Create User</button>
+      </div>
+    </div>
 
     <md-card>
       <md-card-header>
-        <div md-card-avatar></div>
         <md-card-title>User Master</md-card-title>
         <md-card-subtitle>New User</md-card-subtitle>
       </md-card-header>
@@ -23,76 +18,74 @@
             <template md-tab-label>
               User information
             </template>
-            <md-card  >
+            <md-card>
               <md-card-content>
-                <table  cellspacing="0">
-                  <tr>
-                    <td colspan="2"> 
-                      <md-input-container >
+                  <div class="container">
+                    <div> 
+                      <md-input-container class="input-full-width">
                         <input mdInput placeholder="Full name" >
                       </md-input-container>
-                    </td>
-                    <td>
+                    </div>
+                    <div>
                       <md-select placeholder="Title" name="title" >
                         <md-option *ngFor="let title of titles" [value]="title.value">
                           {{title.viewValue}}
                         </md-option>
                       </md-select>
-                    </td>
-                    <td>
-                      <md-input-container >
+                    </div>
+                    <div>
+                      <md-input-container class="input-full-width">
                         <input mdInput placeholder="Initial" >
                       </md-input-container>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <md-input-container >
+                    </div>
+                  </div>
+                  <div class="container">
+                    <div>
+                      <md-input-container class="input-full-width">
                         <input mdInput placeholder="Mobile Phone">
                       </md-input-container>
-                    </td>
-                    <td>
-                      <md-input-container >
+                    </div>
+                    <div>
+                      <md-input-container class="input-full-width">
                         <input mdInput placeholder="Phone">
                       </md-input-container>
-                    </td>
-                    <td>
-                      <md-input-container >
-                        <input mdInput placeholder="Extension">
+                    </div>
+                    <div>
+                      <md-input-container class="input-full-width">
+                        <input mdInput type="number" placeholder="Extension">
                       </md-input-container>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td colspan="3">
-                      <md-input-container >
-                        <input mdInput placeholder="Email">
+                    </div>
+                  </div>
+                  <div class="container">
+                    <div>
+                      <md-input-container class="input-full-width">
+                        <input mdInput type="email" placeholder="Email">
                       </md-input-container>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <md-input-container >
+                    </div>
+                  </div>
+                  <div class="container">
+                    <div>
+                      <md-input-container class="input-full-width">
                         <input mdInput placeholder="User name">
                       </md-input-container>
-                    </td>
-                    <td>
-                      <md-input-container >
-                        <input mdInput placeholder="Password">
+                    </div>
+                    <div>
+                      <md-input-container class="input-full-width">
+                        <input mdInput type="password" placeholder="Password">
                       </md-input-container>
-                    </td>
-                    <td>
-                      <md-input-container >
-                        <input mdInput placeholder="Re-type Password">
+                    </div>
+                    <div>
+                      <md-input-container class="input-full-width">
+                        <input mdInput type="password" placeholder="Re-type Password">
                       </md-input-container>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td colspan="3">
+                    </div>
+                  </div>
+                  <div class="container">
+                    <div>
                       <md-checkbox>Active User</md-checkbox>
                       <md-checkbox>System Adminstrator</md-checkbox>
-                    </td>
-                  </tr>
-                </table>
+                    </div>
+                  </div>
               </md-card-content>
             </md-card>
           </md-tab>
@@ -102,98 +95,96 @@
             </template>
             <md-card  >
               <md-card-content>
-                <table  cellspacing="0">
-                  <tr>
-                    <td>
-                      <md-input-container >
+                  <div class="container">
+                    <div>
+                      <md-input-container class="input-full-width">
                         <input mdInput placeholder="Company Name">
                       </md-input-container>
-                    </td>
-                    <td>
-                      <md-input-container >
+                    </div>
+                    <div>
+                      <md-input-container class="input-full-width">
                         <input mdInput placeholder="Business Registration Number">
                       </md-input-container>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <md-input-container >
+                    </div>
+                  </div>
+                  <div class="container">
+                    <div>
+                      <md-input-container class="input-full-width">
                         <input mdInput placeholder="GST number">
                       </md-input-container>
-                    </td>
-                    <td>
+                    </div>
+                    <div>
                       <md-select placeholder="Speciality" name="speciality" >
                         <md-option *ngFor="let speciality of specialities" [value]="speciality.value">
                           {{speciality.viewValue}}
                         </md-option>
                       </md-select>
-                    </td>
-                    <td>
-                      <md-input-container >
+                    </div>
+                    <div>
+                      <md-input-container class="input-full-width">
                         <input mdInput placeholder="Doctor Invoice Running Number">
                       </md-input-container>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <md-input-container >
+                    </div>
+                  </div>
+                  <div class="container">
+                    <div>
+                      <md-input-container class="input-full-width">
                         <input mdInput placeholder="Mobile Phone">
                       </md-input-container>
-                    </td>
-                    <td>
-                      <md-input-container >
+                    </div>
+                    <div>
+                      <md-input-container class="input-full-width">
                         <input mdInput placeholder="Phone">
                       </md-input-container>
-                    </td>
-                    <td>
-                      <md-input-container >
+                    </div>
+                    <div>
+                      <md-input-container class="input-full-width">
                         <input mdInput placeholder="Fax">
                       </md-input-container>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td colspan="2">
-                      <md-input-container >
-                        <input mdInput placeholder="Email">
+                    </div>
+                  </div>
+                  <div class="container">
+                    <div>
+                      <md-input-container class="input-full-width">
+                        <input mdInput type="email" placeholder="Email">
                       </md-input-container>
-                    </td>
-                  </tr>
+                    </div>
+                  </div>
 
-                  <tr>
-                    <td colspan="3">
-                      <md-input-container >
+                  <div class="container">
+                    <div>
+                      <md-input-container class="input-full-width">
                         <textarea mdInput placeholder="Address"></textarea>
                       </md-input-container>
-                    </td>
-                  </tr>
+                    </div>
+                  </div>
 
-                  <tr>
-                    <td>
-                      <md-input-container >
+                  <div class="container">
+                    <div>
+                      <md-input-container class="input-full-width">
                         <input mdInput placeholder="City">
                       </md-input-container>
-                    </td>
-                    <td>
-                      <md-input-container >
-                        <input mdInput placeholder="Postal Code">
+                    </div>
+                    <div>
+                      <md-input-container class="input-full-width">
+                        <input mdInput type="number" placeholder="Postal Code">
                       </md-input-container>
-                    </td>
-                    <td>
+                    </div>
+                    <div>
                       <md-select placeholder="State" name="state" >
                         <md-option *ngFor="let state of states" [value]="state.value">
                           {{state.viewValue}}
                         </md-option>
                       </md-select>
-                    </td>
-                    <td>
+                    </div>
+                    <div>
                       <md-select placeholder="Country" name="country" >
                         <md-option *ngFor="let country of countries" [value]="country.value">
                           {{country.viewValue}}
                         </md-option>
                       </md-select>
-                    </td>
-                  </tr>
-                </table>
+                    </div>
+                  </div>
               </md-card-content>
             </md-card>
           </md-tab>
@@ -203,21 +194,18 @@
             </template>
             <md-card  >
               <md-card-content>
-                <table  cellspacing="0">
-
-                  <tr>
-                    <td>
-                      <md-input-container >
+                  <div class="container">
+                    <div>
+                      <md-input-container class="input-full-width">
                         <input mdInput placeholder="FreeText1">
                       </md-input-container>
-                    </td>
-                    <td>
-                      <md-input-container >
+                    </div>
+                    <div>
+                      <md-input-container class="input-full-width">
                         <input mdInput placeholder="FreeText2">
                       </md-input-container>
-                    </td>
-                  </tr>
-                </table>
+                    </div>
+                  </div>
               </md-card-content>
             </md-card>
           </md-tab>

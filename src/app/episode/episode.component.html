@@ -1,0 +1,94 @@
+<section>
+  <div id='main'>
+    <article>
+      <form>
+        <md-card>
+          <md-card-content>
+            <md-tab-group>
+              <md-tab>
+                <template md-tab-label>
+                  Timeline
+                </template>
+                <md-card>
+                  <md-card-content>
+                  </md-card-content>
+                </md-card>
+              </md-tab>
+              <md-tab>
+                <template md-tab-label>
+                  Diagnosis
+                </template>
+                <md-card  >
+                  <md-card-content>
+
+                  </md-card-content>
+                </md-card>
+              </md-tab>
+              <md-tab>
+                <template md-tab-label>
+                  Vital Signs
+                </template>
+                <md-card  >
+                  <md-card-content>
+
+                  </md-card-content>
+                </md-card>
+              </md-tab>
+              <md-tab>
+                <template md-tab-label>
+                  Medication
+                </template>
+                <md-card>
+                  <md-card-content>
+                  </md-card-content>
+                </md-card>
+              </md-tab>
+              <md-tab>
+                <template md-tab-label>
+                  Laboratory
+                </template>
+                <md-card>
+                  <md-card-content>
+                  </md-card-content>
+                </md-card>
+              </md-tab>
+              <md-tab>
+                <template md-tab-label>
+                  Radiology
+                </template>
+                <md-card>
+                  <md-card-content>
+                  </md-card-content>
+                </md-card>
+              </md-tab>
+            </md-tab-group>
+          </md-card-content>
+        </md-card>
+      </form>
+    </article>
+    <aside>
+      <md-card>
+        <md-card-header>
+          <div md-card-avatar>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYNSdOcn2GYWS6XP8fS01a-bShnHGNcK3cKURyxIgEHjOZt9z4" height="80" width="80">
+          </div>
+          <md-card-title>Tan Seri. Dato Seri. Barack Obama van Orange</md-card-title>
+          <md-card-subtitle>MRN0000020104</md-card-subtitle>
+        </md-card-header>
+        <md-card-content>
+         <md-list>
+            <md-list-item *ngFor="let patientDetail of patientDetails">
+              <h4 md-line>{{patientDetail.property}}</h4>
+              <p md-line> {{patientDetail.value}} </p>
+            </md-list-item>
+            <md-divider></md-divider>
+            <h3 md-subheader><md-icon md-list-avatar>warning</md-icon> Warning</h3>
+            <md-list-item *ngFor="let warning of warnings">
+              <h4 md-line>{{warning.value}}</h4>
+            </md-list-item>
+          </md-list>
+        </md-card-content>
+      </md-card>
+    </aside>
+  </div>
+</section>

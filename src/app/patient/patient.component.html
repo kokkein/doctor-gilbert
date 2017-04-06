@@ -1,19 +1,14 @@
 <section>
   <form>
-    <table  cellspacing="0">
-      <tr>
-        <td> 
-          <div>
-            <button md-raised-button>Save</button>
-            <button md-raised-button [routerLink]="visit">Save & Create Visit</button>
-          </div>
-        </td>
-      </tr>
-    </table>
+    <div class="container">
+      <div>
+        <button md-raised-button>Save</button>
+        <button md-raised-button [routerLink]="visit">Save & Create Visit</button>
+      </div>
+     </div>
 
     <md-card>
-      <md-card-header>
-        <div md-card-avatar></div>
+      <md-card-header md-colors=":{backgroundColor: 'default-primary-700'}">
         <md-card-title>Patient Master</md-card-title>
         <md-card-subtitle>New Patient</md-card-subtitle>
       </md-card-header>
@@ -23,103 +18,101 @@
             <template md-tab-label>
               Patient information
             </template>
-            <md-card  >
+            <md-card>
               <md-card-content>
-                <table  cellspacing="0">
-                  <tr>
-                    <td colspan="2"> 
-                      <md-input-container >
-                        <input mdInput placeholder="Full name" >
+                  <div class="container">
+                    <div> 
+                      <md-input-container class="input-full-width">
+                        <input mdInput placeholder="Full name">
                       </md-input-container>
-                    </td>
-                    <td>
-                      <md-select placeholder="Title" name="title" >
+                    </div>
+                    <div>
+                      <md-select placeholder="Title" name="title"  class="input-full-width">
                         <md-option *ngFor="let title of titles" [value]="title.value">
                           {{title.viewValue}}
                         </md-option>
                       </md-select>
-                    </td>
-                    <td>
-                      <md-radio-group >
-                        <md-radio-button   *ngFor="let sex of gender" [value]="sex">
+                    </div>
+                    <div>
+                      <md-radio-group class="input-full-width">
+                        <md-radio-button *ngFor="let sex of gender" [value]="sex">
                           {{sex}}
                         </md-radio-button>
                       </md-radio-group>
-                    </td>
-                  </tr>
+                    </div>
+                  </div>
 
-                  <tr>
-                    <td>
-                      <md-input-container >
-                        <input mdInput placeholder="Date of Birth">
+                  <div class="container">
+                    <div>
+                      <md-input-container class="input-full-width">
+                        <input mdInput type="date" placeholder="Date of Birth">
                       </md-input-container>
-                    </td>
-                    <td>
-                      <md-input-container >
+                    </div>
+                    <div>
+                      <md-input-container class="input-full-width">
                         <input mdInput placeholder="Identification Number">
                       </md-input-container>
-                    </td>
-                    <td>
+                    </div>
+                    <div>
                       <md-select placeholder="Identification type" name="IDType" >
                         <md-option *ngFor="let IDtype of IDtypes" [value]="IDtype.value">
                           {{IDtype.viewValue}}
                         </md-option>
                       </md-select>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <md-input-container >
+                    </div>
+                  </div>
+                  <div class="container">
+                    <div>
+                      <md-input-container class="input-full-width">
                         <input mdInput placeholder="Mobile Phone">
                       </md-input-container>
-                    </td>
-                    <td>
-                      <md-input-container >
+                    </div>
+                    <div>
+                      <md-input-container class="input-full-width">
                         <input mdInput placeholder="Phone">
                       </md-input-container>
-                    </td>
-                    <td colspan="2">
-                      <md-input-container >
-                        <input mdInput placeholder="Email">
+                    </div>
+                    <div>
+                      <md-input-container class="input-full-width">
+                        <input mdInput type="email" placeholder="Email">
                       </md-input-container>
-                    </td>
-                  </tr>
+                    </div>
+                  </div>
 
-                  <tr>
-                    <td colspan="5">
-                    <md-input-container >
-                      <textarea mdInput placeholder="Address"></textarea>
-                    </md-input-container>
-                    </td>
-                  </tr>
+                  <div class="container">
+                    <div>
+                      <md-input-container class="input-full-width">
+                        <textarea mdInput placeholder="Address"></textarea>
+                      </md-input-container>
+                    </div>
+                  </div>
 
-                  <tr>
-                    <td>
-                      <md-input-container >
+                  <div class="container">
+                    <div>
+                      <md-input-container class="input-full-width">
                         <input mdInput placeholder="City">
                       </md-input-container>
-                    </td>
-                    <td>
-                      <md-input-container >
-                        <input mdInput placeholder="Postal Code">
+                    </div>
+                    <div>
+                      <md-input-container class="input-full-width">
+                        <input mdInput type="number" placeholder="Postal Code">
                       </md-input-container>
-                    </td>
-                    <td>
+                    </div>
+                    <div>
                       <md-select placeholder="State" name="state" >
                         <md-option *ngFor="let state of states" [value]="state.value">
                           {{state.viewValue}}
                         </md-option>
                       </md-select>
-                    </td>
-                    <td>
+                    </div>
+                    <div>
                       <md-select placeholder="Country" name="country" >
                         <md-option *ngFor="let country of countries" [value]="country.value">
                           {{country.viewValue}}
                         </md-option>
                       </md-select>
-                    </td>
-                  </tr>
-                </table>
+                    </div>
+                  </div>
               </md-card-content>
             </md-card>
           </md-tab>
@@ -129,97 +122,92 @@
             </template>
             <md-card  >
               <md-card-content>
-                <table  cellspacing="0">
-                  <tr>
-                    <td colspan="2"> 
-                      <md-input-container >
-                        <input mdInput placeholder="Full name">
-                      </md-input-container>
-                    </td>
-                    <td>
-                      <md-select placeholder="Relation" name="relation" >
-                        <md-option *ngFor="let relation of relationship" [value]="relation.value" >
-                          {{relation.viewValue}}
-                        </md-option>
-                      </md-select>
-                    </td>
-                  </tr>
-
-                  <tr>
-                    <td>
-                      <md-input-container >
-                        <input mdInput placeholder="Date of Birth">
-                      </md-input-container>
-                    </td>
-                    <td>
-                      <md-input-container >
-                        <input mdInput placeholder="Identification Number">
-                      </md-input-container>
-                    </td>
-                    <td>
-                      <md-select placeholder="Identification type" name="IDType" >
-                        <md-option *ngFor="let IDtype of IDtypes" [value]="IDtype.value">
-                          {{IDtype.viewValue}}
-                        </md-option>
-                      </md-select>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <md-input-container >
-                        <input mdInput placeholder="Mobile Phone">
-                      </md-input-container>
-                    </td>
-                    <td>
-                      <md-input-container >
-                        <input mdInput placeholder="Phone">
-                      </md-input-container>
-                    </td>
-                    <td colspan="2">
-                      <md-input-container >
-                        <input mdInput placeholder="Email">
-                      </md-input-container>
-                    </td>
-                  </tr>
-
-                  <tr>
-                    <td colspan="3">
-                      <md-input-container >
-                        <textarea mdInput placeholder="Address"></textarea>
-                      </md-input-container>
-                    </td>
-                    <td>
-                      <md-checkbox class="example-margin">Same as Patient's Address</md-checkbox>
-                    </td>
-                  </tr>
-
-                  <tr>
-                    <td>
-                      <md-input-container >
-                        <input mdInput placeholder="City">
-                      </md-input-container>
-                    </td>
-                    <td>
-                      <md-input-container >
-                        <input mdInput placeholder="Postal Code">
-                      </md-input-container>
-                    </td>
-                    <td>
-                      <md-select placeholder="State" name="state" >
-                        <md-option *ngFor="let state of states" [value]="state.value">
-                          {{state.viewValue}}
-                        </md-option>
-                      </md-select>
-                    </td>
-                    <td>
-                      <md-select placeholder="Country" name="country" >
-                        <md-option *ngFor="let country of countries" [value]="country.value">
-                          {{country.viewValue}}
-                        </md-option>
-                      </md-select>
-                    </td>
-                  </tr>
-                </table>
+                <div class="container">
+                  <div> 
+                    <md-input-container class="input-full-width">
+                      <input mdInput placeholder="Full name">
+                    </md-input-container>
+                  </div>
+                  <div>
+                    <md-select placeholder="Relation" name="relation" >
+                      <md-option *ngFor="let relation of relationship" [value]="relation.value" >
+                        {{relation.viewValue}}
+                      </md-option>
+                    </md-select>
+                  </div>
+                </div>
+                <div class="container">
+                  <div>
+                    <md-input-container class="input-full-width">
+                      <input mdInput type="date" placeholder="Date of Birth">
+                    </md-input-container>
+                  </div>
+                  <div>
+                    <md-input-container class="input-full-width">
+                      <input mdInput placeholder="Identification Number">
+                    </md-input-container>
+                  </div>
+                  <div>
+                    <md-select placeholder="Identification type" name="IDType" >
+                      <md-option *ngFor="let IDtype of IDtypes" [value]="IDtype.value">
+                        {{IDtype.viewValue}}
+                      </md-option>
+                    </md-select>
+                  </div>
+                </div>
+                <div class="container">
+                  <div>
+                    <md-input-container class="input-full-width">
+                      <input mdInput placeholder="Mobile Phone">
+                    </md-input-container>
+                  </div>
+                  <div>
+                    <md-input-container class="input-full-width">
+                      <input mdInput placeholder="Phone">
+                    </md-input-container>
+                  </div>
+                  <div>
+                    <md-input-container class="input-full-width">
+                      <input mdInput type="email" placeholder="Email">
+                    </md-input-container>
+                  </div>
+                </div>
+                <div class="container">
+                  <div>
+                    <md-input-container class="input-full-width">
+                      <textarea mdInput placeholder="Address"></textarea>
+                    </md-input-container>
+                  </div>
+                  <div>
+                    <md-checkbox class="example-margin">Same as Patient's Address</md-checkbox>
+                  </div>
+                </div>
+                <div class="container">
+                  <div>
+                    <md-input-container class="input-full-width">
+                      <input mdInput placeholder="City">
+                    </md-input-container>
+                  </div>
+                  <div>
+                    <md-input-container class="input-full-width">
+                      <input mdInput type="number" placeholder="Postal Code">
+                    </md-input-container>
+                  </div>
+                  <div>
+                    <md-select placeholder="State" name="state" >
+                      <md-option *ngFor="let state of states" [value]="state.value">
+                        {{state.viewValue}}
+                      </md-option>
+                    </md-select>
+                  </div>
+                  <div>
+                    <md-select placeholder="Country" name="country" >
+                      <md-option *ngFor="let country of countries" [value]="country.value">
+                        {{country.viewValue}}
+                      </md-option>
+                    </md-select>
+                  </div>
+                </div>
               </md-card-content>
             </md-card>
           </md-tab>
@@ -229,55 +217,53 @@
             </template>
             <md-card  >
               <md-card-content>
-                <table  cellspacing="0">
-                  <tr>
-                    <td> 
-                      <md-input-container>
-                        <input mdInput placeholder="Insurance" [mdAutocomplete]="autoInsurance" [formControl]="insuranceCtrl">
-                      </md-input-container>
+                <div class="container">
+                  <div> 
+                    <md-input-container class="input-full-width">
+                      <input mdInput placeholder="Insurance" [mdAutocomplete]="autoInsurance" [formControl]="insuranceCtrl">
+                    </md-input-container>
 
-                      <md-autocomplete #autoInsurance="mdAutocomplete">
-                        <md-option *ngFor="let insurance of filteredInsurances | async" [value]="insurance">
-                          {{ insurance }}
-                        </md-option>
-                      </md-autocomplete>
-                    </td>
-                    <td>
-                      <md-input-container>
-                        <input mdInput placeholder="Payor" [mdAutocomplete]="autoPayor" [formControl]="payorCtrl">
-                      </md-input-container>
+                    <md-autocomplete #autoInsurance="mdAutocomplete">
+                      <md-option *ngFor="let insurance of filteredInsurances | async" [value]="insurance">
+                        {{ insurance }}
+                      </md-option>
+                    </md-autocomplete>
+                  </div>
+                  <div>
+                    <md-input-container class="input-full-width">
+                      <input mdInput placeholder="Payor" [mdAutocomplete]="autoPayor" [formControl]="payorCtrl">
+                    </md-input-container>
 
-                      <md-autocomplete #autoPayor="mdAutocomplete">
-                        <md-option *ngFor="let payor of filteredPayors | async" [value]="payor">
-                          {{ payor }}
-                        </md-option>
-                      </md-autocomplete>
-                    </td>
-                  </tr>
-
-                  <tr>
-                    <td>
-                      <md-input-container >
-                        <input mdInput placeholder="Start Date">
-                      </md-input-container>
-                    </td>
-                    <td>
-                      <md-input-container >
-                        <input mdInput placeholder="End date">
-                      </md-input-container>
-                    </td>
-                    <td>
-                      <md-checkbox class="example-margin" [(ngModel)]="inUse" name="inUse">In-Use</md-checkbox>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td colspan="3">
-                    <md-input-container >
+                    <md-autocomplete #autoPayor="mdAutocomplete">
+                      <md-option *ngFor="let payor of filteredPayors | async" [value]="payor">
+                        {{ payor }}
+                      </md-option>
+                    </md-autocomplete>
+                  </div>
+                </div>
+                <div class="container">
+                  <div>
+                    <md-input-container class="input-full-width">
+                      <input mdInput type="date" placeholder="Start Date">
+                    </md-input-container>
+                  </div>
+                  <div>
+                    <md-input-container class="input-full-width">
+                      <input mdInput type="date" placeholder="End date">
+                    </md-input-container>
+                  </div>
+                  <div>
+                    <md-checkbox class="example-margin" [(ngModel)]="inUse" name="inUse">In-Use</md-checkbox>
+                  </div>
+                </div>
+                <div class="container">
+                  <div>
+                    <md-input-container class="input-full-width">
                       <textarea mdInput placeholder="Remark"></textarea>
                     </md-input-container>
-                    </td>
-                  </tr>
-                </table>
+                  </div>
+                </div>
+
               </md-card-content>
             </md-card>
           </md-tab>
@@ -287,72 +273,68 @@
             </template>
             <md-card  >
               <md-card-content>
-                <table  cellspacing="0">
-                  <tr>
-                    <td colspan="2"> 
-                      <md-input-container >
-                        <input mdInput placeholder="Employer">
-                      </md-input-container>
-                    </td>
-                    <td>
-                      <md-input-container >
-                        <input mdInput placeholder="Employee Reference No">
-                      </md-input-container>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <md-input-container >
-                        <input mdInput placeholder="Phone">
-                      </md-input-container>
-                    </td>
-                    <td>
-                      <md-input-container >
-                        <input mdInput placeholder="Fax">
-                      </md-input-container>
-                    </td>
-                    <td colspan="2">
-                      <md-input-container >
-                        <input mdInput placeholder="Email">
-                      </md-input-container>
-                    </td>
-                  </tr>
-
-                  <tr>
-                    <td colspan="4">
-                      <md-input-container >
-                        <textarea mdInput placeholder="Address"></textarea>
-                      </md-input-container>
-                    </td>
-                  </tr>
-
-                  <tr>
-                    <td>
-                      <md-input-container >
-                        <input mdInput placeholder="City">
-                      </md-input-container>
-                    </td>
-                    <td>
-                      <md-input-container >
-                        <input mdInput placeholder="Postal Code">
-                      </md-input-container>
-                    </td>
-                    <td>
-                      <md-select placeholder="State" name="state" >
-                        <md-option *ngFor="let state of states" [value]="state.value">
-                          {{state.viewValue}}
-                        </md-option>
-                      </md-select>
-                    </td>
-                    <td>
-                      <md-select placeholder="Country" name="country" >
-                        <md-option *ngFor="let country of countries" [value]="country.value">
-                          {{country.viewValue}}
-                        </md-option>
-                      </md-select>
-                    </td>
-                  </tr>
-                </table>
+                <div class="container">
+                  <div> 
+                    <md-input-container class="input-full-width">
+                      <input mdInput placeholder="Employer">
+                    </md-input-container>
+                  </div>
+                  <div>
+                    <md-input-container class="input-full-width">
+                      <input mdInput placeholder="Employee Reference No">
+                    </md-input-container>
+                  </div>
+                </div>
+                <div class="container">
+                  <div>
+                    <md-input-container class="input-full-width">
+                      <input mdInput placeholder="Phone">
+                    </md-input-container>
+                  </div>
+                  <div>
+                    <md-input-container class="input-full-width">
+                      <input mdInput placeholder="Fax">
+                    </md-input-container>
+                  </div>
+                  <div>
+                    <md-input-container class="input-full-width">
+                      <input mdInput type="email" placeholder="Email">
+                    </md-input-container>
+                  </div>
+                </div>
+                <div class="container">
+                  <div>
+                    <md-input-container class="input-full-width">
+                      <textarea mdInput placeholder="Address"></textarea>
+                    </md-input-container>
+                  </div>
+                </div>
+                <div class="container">
+                  <div>
+                    <md-input-container class="input-full-width">
+                      <input mdInput placeholder="City">
+                    </md-input-container>
+                  </div>
+                  <div>
+                    <md-input-container class="input-full-width">
+                      <input mdInput type="number" placeholder="Postal Code">
+                    </md-input-container>
+                  </div>
+                  <div>
+                    <md-select placeholder="State" name="state" >
+                      <md-option *ngFor="let state of states" [value]="state.value">
+                        {{state.viewValue}}
+                      </md-option>
+                    </md-select>
+                  </div>
+                  <div>
+                    <md-select placeholder="Country" name="country" >
+                      <md-option *ngFor="let country of countries" [value]="country.value">
+                        {{country.viewValue}}
+                      </md-option>
+                    </md-select>
+                  </div>
+                </div>
               </md-card-content>
             </md-card>
           </md-tab>
