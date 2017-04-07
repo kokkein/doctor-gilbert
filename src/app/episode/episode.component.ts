@@ -21,22 +21,13 @@ export class EpisodeComponent implements OnInit {
   }
 
   patientDetails = [
-    {
-      property: 'Visit ID',
-      value: 'VIT00010020',
-    },
-    {
-      property: 'Payment Mode',
-      value: 'AIA Premium Policy, AIA Berhard',
-    }
+    { property: 'Visit ID', value: 'VIT00010020',},
+    { property: 'Visit Date-Time', value: '01-02-2016 10:30AM',},
+    { property: 'Payment Mode', value: 'AIA Premium Policy, AIA Berhard',}
   ];
   warnings = [
-    {
-      value: 'Nuts',
-    },
-    {
-      value: 'Panadol, Uphamol, Paraceptamol',
-    }
+    { value: 'Nuts',},
+    { value: 'Panadol, Uphamol, Paraceptamol',}
   ];
 
 }
