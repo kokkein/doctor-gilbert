@@ -24,12 +24,14 @@ import { LaboratoryComponent } from './episode/laboratory/laboratory.component';
 import { MedicationComponent } from './episode/medication/medication.component';
 import { TimelineComponent } from './episode/timeline/timeline.component';
 import { DiagnosisComponent } from './episode/diagnosis/diagnosis.component';
+import { VitalSignsComponent } from './episode/vital-signs/vital-signs.component';
 
 //Third Party Component
 import { Ng2GoogleChartsModule } from 'ng2-google-charts';
 import { InputMaskModule } from 'primeng/primeng'; 
 import { ChipsModule } from 'primeng/primeng';
 import { EditorModule, SharedModule } from 'primeng/primeng';
+
 
 const appRoutes: Routes = [
 { path: 'patient', component: PatientComponent},
@@ -55,7 +57,8 @@ const appRoutes: Routes = [
     LaboratoryComponent,
     MedicationComponent,
     TimelineComponent,
-    DiagnosisComponent
+    DiagnosisComponent,
+    VitalSignsComponent
   ],
   imports: [
     BrowserModule,

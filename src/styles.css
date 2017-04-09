@@ -16,6 +16,14 @@ div.container > div
     background-color: whitesmoke;
 }
 
+div.toolbar > div
+{
+    flex: 1 1 5em;
+    margin-left: 0px;
+    height:37px;
+    background-color: lightblue;
+}
+
 div.container > div:first-child
 {
     margin-left: 0;
