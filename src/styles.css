@@ -5,15 +5,31 @@
 div.container
 {
     display: flex;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 }
+
 
 div.container > div
 {
     flex: 1 1 5em;
-    margin-left: 10px;
-    height:50px;
+    margin-left: 5px;
+    height:36px;
     background-color: whitesmoke;
+}
+
+div.patientBanner
+{
+    display: flex;
+    margin-bottom: 5px;
+    vertical-align: top;
+}
+
+div.patientBanner > div
+{
+    flex: 1 1 5em;
+    margin-left: 5px;
+    height:90px;
+    background-color:white;
 }
 
 div.toolbar > div
@@ -31,14 +47,18 @@ div.container > div:first-child
 
 div.container > div.two
 {
-    flex:2 2 calc(10em + 10px); /** 10px is the missing margin of the missing box */
+    flex:2 2 calc(10em + 5px); /** 10px is the missing margin of the missing box */
 }
 
 div.container > div.three
 {
-    flex:3 3 calc(15em + 20px); /** 20px is the missing margin of the two missing boxes */
+    flex:3 3 calc(15em + 10px); /** 20px is the missing margin of the two missing boxes */
 }
 
 .input-full-width {
     width: 100%;
+}
+
+span {
+    white-space: normal;
 }

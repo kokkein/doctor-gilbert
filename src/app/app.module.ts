@@ -4,7 +4,7 @@ import { NgModule, Component } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { Routes, RouterModule } from '@angular/router';
-import { AppComponent } from './app.component';
+import { AppComponent, DialogResultExampleDialog } from './app.component';
 import { MaterialModule} from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
@@ -58,7 +58,7 @@ const appRoutes: Routes = [
     MedicationComponent,
     TimelineComponent,
     DiagnosisComponent,
-    VitalSignsComponent
+    VitalSignsComponent, DialogResultExampleDialog
   ],
   imports: [
     BrowserModule,
@@ -70,6 +70,7 @@ const appRoutes: Routes = [
     Ng2GoogleChartsModule
   ],
   providers: [],
+  entryComponents: [DialogResultExampleDialog],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

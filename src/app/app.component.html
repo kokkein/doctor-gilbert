@@ -1,4 +1,4 @@
-<md-sidenav-container fullscreen>
+<md-sidenav-container fullscreen class="demo-content">
   <md-sidenav mode="push" #start>
     <md-nav-list>
       <a *ngFor="let navItem of navItems"
@@ -20,15 +20,18 @@
       <div class="demo-toolbar">
         <h1>Doctor G</h1>
         <button md-button (click)="toggleFullscreen()" title="Toggle fullscreen">
-          Fullscreen
+          <i class="material-icons">fullscreen</i> Fullscreen
+        </button>
+        <button md-button (click)="toggleMenu()" title="Toggle Main Menu">
+          <i class="material-icons">apps</i> Menu
         </button>
         <button md-button (click)="root.dir = (root.dir == 'rtl' ? 'ltr' : 'rtl')" title="Toggle between RTL and LTR">
-          {{root.dir.toUpperCase()}}
+          <i class="material-icons">swap_horiz</i> {{root.dir.toUpperCase()}}
         </button>
       </div>
     </md-toolbar>
 
-    <div #root="$implicit" dir="ltr" class="demo-content">
+    <div #root="$implicit" dir="ltr" class="demo-content-inner">
       <router-outlet></router-outlet>
     </div>
   </div>

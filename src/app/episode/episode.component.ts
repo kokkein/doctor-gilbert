@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./episode.component.css']
 })
 export class EpisodeComponent implements OnInit {
-
+  public hide = false;
   public direction = "row";
   public mainAxis = "space-around";
   public crossAxis = "center";
@@ -25,9 +25,13 @@ export class EpisodeComponent implements OnInit {
     { property: 'Visit Date-Time', value: '01-02-2016 10:30AM',},
     { property: 'Payment Mode', value: 'AIA Premium Policy, AIA Berhard',}
   ];
+
   warnings = [
     { value: 'Nuts',},
     { value: 'Panadol, Uphamol, Paraceptamol',}
   ];
 
+  togglePatientBar(){
+    this.hide = !this.hide;
+  }
 }

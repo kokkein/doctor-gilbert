@@ -1,6 +1,60 @@
 <section>
-  <div id='main'>
-    <article>
+
+<div [hidden]="hide">
+      <div class="patientBanner">
+
+          <div>
+
+  <md-list>
+    <md-list-item>
+
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYNSdOcn2GYWS6XP8fS01a-bShnHGNcK3cKURyxIgEHjOZt9z4" height="80" width="80">
+                    <button md-icon-button (click)="togglePatientBar()">
+                <i class="material-icons">visibility_off</i>
+          </button>
+      <h4 md-line>Tan Seri. Dato Seri. Barack Obama van Orange</h4>
+      <p md-line>
+        <span>MRN0000020104, Outpatient - OPD-0000101027</span>
+      </p>
+      <p md-line>
+        <span>Female, Age 36 years 5 months 21 days</span>
+      </p>
+    </md-list-item>
+  </md-list>
+
+          </div>
+          <div>
+  <md-list>
+    <md-list-item>
+      <h4 md-line>Payment Mode</h4>
+      <p md-line>
+        <span>AIA Premium Patient</span>
+      </p>
+      <p md-line>
+        <span>AIA Malaysia International (South East Asia Region) Berhard</span>
+      </p>
+    </md-list-item>
+  </md-list>
+            
+          </div>
+          <div>
+  <md-list>
+    <md-list-item>
+      <h4 md-line>Warning</h4>
+      <p md-line>
+        <span>Nuts</span>
+      </p>
+      <p md-line>
+        <span>Panadol, Uphamol, Paraceptamol, Seafood, Milk, Daily Products</span>
+      </p>
+      <p md-line>
+        <span>VVIP Patient</span>
+      </p>
+    </md-list-item>
+  </md-list>
+          </div>
+      </div>
+</div>
       <form>
         <md-card>
           <md-card-content>
@@ -19,7 +73,7 @@
                 <template md-tab-label>
                   Diagnosis
                 </template>
-                <md-card  >
+                <md-card>
                   <md-card-content>
                     <app-diagnosis></app-diagnosis>
                   </md-card-content>
@@ -29,7 +83,7 @@
                 <template md-tab-label>
                   Vital Signs
                 </template>
-                <md-card  >
+                <md-card>
                   <md-card-content>
                     <app-vital-signs></app-vital-signs>
                   </md-card-content>
@@ -79,30 +133,6 @@
           </md-card-content>
         </md-card>
       </form>
-    </article>
-    <aside>
-      <md-card>
-        <md-card-header>
-          <div md-card-avatar>
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYNSdOcn2GYWS6XP8fS01a-bShnHGNcK3cKURyxIgEHjOZt9z4" height="80" width="80">
-          </div>
-          <md-card-title>Tan Seri. Dato Seri. Barack Obama van Orange</md-card-title>
-          <md-card-subtitle>MRN0000020104</md-card-subtitle>
-        </md-card-header>
-        <md-card-content>
-         <md-list dense>
-            <md-list-item *ngFor="let patientDetail of patientDetails">
-              <h4 md-line>{{patientDetail.property}}</h4>
-              <p md-line>{{patientDetail.value}} </p>
-            </md-list-item>
-            <md-divider></md-divider>
-            <h3 md-subheader>Warning</h3>
-            <md-list-item>
-              <p md-line *ngFor="let warning of warnings">{{warning.value}}</p>
-            </md-list-item>
-          </md-list>
-        </md-card-content>
-      </md-card>
-    </aside>
-  </div>
+
+
 </section>

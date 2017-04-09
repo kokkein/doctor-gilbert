@@ -31,8 +31,13 @@ body {
     }
   }
 
+  .demo-content-inner {
+    padding: 5px;
+    box-sizing: border-box;
+  }
+
   .demo-content {
-    padding: 32px;
+    padding: 0px;
     box-sizing: border-box;
   }
 

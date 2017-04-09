@@ -1,0 +1,15 @@
+<h1 md-dialog-title>Dialog</h1>
+<div md-dialog-content>What would you like to do?</div>
+<div md-dialog-actions>
+    <md-nav-list>
+      <a *ngFor="let navItem of Items"
+         md-list-item
+         (click)="start.close()"
+         [routerLink]="[navItem.route]">
+        {{navItem.name}}
+      </a>
+    </md-nav-list>
+    <button md-button (click)="start.close()">CLOSE</button>
+
+</div>
+

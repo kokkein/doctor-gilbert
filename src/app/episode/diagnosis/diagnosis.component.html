@@ -1,3 +1,43 @@
-<p>
-  diagnosis works!
-</p>
+<div class="toolbar">
+    <div>
+        <button md-raised-button>Save</button>
+        <button md-raised-button>Edit</button>
+        <button md-raised-button>New</button>
+        <button md-raised-button>Void</button>
+    </div>
+</div>
+<section>
+  <md-list>
+    <h3 md-subheader>Records List</h3>
+    <md-list-item *ngFor="let dia of diagnosis">
+      <h4 md-line>{{dia.diagnosisCode}} - {{dia.diagnosisDesc}}</h4>
+        <button md-icon-button (click)="open()">
+          <i class="material-icons">mode_edit</i>
+        </button>
+        <button md-icon-button (click)="open()">
+          <i class="material-icons">delete</i>
+        </button>
+      <p md-line>
+        <span> {{dia.Note}} </span>
+      </p>
+      <p md-line>
+        <small>
+          <span><b>Current Version: </b><i>{{dia.version}}</i></span>
+        </small>
+      </p>
+      <p md-line>
+        <small>      
+          <span><b>Updated: </b><i>{{dia.updated | date:'medium'}}</i> </span>
+          <span>, <b>By: </b><i>{{dia.updatedBy}}</i></span>
+        </small>
+      </p>
+      <p md-line>
+        <small>
+          <span><b>Created: </b><i>{{dia.created | date:'medium'}}</i> </span>
+          <span>, <b>By: </b><i>{{dia.createdBy}}</i></span>
+        </small>
+      </p>
+
+    </md-list-item>
+  </md-list>
+</section>
