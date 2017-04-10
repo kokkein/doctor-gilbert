@@ -1,3 +1,117 @@
-<p>
-  medication works!
-</p>
+<div class="toolbar">
+    <div>
+        <button md-raised-button>Save</button>
+        <button md-raised-button>New</button>
+    </div>
+</div>
+<section>
+
+            <md-card>
+              <md-card-content>
+                  <div class="container">
+                    <div> 
+                      <md-input-container class="input-full-width">
+                        <input mdInput placeholder="Medication" [mdAutocomplete]="autoMedication" [formControl]="medicationCtrl">
+                      </md-input-container>
+                      <md-autocomplete #autoMedication="mdAutocomplete">
+                        <md-option *ngFor="let medication of filteredMedications | async" [value]="medication">
+                          {{ medication }}
+                        </md-option>
+                      </md-autocomplete>
+                    </div>
+                    <div>
+                      <md-input-container class="input-full-width">
+                        <input mdInput placeholder="Medication Template" [mdAutocomplete]="autoMedicationTemplate" [formControl]="medicationTemplateCtrl">
+                      </md-input-container>
+                      <md-autocomplete #autoMedicationTemplate="mdAutocomplete">
+                        <md-option *ngFor="let medicationTemplate of filteredMedicationTemplates | async" [value]="medicationTemplate">
+                          {{ medicationTemplate }}
+                        </md-option>
+                      </md-autocomplete>
+                    </div>
+                  </div>
+                  <div class="container">
+                    <div>
+                      <md-select placeholder="UOM" name="uom" >
+                        <md-option *ngFor="let uom of uoms" [value]="uom.value">
+                          {{uom.viewValue}}
+                        </md-option>
+                      </md-select>
+                    </div>
+                    <div>
+                      <md-input-container class="input-full-width">
+                        <input mdInput type="number" placeholder="Quantity">
+                        <md-hint align="end">avail.QTY: 503</md-hint>
+                      </md-input-container>
+                    </div>
+                    <div>
+                      <md-input-container class="input-full-width">
+                        <input mdInput type="number" placeholder="Times">
+                      </md-input-container>
+                    </div>
+                    <div>
+                      <md-input-container class="input-full-width">
+                        <input mdInput type="number" placeholder="Days">
+                      </md-input-container>
+                    </div>
+                  </div>
+                  <div class="container">
+                    <div>
+                      <md-input-container class="input-full-width">
+                        <input mdInput type="number" placeholder="Selling Price">
+                      </md-input-container>
+                    </div>
+                    <div>
+                      <md-input-container class="input-full-width">
+                        <input mdInput type="number" placeholder="Total Price">
+                      </md-input-container>
+                    </div>
+                    <div>
+                      <md-input-container class="input-full-width">
+                        <input mdInput type="number" placeholder="Discount Apply">
+                      </md-input-container>
+                    </div>
+                  </div>
+                  <div class="container">
+                    <div>
+                      <md-input-container class="input-full-width">
+                        <textarea mdInput placeholder="Medication Note"></textarea>
+                      </md-input-container>
+                    </div>
+                  </div>
+              </md-card-content>
+            </md-card>
+  </section>
+  <section>
+
+
+          <div class="container">
+            <div> 
+              <md-card class="example-card">
+                <md-card-header>
+                  <md-card-title>Panadol</md-card-title>
+                  <md-card-subtitle>3 Times a Day, 4 Time A Weeks by Mouth</md-card-subtitle>
+                </md-card-header>
+                <md-card-content>
+                </md-card-content>
+                <md-card-actions>
+                  <button md-button><i class="material-icons">delete</i></button>
+                </md-card-actions>
+              </md-card>
+            </div>
+            <div>
+              <md-card class="example-card">
+                <md-card-header>
+                  <md-card-title>Paraceptamol</md-card-title>
+                  <md-card-subtitle>3 Times a Day, 4 Time A Weeks by Mouth</md-card-subtitle>
+                </md-card-header>
+                <md-card-content>
+                </md-card-content>
+                <md-card-actions>
+                  <button md-button><i class="material-icons">delete</i></button>
+                </md-card-actions>
+              </md-card>
+            </div>
+          </div>
+
+  </section>

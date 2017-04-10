@@ -1,15 +1,43 @@
 <div class="toolbar">
     <div>
         <button md-raised-button>Save</button>
-        <button md-raised-button>Edit</button>
         <button md-raised-button>New</button>
-        <button md-raised-button>Void</button>
     </div>
 </div>
 <section>
+
+            <md-card>
+              <md-card-content>
+                  <div class="container">
+                    <div> 
+                      <md-input-container class="input-full-width">
+                        <input mdInput placeholder="Diagnosis" [mdAutocomplete]="autoDiagnosis" [formControl]="diagnosisCtrl">
+                      </md-input-container>
+                      <md-autocomplete #autoDiagnosis="mdAutocomplete">
+                        <md-option *ngFor="let diagnosis of filteredDiagnosis | async" [value]="diagnosis">
+                          {{ diagnosis }}
+                        </md-option>
+                      </md-autocomplete>
+                    </div>
+                    <div>
+                      <md-input-container class="input-full-width">
+                        <input mdInput placeholder="Diagnosis Description">
+                      </md-input-container>
+                    </div>
+                  </div>
+                    <div class="container">
+                      <div>
+                        <md-input-container class="input-full-width">
+                          <textarea mdInput placeholder="Medical Note"></textarea>
+                        </md-input-container>
+                      </div>
+                    </div>
+              </md-card-content>
+            </md-card>
+
   <md-list>
     <h3 md-subheader>Records List</h3>
-    <md-list-item *ngFor="let dia of diagnosis">
+    <md-list-item *ngFor="let dia of diagnosisRecord">
       <h4 md-line>{{dia.diagnosisCode}} - {{dia.diagnosisDesc}}</h4>
         <button md-icon-button (click)="open()">
           <i class="material-icons">mode_edit</i>
