@@ -21,7 +21,7 @@ div.patientBanner
 {
     display: flex;
     margin-bottom: 5px;
-    top: 4px;
+    top: 40px;
 }
 
 div.patientBanner > div

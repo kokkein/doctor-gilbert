@@ -29,8 +29,6 @@
                         </md-option>
                       </md-autocomplete>
                     </div>
-                  </div>
-                  <div class="container">
                     <div>
                       <md-select placeholder="UOM" name="uom" >
                         <md-option *ngFor="let uom of uoms" [value]="uom.value">
@@ -38,20 +36,63 @@
                         </md-option>
                       </md-select>
                     </div>
+                  </div>
+                  <div class="container">
                     <div>
                       <md-input-container class="input-full-width">
-                        <input mdInput type="number" placeholder="Quantity">
+                        <input mdInput placeholder="Dosage">
+                      </md-input-container>
+                    </div>
+                    <div>
+                      <md-select placeholder="Route of Administration" name="route" >
+                        <md-option *ngFor="let uom of uoms" [value]="uom.value">
+                          {{uom.viewValue}}
+                        </md-option>
+                      </md-select>
+                    </div>
+                    <div class="two">
+                      <md-input-container class="input-full-width">
+                        <input mdInput placeholder="Dosage Label">
+                      </md-input-container>
+                    </div>
+                  </div>
+                  <div class="container">
+                    <div>
+                      <md-input-container class="input-full-width">
+                        <input mdInput type="number" placeholder="Take/Apply">
+                      </md-input-container>
+                    </div>
+                    <div>
+                      <md-input-container class="input-full-width">
+                        <input mdInput type="number" placeholder="Time per Day">
+                      </md-input-container>
+                    </div>
+                    <div>
+                      <md-input-container class="input-full-width">
+                        <input mdInput type="number" placeholder="Number of Day">
+                      </md-input-container>
+                    </div>
+                    <div>
+                      <md-input-container class="input-full-width">
+                        <input mdInput type="number" placeholder="Total Quantity">
                         <md-hint align="end">avail.QTY: 503</md-hint>
                       </md-input-container>
                     </div>
+                  </div>
+                  <div class="container">
                     <div>
                       <md-input-container class="input-full-width">
-                        <input mdInput type="number" placeholder="Times">
+                        <input mdInput placeholder="Instruction #1">
                       </md-input-container>
                     </div>
                     <div>
                       <md-input-container class="input-full-width">
-                        <input mdInput type="number" placeholder="Days">
+                        <input mdInput placeholder="Instruction #2">
+                      </md-input-container>
+                    </div>
+                    <div>
+                      <md-input-container class="input-full-width">
+                        <input mdInput placeholder="Indication">
                       </md-input-container>
                     </div>
                   </div>
@@ -64,12 +105,23 @@
                     <div>
                       <md-input-container class="input-full-width">
                         <input mdInput type="number" placeholder="Total Price">
+                        <md-hint align="end">Before discount: RM503.00</md-hint>
                       </md-input-container>
                     </div>
                     <div>
                       <md-input-container class="input-full-width">
                         <input mdInput type="number" placeholder="Discount Apply">
                       </md-input-container>
+                    </div>
+                    <div>
+                      <md-input-container class="input-full-width">
+                        <input mdInput placeholder="Order By" [mdAutocomplete]="autoOrderBy" [formControl]="orderByCtrl">
+                      </md-input-container>
+                      <md-autocomplete #autoOrderBy="mdAutocomplete">
+                        <md-option *ngFor="let orderBy of filteredOrderBys | async" [value]="orderBy">
+                          {{ orderBy }}
+                        </md-option>
+                      </md-autocomplete>
                     </div>
                   </div>
                   <div class="container">
@@ -81,37 +133,4 @@
                   </div>
               </md-card-content>
             </md-card>
-  </section>
-  <section>
-
-
-          <div class="container">
-            <div> 
-              <md-card class="example-card">
-                <md-card-header>
-                  <md-card-title>Panadol</md-card-title>
-                  <md-card-subtitle>3 Times a Day, 4 Time A Weeks by Mouth</md-card-subtitle>
-                </md-card-header>
-                <md-card-content>
-                </md-card-content>
-                <md-card-actions>
-                  <button md-button><i class="material-icons">delete</i></button>
-                </md-card-actions>
-              </md-card>
-            </div>
-            <div>
-              <md-card class="example-card">
-                <md-card-header>
-                  <md-card-title>Paraceptamol</md-card-title>
-                  <md-card-subtitle>3 Times a Day, 4 Time A Weeks by Mouth</md-card-subtitle>
-                </md-card-header>
-                <md-card-content>
-                </md-card-content>
-                <md-card-actions>
-                  <button md-button><i class="material-icons">delete</i></button>
-                </md-card-actions>
-              </md-card>
-            </div>
-          </div>
-
   </section>

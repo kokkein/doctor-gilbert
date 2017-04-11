@@ -11,6 +11,8 @@ export class MedicationComponent implements OnInit {
     filteredMedications: any;
     medicationTemplateCtrl: FormControl;
     filteredMedicationTemplates: any;
+    orderByCtrl: FormControl;
+    filteredOrderBys: any;
 
   constructor() { 
         this.medicationCtrl = new FormControl();
@@ -22,6 +24,11 @@ export class MedicationComponent implements OnInit {
         this.filteredMedicationTemplates = this.medicationTemplateCtrl.valueChanges
         .startWith(null)
         .map(name => this.filterMedicationTemplate(name));
+
+        this.orderByCtrl = new FormControl();
+        this.filteredOrderBys = this.orderByCtrl.valueChanges
+        .startWith(null)
+        .map(name => this.filterOrderBy(name));
   }
 
   ngOnInit() {
@@ -68,8 +75,8 @@ export class MedicationComponent implements OnInit {
   ];
 
   medications = [
-    'MED001 - Panadol',
-    'MED002 - Uphamol 650',
+    'MED001 - Panadol - 500 MG',
+    'MED002 - Uphamol 650 TAB 500mg(Paracetamol)',
     'MED003 - Longize',
     'MED004 - Paraceptamol',
     'MED005 - Antibiotic',
@@ -82,12 +89,22 @@ export class MedicationComponent implements OnInit {
     'TEMP003 - Dizzy',
     ];
 
+  orderBys = [
+    'USER0001 - Doctor Gilbert',
+    'USER0002 - Doctor Huey Yuh',
+    'USER0003 - Doctor Dato Seri. Tan Seri. Abdullah Bin Dadawi',
+    ];
+
   filterMedication(val: string) {
     return val ? this.medications.filter((s) => new RegExp(val, 'gi').test(s)) : this.medications;
   }
 
   filterMedicationTemplate(val: string) {
     return val ? this.medicationTemplates.filter((s) => new RegExp(val, 'gi').test(s)) : this.medicationTemplates;
+  }
+
+  filterOrderBy(val: string) {
+    return val ? this.orderBys.filter((s) => new RegExp(val, 'gi').test(s)) : this.orderBys;
   }
 
 }

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { TreeTableModule, TreeNode } from 'primeng/primeng';
+import { NodeService } from './../../services/NodeService';
+
 
 @Component({
   selector: 'app-laboratory',
@@ -7,9 +10,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LaboratoryComponent implements OnInit {
 
-  constructor() { }
 
-  ngOnInit() {
-  }
+    files: TreeNode[];
+    selectedFiles: TreeNode[];
+
+    constructor(private nodeService: NodeService) {}
+    
+    ngOnInit() {
+        this.nodeService.getFilesystem().then(files => this.files = files);
+    }
+ 
+    nodeSelect(event) {
+        //event.node = selected node
+    }
 
 }

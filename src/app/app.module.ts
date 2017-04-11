@@ -1,3 +1,5 @@
+import { NodeService } from './services/NodeService';
+
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule, Component } from '@angular/core';
@@ -29,9 +31,9 @@ import { VitalSignsComponent } from './episode/vital-signs/vital-signs.component
 //Third Party Component
 import { Ng2GoogleChartsModule } from 'ng2-google-charts';
 import { InputMaskModule } from 'primeng/primeng'; 
-import { ChipsModule } from 'primeng/primeng';
+import { ChipsModule } from 'primeng/primeng'; 
 import { EditorModule, SharedModule } from 'primeng/primeng';
-
+import { TreeTableModule, TreeNode } from 'primeng/primeng';
 
 const appRoutes: Routes = [
 { path: 'patient', component: PatientComponent},
@@ -67,9 +69,9 @@ const appRoutes: Routes = [
     MaterialModule.forRoot(),
     BrowserAnimationsModule, FlexLayoutModule,
     InputMaskModule, ChipsModule, EditorModule, SharedModule,
-    Ng2GoogleChartsModule
+    Ng2GoogleChartsModule, TreeTableModule
   ],
-  providers: [],
+  providers: [NodeService],
   entryComponents: [DialogResultExampleDialog],
   bootstrap: [AppComponent]
 })

@@ -1,3 +1,5 @@
-<p>
-  laboratory works!
-</p>
+<p-treeTable [value]="files" selectionMode="checkbox" [(selection)]="selectedFiles" (onNodeSelect)="nodeSelect($event)">
+    <p-column field="labItems" header="Lab Group>Lab Items"></p-column>
+    <p-column field="labCode" header="Lab Code"></p-column>
+    <p-column field="description" header="Description"></p-column>
+</p-treeTable>

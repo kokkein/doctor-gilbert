@@ -1,0 +1,83 @@
+{
+    "data":
+    [  
+        {  
+            "data":{  
+                "labItems":"Blood Test",
+                "labCode":"LAB0001",
+                "description":"Blood Test"
+            },
+            "children":[
+                {  
+                    "data":{  
+                        "labItems":"Blood Count",
+                        "labCode":"LAB0002",
+                        "description":"Blood Count"
+                    },
+                    "children":[  
+                        {  
+                            "data":{  
+                                "labItems":"Urine Count",
+                                "labCode":"LAB0003",
+                                "description":"Urine Count"
+                            }
+                        },
+                        {  
+                            "data":{  
+                                "labItems":"Red Blood Cell",
+                                "labCode":"LAB0004",
+                                "description":"Red Blood Cell Count"
+                            }
+                        }
+                    ]
+                },
+                {  
+                    "data":{  
+                        "labItems":"White Blood Cell",
+                        "labCode":"LAB0005",
+                        "description":"White Blood Cell Count"
+                    },
+                    "children":[  
+                        {  
+                            "data":{  
+                                "labItems":"White Blood Count",
+                                "labCode":"LAB0006",
+                                "description":"White Blood Count"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {  
+            "data":{  
+                "labItems":"Thyroid",
+                "labCode":"LAB0007",
+                "description":"Thyroid Checking"
+            },
+            "children":[  
+                {  
+                    "data":{  
+                        "labItems":"FEME",
+                        "labCode":"LAB0008",
+                        "description":"FEME Test"
+                    }
+                },
+                {  
+                    "data":{  
+                        "labItems":"FEME Color",
+                        "labCode":"LAB0009",
+                        "description":"FEME Color"
+                    }
+                },
+                {  
+                    "data":{  
+                        "labItems":"FEME Density",
+                        "labCode":"LAB0010",
+                        "description":"FEME Density"
+                    }
+                }
+            ]
+        }
+    ]
+}
