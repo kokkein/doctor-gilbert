@@ -1,5 +1,137 @@
+<section>
+  <form>
+    <div class="toolbar">
+      <div>
+        <button md-raised-button>Save</button>
+        <button md-raised-button>New</button>
+      </div>
+    </div>
+
+    <md-card>
+      <md-card-content>
+        <div class="container">
+          <div>
+            <md-select placeholder="Laboratory" name="laboratory"  class="input-full-width">
+            <md-option *ngFor="let laboratory of laboratories" [value]="laboratory.value">
+                {{laboratory.viewValue}}
+            </md-option>
+            </md-select>
+            </div>
+        </div>
+
+        <div class="container">
+            <div>
+                <md-input-container class="input-full-width">
+                <input mdInput placeholder="Order By" [mdAutocomplete]="autoOrderBy" [formControl]="orderByCtrl">
+                </md-input-container>
+                <md-autocomplete #autoOrderBy="mdAutocomplete">
+                <md-option *ngFor="let orderBy of filteredOrderBys | async" [value]="orderBy">
+                    {{ orderBy }}
+                </md-option>
+                </md-autocomplete>
+            </div>
+            <div>
+                <md-input-container class="input-full-width">
+                <input mdInput placeholder="Referred By" [mdAutocomplete]="autoOrderBy" [formControl]="orderByCtrl">
+                </md-input-container>
+                <md-autocomplete #autoOrderBy="mdAutocomplete">
+                <md-option *ngFor="let orderBy of filteredOrderBys | async" [value]="orderBy">
+                    {{ orderBy }}
+                </md-option>
+                </md-autocomplete>
+            </div>
+            <div>
+                <md-input-container class="input-full-width">
+                <input mdInput placeholder="Reply To" [mdAutocomplete]="autoOrderBy" [formControl]="orderByCtrl">
+                </md-input-container>
+                <md-autocomplete #autoOrderBy="mdAutocomplete">
+                <md-option *ngFor="let orderBy of filteredOrderBys | async" [value]="orderBy">
+                    {{ orderBy }}
+                </md-option>
+                </md-autocomplete>
+            </div>
+          </div>
+          <div class="container">
+            <div>
+                <md-radio-group class="input-full-width">
+                    <md-radio-button *ngFor="let priority of priorities" [value]="priority">
+                        {{priority}}
+                    </md-radio-button>
+                </md-radio-group>
+            </div>
+            <div>
+              <md-input-container class="input-full-width">
+                <input mdInput type="datetime-local" placeholder="Requested Sample Date-Time" >
+              </md-input-container>
+            </div>
+            <div>
+                <md-input-container class="input-full-width">
+                <input mdInput placeholder="Reporting By" [mdAutocomplete]="autoOrderBy" [formControl]="orderByCtrl">
+                </md-input-container>
+                <md-autocomplete #autoOrderBy="mdAutocomplete">
+                <md-option *ngFor="let orderBy of filteredOrderBys | async" [value]="orderBy">
+                    {{ orderBy }}
+                </md-option>
+                </md-autocomplete>
+            </div>
+          </div>
+          <div class="container">
+            <div class="two">
+              <md-input-container class="input-full-width">
+                <textarea mdInput placeholder="Remark"></textarea>
+              </md-input-container>
+            </div>
+          </div>
+      </md-card-content>
+    </md-card>
+  </form>
+
 <p-treeTable [value]="files" selectionMode="checkbox" [(selection)]="selectedFiles" (onNodeSelect)="nodeSelect($event)">
     <p-column field="labItems" header="Lab Group>Lab Items"></p-column>
     <p-column field="labCode" header="Lab Code"></p-column>
     <p-column field="description" header="Description"></p-column>
+    <p-column field="price" header="Price"></p-column>
 </p-treeTable>
+
+
+<p-dataTable [value]="cars"  selectionMode="single" [(selection)]="selectedCar" (onRowSelect)="onRowSelect($event)" [paginator]="true" rows="15" [responsive]="true">
+    <p-header>Laboratory Order Details</p-header>
+    <p-column field="vin" header="Code" [sortable]="true"></p-column>
+    <p-column field="year" header="Item" [sortable]="true"></p-column>
+    <p-column field="brand" header="Description" [sortable]="true"></p-column>
+    <p-column field="color" header="Price" [sortable]="true"></p-column>
+    <p-column header="Action"></p-column>
+    <p-footer><div class="ui-helper-clearfix" style="width:100%"><button type="button" pButton icon="fa-plus" style="float:left" (click)="showDialogToAdd()" label="Add"></button></div></p-footer>
+</p-dataTable>
+
+<p-dialog header="Car Details" [(visible)]="displayDialog" appendTo="body" [responsive]="true" showEffect="fade" [modal]="true">
+    <div class="ui-grid ui-grid-responsive ui-fluid" *ngIf="car">
+        <div class="ui-grid-row">
+            <div class="ui-grid-col-4"><label for="vin">Vin</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="vin" [(ngModel)]="car.vin" /></div>
+        </div>
+        <div class="ui-grid-row">
+            <div class="ui-grid-col-4"><label for="brand">Year</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="brand" [(ngModel)]="car.year" /></div>
+        </div>
+        <div class="ui-grid-row">
+            <div class="ui-grid-col-4"><label for="brand">Brand</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="brand" [(ngModel)]="car.brand" /></div>
+        </div>
+        <div class="ui-grid-row">
+            <div class="ui-grid-col-4"><label for="color">Color</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="color" [(ngModel)]="car.color" /></div>
+        </div>
+    </div>
+    <p-footer>
+        <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
+            <button type="button" pButton icon="fa-close" (click)="delete()" label="Delete"></button>
+            <button type="button" pButton icon="fa-check" (click)="save()" label="Save"></button>
+        </div>
+    </p-footer>
+</p-dialog>
+
+
+</section>
+
+

@@ -37,7 +37,7 @@
 
   <md-list>
     <h3 md-subheader>Records List</h3>
-    <md-list-item *ngFor="let dia of diagnosisRecord">
+    <md-list-item *ngFor="let dia of diagnosisRecord" >
       <h4 md-line>{{dia.diagnosisCode}} - {{dia.diagnosisDesc}}</h4>
         <button md-icon-button (click)="open()">
           <i class="material-icons">mode_edit</i>
@@ -48,18 +48,18 @@
       <p md-line>
         <span> {{dia.Note}} </span>
       </p>
-      <p md-line>
+      <p md-line class="pRight"> 
         <small>
           <span><b>Current Version: </b><i>{{dia.version}}</i></span>
         </small>
       </p>
-      <p md-line>
+      <p md-line class="pRight">
         <small>      
           <span><b>Updated: </b><i>{{dia.updated | date:'medium'}}</i> </span>
           <span>, <b>By: </b><i>{{dia.updatedBy}}</i></span>
         </small>
       </p>
-      <p md-line>
+      <p md-line class="pRight">
         <small>
           <span><b>Created: </b><i>{{dia.created | date:'medium'}}</i> </span>
           <span>, <b>By: </b><i>{{dia.createdBy}}</i></span>

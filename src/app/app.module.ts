@@ -1,4 +1,5 @@
 import { NodeService } from './services/NodeService';
+import { CarService } from './services/carService';
 
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
@@ -34,6 +35,8 @@ import { InputMaskModule } from 'primeng/primeng';
 import { ChipsModule } from 'primeng/primeng'; 
 import { EditorModule, SharedModule } from 'primeng/primeng';
 import { TreeTableModule, TreeNode } from 'primeng/primeng';
+import { DataTableModule } from 'primeng/primeng';
+import { DialogModule } from 'primeng/primeng';
 
 const appRoutes: Routes = [
 { path: 'patient', component: PatientComponent},
@@ -69,9 +72,9 @@ const appRoutes: Routes = [
     MaterialModule.forRoot(),
     BrowserAnimationsModule, FlexLayoutModule,
     InputMaskModule, ChipsModule, EditorModule, SharedModule,
-    Ng2GoogleChartsModule, TreeTableModule
+    Ng2GoogleChartsModule, TreeTableModule, DataTableModule, DialogModule
   ],
-  providers: [NodeService],
+  providers: [NodeService, CarService],
   entryComponents: [DialogResultExampleDialog],
   bootstrap: [AppComponent]
 })

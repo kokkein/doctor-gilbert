@@ -27,9 +27,9 @@ div.patientBanner
 div.patientBanner > div
 {
     flex: 1 1 5em;
-    margin-left: 5px;
+    margin-left: 1px;
     height:90px;
-    background-color:white;
+    background-color:lightcyan;
 }
 
 div.toolbar > div
@@ -37,7 +37,7 @@ div.toolbar > div
     flex: 1 1 5em;
     margin-left: 0px;
     height:37px;
-    background-color: lightblue;
+    background-color: lightcyan;
 }
 
 div.container > div:first-child

@@ -52,6 +52,8 @@ export class AppComponent {
 
  }
 
+
+
 @Component({
   selector: 'dialog-result-example-dialog',
   templateUrl: './dialog-result-example-dialog.html',
