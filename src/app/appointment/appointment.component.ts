@@ -9,9 +9,7 @@ import { EventService } from './../services/EventService';
 export class AppointmentComponent implements OnInit {
 
     events: any[];
-    
     header: any;
-    
     event: MyEvent;
     
     dialogVisible: boolean = false;
@@ -26,7 +24,7 @@ export class AppointmentComponent implements OnInit {
         this.header = {
 			left: 'prev,next today',
 			center: 'title',
-			right: 'month,agendaWeek,agendaDay'
+			right: 'month,agendaWeek,agendaDay,listWeek,listMonth'
 		};
     }
     
