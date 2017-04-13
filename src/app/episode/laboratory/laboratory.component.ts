@@ -1,8 +1,7 @@
-import { Car } from './Ilaboratory';
+
 import { Component, OnInit } from '@angular/core';
 import { TreeTableModule, TreeNode } from 'primeng/primeng';
 import { NodeService } from './../../services/NodeService';
-import { CarService } from './../../services/carService';
 import { FormControl } from '@angular/forms';
 
 @Component({
@@ -18,12 +17,8 @@ export class LaboratoryComponent implements OnInit {
     selectedFiles: TreeNode[];
 
     displayDialog: boolean;
-    car: Car = new PrimeCar();
-    selectedCar: Car;
-    newCar: boolean;
-    cars: Car[];
 
-    constructor(private nodeService: NodeService, private carService: CarService) {
+    constructor(private nodeService: NodeService) {
         this.orderByCtrl = new FormControl();
         this.filteredOrderBys = this.orderByCtrl.valueChanges
         .startWith(null)
@@ -32,7 +27,6 @@ export class LaboratoryComponent implements OnInit {
     
     ngOnInit() {
         this.nodeService.getFilesystem().then(files => this.files = files);
-        this.carService.getCarsSmall().then(cars => this.cars = cars);
     }
  
     nodeSelect(event) {
@@ -61,48 +55,56 @@ laboratories = [
     return val ? this.orderBys.filter((s) => new RegExp(val, 'gi').test(s)) : this.orderBys;
   }
 
-    showDialogToAdd() {
-        this.newCar = true;
-        this.car = new PrimeCar();
-        this.displayDialog = true;
-    }
-    
-    save() {
-        if(this.newCar)
-            this.cars.push(this.car);
-        else
-            this.cars[this.findSelectedCarIndex()] = this.car;
-        
-        this.car = null;
-        this.displayDialog = false;
-    }
-    
-    delete() {
-        this.cars.splice(this.findSelectedCarIndex(), 1);
-        this.car = null;
-        this.displayDialog = false;
-    }    
-    
-    onRowSelect(event) {
-        this.newCar = false;
-        this.car = this.cloneCar(event.data);
-        this.displayDialog = true;
-    }
-    
-    cloneCar(c: Car): Car {
-        let car = new PrimeCar();
-        for(let prop in c) {
-            car[prop] = c[prop];
-        }
-        return car;
-    }
-    
-    findSelectedCarIndex(): number {
-        return this.cars.indexOf(this.selectedCar);
-    }
-}
+    laboratoryRecord = [
+    {
+      id: 'LAB-0003',
+      laboratory: 'Wellness lab Cheras Taman Midah Sdn. Bhd',
+      refferedBy: 'Doctor Lai from LAI Clinic',
+      replyTo: '',
+      reportedBy: 'Doctor Joo',
+      priority: 'Routine',
+      sampleDateTime: new Date('1/1/16'),
+      note: 'This is a dangerous drug, take more to get more dangerous. take less also dangerous.',
+      orderBy: 'Doctor Gilbert Chin',
+      created: new Date('1/1/16'),
+      createdBy: 'Doctor Gilbert',
+      version: 2,
+      updated: new Date('1/1/16'),
+      updatedBy: 'Doctor Chin',
+    },
+    {
+      id: 'LAB-0004',
+      laboratory: 'Quantum Laboratory (Shah Alam) Sdn. Bhd.',
+      refferedBy: 'Doctor Lai from LAI Clinic',
+      replyTo: '',
+      reportedBy: 'Doctor Khoo',
+      priority: 'Routine',
+      sampleDateTime: new Date('1/1/16'),
+      note: 'This Patient is pregnant!',
+      orderBy: 'Doctor Gilbert Chin',
+      created: new Date('1/1/16'),
+      createdBy: 'Doctor Gilbert',
+      version: 2,
+      updated: new Date('1/1/16'),
+      updatedBy: 'Doctor Chin',
+    },
+    {
+      id: 'LAB-0005',
+      laboratory: 'Wellness lab Cheras Taman Midah Sdn. Bhd',
+      refferedBy: 'Doctor Lai from LAI Clinic',
+      replyTo: 'Ward A',
+      reportedBy: 'Doctor Khoo',
+      priority: 'Stat',
+      sampleDateTime: new Date('1/1/16'),
+      note: 'This is a dangerous drug, take more to get more dangerous. take less also dangerous.',
+      orderBy: 'Doctor Gilbert Chin',
+      created: new Date('1/1/16'),
+      createdBy: 'Doctor Gilbert',
+      version: 2,
+      updated: new Date('1/1/16'),
+      updatedBy: 'Doctor Chin',
+    },
+  ];
 
-class PrimeCar implements Car {
-    
-    constructor(public vin?, public year?, public brand?, public color?) {}
+
 }

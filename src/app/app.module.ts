@@ -1,3 +1,4 @@
+import { EventService } from './services/EventService';
 import { NodeService } from './services/NodeService';
 import { CarService } from './services/carService';
 
@@ -28,6 +29,7 @@ import { MedicationComponent } from './episode/medication/medication.component';
 import { TimelineComponent } from './episode/timeline/timeline.component';
 import { DiagnosisComponent } from './episode/diagnosis/diagnosis.component';
 import { VitalSignsComponent } from './episode/vital-signs/vital-signs.component';
+import { AppointmentComponent } from './appointment/appointment.component';
 
 //Third Party Component
 import { Ng2GoogleChartsModule } from 'ng2-google-charts';
@@ -37,8 +39,10 @@ import { EditorModule, SharedModule } from 'primeng/primeng';
 import { TreeTableModule, TreeNode } from 'primeng/primeng';
 import { DataTableModule } from 'primeng/primeng';
 import { DialogModule } from 'primeng/primeng';
+import { ScheduleModule, CalendarModule, CheckboxModule } from 'primeng/primeng';
 
 const appRoutes: Routes = [
+{ path: 'appointment', component: AppointmentComponent},
 { path: 'patient', component: PatientComponent},
 { path: 'visit', component: VisitComponent},
 { path: 'vital', component: VitalComponent},
@@ -63,7 +67,7 @@ const appRoutes: Routes = [
     MedicationComponent,
     TimelineComponent,
     DiagnosisComponent,
-    VitalSignsComponent, DialogResultExampleDialog
+    VitalSignsComponent, DialogResultExampleDialog, AppointmentComponent
   ],
   imports: [
     BrowserModule,
@@ -71,10 +75,10 @@ const appRoutes: Routes = [
     HttpModule, RouterModule.forRoot(appRoutes),
     MaterialModule.forRoot(),
     BrowserAnimationsModule, FlexLayoutModule,
-    InputMaskModule, ChipsModule, EditorModule, SharedModule,
-    Ng2GoogleChartsModule, TreeTableModule, DataTableModule, DialogModule
+    InputMaskModule, ChipsModule, EditorModule, SharedModule, CheckboxModule,
+    Ng2GoogleChartsModule, TreeTableModule, DataTableModule, DialogModule, ScheduleModule, CalendarModule
   ],
-  providers: [NodeService, CarService],
+  providers: [NodeService, CarService, EventService],
   entryComponents: [DialogResultExampleDialog],
   bootstrap: [AppComponent]
 })

@@ -10,6 +10,7 @@ import { MdDialog, MdDialogRef, MdDialogConfig} from '@angular/material';
 export class AppComponent {
   navItems = [
     {name: 'Landing', route: 'autocomplete'},
+    {name: 'Appointment', route: 'appointment'},
     {name: 'Episode', route: 'episode'},
     {name: 'Visit', route: 'visit'},
     {name: 'Patient', route: 'patient'},
@@ -61,6 +62,7 @@ export class AppComponent {
 export class DialogResultExampleDialog {
   constructor(public dialogRef: MdDialogRef<DialogResultExampleDialog>) {}
     Items = [
+    {name: 'Appointment', route: 'appointment'},
     {name: 'Landing', route: 'autocomplete'},
     {name: 'Episode', route: 'episode'},
     {name: 'Visit', route: 'visit'},

@@ -76,60 +76,90 @@
             </div>
           </div>
           <div class="container">
-            <div class="two">
+
               <md-input-container class="input-full-width">
                 <textarea mdInput placeholder="Remark"></textarea>
               </md-input-container>
-            </div>
+
+          </div>
+          <div class="container">
+                <p-treeTable [value]="files" selectionMode="checkbox" [(selection)]="selectedFiles" (onNodeSelect)="nodeSelect($event)">
+                    <p-column field="labItems" header="Lab Group>Lab Items"></p-column>
+                    <p-column field="labCode" header="Lab Code"></p-column>
+                    <p-column field="description" header="Description"></p-column>
+                    <p-column field="price" header="Price"></p-column>
+                </p-treeTable>
           </div>
       </md-card-content>
     </md-card>
   </form>
 
-<p-treeTable [value]="files" selectionMode="checkbox" [(selection)]="selectedFiles" (onNodeSelect)="nodeSelect($event)">
-    <p-column field="labItems" header="Lab Group>Lab Items"></p-column>
-    <p-column field="labCode" header="Lab Code"></p-column>
-    <p-column field="description" header="Description"></p-column>
-    <p-column field="price" header="Price"></p-column>
-</p-treeTable>
 
+  <md-list>
+    <h3 md-subheader>Records List</h3>
+    <md-list-item *ngFor="let laboratory of laboratoryRecord" >
+      <h4 md-line><i class="material-icons">timer</i> {{laboratory.id}} <strong>{{laboratory.laboratory}}</strong></h4>
+        <button md-icon-button (click)="open()">
+          <i class="material-icons">mode_edit</i>
+        </button>
+        <button md-icon-button (click)="open()">
+          <i class="material-icons">delete</i>
+        </button>
+      <p md-line>
+        <span> <b><small>Order By: </small></b>{{laboratory.orderBy}} </span>
+        <span> <b><small>Referred By: </small></b>{{laboratory.refferedBy}} </span>
+        <span> <b><small>Reply To: </small></b>{{laboratory.replyTo}} </span>
+        <span> <b><small>Reported By: </small></b>{{laboratory.reportedBy}} </span>
+      </p>
+      <p md-line>
+        <span> <b><small>Priority: </small></b>{{laboratory.orderBy}} </span>
+        <span> <b><small>Requested Sample Date-Time: </small></b>{{laboratory.refferedBy}} </span>
+      </p>
+      <p md-line>
+        <span> {{laboratory.note}} </span>
+      </p>
+      <p md-line>
+          <span>
+            <div class="tablerow">
+                <div><b>Lab item</b></div>
+                <div><b>Description</b></div>
+                <div><b>Price</b></div>
+                <div><b>Lab Group</b></div>
+            </div>
+            <div class="tablerow">
+                <div>Urine Test</div>
+                <div>Test urine color</div>
+                <div>RM 100.00</div>
+                <div>Urine Test Profile</div>
+            </div>
+            <div class="tablerow">
+                <div>Urine Test Count</div>
+                <div>Test urine Count Protein</div>
+                <div>RM 30.00</div>
+                <div>Urine Test Profile</div>
+            </div>
+          </span>
+      </p>
+      <p md-line class="pRight"> 
+        <small>
+          <span><b>Current Version: </b><i>{{laboratory.version}}</i></span>
+        </small>
+      </p>
+      <p md-line class="pRight">
+        <small>      
+          <span><b>Updated: </b><i>{{laboratory.updated | date:'medium'}}</i> </span>
+          <span>, <b>By: </b><i>{{laboratory.updatedBy}}</i></span>
+        </small>
+      </p>
+      <p md-line class="pRight">
+        <small>
+          <span><b>Created: </b><i>{{laboratory.created | date:'medium'}}</i> </span>
+          <span>, <b>By: </b><i>{{laboratory.createdBy}}</i></span>
+        </small>
+      </p>
 
-<p-dataTable [value]="cars"  selectionMode="single" [(selection)]="selectedCar" (onRowSelect)="onRowSelect($event)" [paginator]="true" rows="15" [responsive]="true">
-    <p-header>Laboratory Order Details</p-header>
-    <p-column field="vin" header="Code" [sortable]="true"></p-column>
-    <p-column field="year" header="Item" [sortable]="true"></p-column>
-    <p-column field="brand" header="Description" [sortable]="true"></p-column>
-    <p-column field="color" header="Price" [sortable]="true"></p-column>
-    <p-column header="Action"></p-column>
-    <p-footer><div class="ui-helper-clearfix" style="width:100%"><button type="button" pButton icon="fa-plus" style="float:left" (click)="showDialogToAdd()" label="Add"></button></div></p-footer>
-</p-dataTable>
-
-<p-dialog header="Car Details" [(visible)]="displayDialog" appendTo="body" [responsive]="true" showEffect="fade" [modal]="true">
-    <div class="ui-grid ui-grid-responsive ui-fluid" *ngIf="car">
-        <div class="ui-grid-row">
-            <div class="ui-grid-col-4"><label for="vin">Vin</label></div>
-            <div class="ui-grid-col-8"><input pInputText id="vin" [(ngModel)]="car.vin" /></div>
-        </div>
-        <div class="ui-grid-row">
-            <div class="ui-grid-col-4"><label for="brand">Year</label></div>
-            <div class="ui-grid-col-8"><input pInputText id="brand" [(ngModel)]="car.year" /></div>
-        </div>
-        <div class="ui-grid-row">
-            <div class="ui-grid-col-4"><label for="brand">Brand</label></div>
-            <div class="ui-grid-col-8"><input pInputText id="brand" [(ngModel)]="car.brand" /></div>
-        </div>
-        <div class="ui-grid-row">
-            <div class="ui-grid-col-4"><label for="color">Color</label></div>
-            <div class="ui-grid-col-8"><input pInputText id="color" [(ngModel)]="car.color" /></div>
-        </div>
-    </div>
-    <p-footer>
-        <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
-            <button type="button" pButton icon="fa-close" (click)="delete()" label="Delete"></button>
-            <button type="button" pButton icon="fa-check" (click)="save()" label="Save"></button>
-        </div>
-    </p-footer>
-</p-dialog>
+    </md-list-item>
+  </md-list>
 
 
 </section>

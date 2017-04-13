@@ -38,7 +38,7 @@
   <md-list>
     <h3 md-subheader>Records List</h3>
     <md-list-item *ngFor="let dia of diagnosisRecord" >
-      <h4 md-line>{{dia.diagnosisCode}} - {{dia.diagnosisDesc}}</h4>
+      <h4 md-line><strong>{{dia.diagnosisCode}} - {{dia.diagnosisDesc}}</strong></h4>
         <button md-icon-button (click)="open()">
           <i class="material-icons">mode_edit</i>
         </button>

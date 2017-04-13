@@ -8,6 +8,19 @@ div.container
     margin-bottom: 5px;
 }
 
+div.tablerow
+{
+    display: flex;
+    margin-bottom: 1px;
+}
+
+div.tablerow > div
+{
+    flex: 1 1 5em;
+    margin-left: 5px;
+    height:15px;
+    background-color: white;
+}
 
 div.container > div
 {
@@ -61,4 +74,9 @@ div.container > div.three
 
 span {
     white-space: normal;
+}
+
+.pRight {
+    width:100%;
+    text-align:right;
 }
