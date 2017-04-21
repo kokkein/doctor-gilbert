@@ -16,6 +16,7 @@ export class PatientComponent implements OnInit {
   titles;
   IDtypes;
   relationship;
+  states;
   selectedCountry= 190;
 
   insuranceCtrl: FormControl;
@@ -28,18 +29,6 @@ export class PatientComponent implements OnInit {
     'Male',
     'Female'
   ];
-
-  states = [
-    {value: 'Kuala Lumpur', viewValue: 'Kuala Lumpur'},
-    {value: 'Selangor', viewValue: 'Selangor'},
-    {value: 'Cyberjaya', viewValue: 'Cyberjaya'},
-    {value: 'Perak', viewValue: 'Perak'},
-    {value: 'Pahang', viewValue: 'Pahang'},
-    {value: 'Johor', viewValue: 'Johor'},
-    {value: 'Sabah', viewValue: 'Sabah'},
-    {value: 'Penang', viewValue: 'Penang'}
-  ];
-
 
 insurances = [
     'AIA Golden Age',
@@ -101,6 +90,9 @@ payors = [
 
     this.MDS.GetTitle().subscribe(title => {
     this.titles = title;});
+
+    this.MDS.GetState().subscribe(state => {
+    this.states = state;});
   }
 
 

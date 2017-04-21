@@ -40,4 +40,9 @@ export class MasterDataService {
                     .map(res => res.json());
 
     }
+    GetState() {
+        return this.http.get('http://localhost:5000/api/state')
+                    .map(res => res.json());
+
+    }
 }
