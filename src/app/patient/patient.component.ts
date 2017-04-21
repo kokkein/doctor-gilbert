@@ -1,3 +1,4 @@
+import { MasterDataService } from './../services/masterdata.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import 'rxjs/add/operator/startWith';
@@ -11,6 +12,11 @@ import {Observable} from 'rxjs/Observable';
 export class PatientComponent implements OnInit {
 
   inUse = true;
+  countries;
+  titles;
+  IDtypes;
+  relationship;
+  selectedCountry= 190;
 
   insuranceCtrl: FormControl;
   filteredInsurances: any;
@@ -18,26 +24,9 @@ export class PatientComponent implements OnInit {
   payorCtrl: FormControl;
   filteredPayors: any;
 
-  titles = [
-    {value: 'Tun', viewValue: 'Tun'},
-    {value: 'Tan Seri', viewValue: 'Tan Seri'},
-    {value: 'Dato Seri', viewValue: 'Dato Seri'},
-    {value: 'Dato', viewValue: 'Dato'},
-    {value: 'Datin', viewValue: 'Datin'},
-    {value: 'Doctor', viewValue: 'Doctor'},
-    {value: 'Mr', viewValue: 'Mr'},
-    {value: 'Mrs', viewValue: 'Mrs'}
-  ];
-
   gender = [
     'Male',
     'Female'
-  ];
-
-  IDtypes = [
-    {value: 'NRIC', viewValue: 'NRIC'},
-    {value: 'Tentera No', viewValue: 'Tentera No'},
-    {value: 'Passport', viewValue: 'Passport'}
   ];
 
   states = [
@@ -51,24 +40,6 @@ export class PatientComponent implements OnInit {
     {value: 'Penang', viewValue: 'Penang'}
   ];
 
-  countries = [
-    {value: 'Malaysia', viewValue: 'Malaysia'},
-    {value: 'Indonesia', viewValue: 'Indonesia'},
-    {value: 'Thailand', viewValue: 'Thailand'},
-    {value: 'England', viewValue: 'England'},
-    {value: 'Australia', viewValue: 'Australia'},
-    {value: 'Germany', viewValue: 'Germany'},
-    {value: 'Singapore', viewValue: 'Singapore'},
-    {value: 'Japan', viewValue: 'Japan'}
-  ];
-
-  relationship = [
-    {value: 'Father', viewValue: 'Father'},
-    {value: 'Mother', viewValue: 'Mother'},
-    {value: 'Guardian', viewValue: 'Guardian'},
-    {value: 'Brother', viewValue: 'Brother'},
-    {value: 'Sister', viewValue: 'Sister'}
-  ];
 
 insurances = [
     'AIA Golden Age',
@@ -92,7 +63,7 @@ payors = [
   ];
 
 
-  constructor() {
+  constructor(private MDS: MasterDataService) {
     this.insuranceCtrl = new FormControl();
     this.filteredInsurances = this.insuranceCtrl.valueChanges
         .startWith(null)
@@ -102,8 +73,7 @@ payors = [
     this.filteredPayors = this.payorCtrl.valueChanges
         .startWith(null)
         .map(name => this.filterPayors(name));
-
-}
+  }
 
   filterInsurances(val: string) {
     return val ? this.insurances.filter((s) => new RegExp(val, 'gi').test(s)) : this.insurances;
@@ -114,7 +84,25 @@ payors = [
   }
 
   ngOnInit() {
+    this.MDS.GetCountry().subscribe(countries => {
+    this.countries = countries;});
+    
+    this.MDS.GetIdentificationType().subscribe(indetificationType => {
+    this.IDtypes = indetificationType;});
 
+    //this.MDS.GetInsurance().subscribe(insurance => {
+    //this.insurances = insurance;});
+
+    //this.MDS.GetPayor().subscribe(payor => {
+    //this.payors = payor;});
+
+    this.MDS.GetRelationship().subscribe(relationship => {
+    this.relationship = relationship;});
+
+    this.MDS.GetTitle().subscribe(title => {
+    this.titles = title;});
   }
+
+
 
 }

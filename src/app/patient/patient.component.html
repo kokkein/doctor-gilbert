@@ -28,8 +28,8 @@
                     </div>
                     <div>
                       <md-select placeholder="Title" name="title"  class="input-full-width">
-                        <md-option *ngFor="let title of titles" [value]="title.value">
-                          {{title.viewValue}}
+                        <md-option *ngFor="let title of titles" [value]="title.titleID">
+                          {{title.titleName}}
                         </md-option>
                       </md-select>
                     </div>
@@ -55,8 +55,8 @@
                     </div>
                     <div>
                       <md-select placeholder="Identification type" name="IDType" >
-                        <md-option *ngFor="let IDtype of IDtypes" [value]="IDtype.value">
-                          {{IDtype.viewValue}}
+                        <md-option *ngFor="let IDtype of IDtypes" [value]="IDtype.identificationTypeID">
+                          {{IDtype.identificationName}}
                         </md-option>
                       </md-select>
                     </div>
@@ -90,7 +90,7 @@
                   <div class="container">
                     <div>
                       <md-input-container class="input-full-width">
-                        <input mdInput placeholder="City">
+                        <input mdInput placeholder="City" value = "Cheras">
                       </md-input-container>
                     </div>
                     <div>
@@ -106,9 +106,9 @@
                       </md-select>
                     </div>
                     <div>
-                      <md-select placeholder="Country" name="country" >
-                        <md-option *ngFor="let country of countries" [value]="country.value">
-                          {{country.viewValue}}
+                      <md-select placeholder="Country" [(ngModel)]="selectedCountry" name="country" >
+                        <md-option *ngFor="let country of countries" [value]="country.countryID">
+                          {{country.countryName}}
                         </md-option>
                       </md-select>
                     </div>
@@ -130,8 +130,8 @@
                   </div>
                   <div>
                     <md-select placeholder="Relation" name="relation" >
-                      <md-option *ngFor="let relation of relationship" [value]="relation.value" >
-                        {{relation.viewValue}}
+                      <md-option *ngFor="let relation of relationship" [value]="relation.relationshipID" >
+                        {{relation.relationshipName}}
                       </md-option>
                     </md-select>
                   </div>
@@ -148,11 +148,11 @@
                     </md-input-container>
                   </div>
                   <div>
-                    <md-select placeholder="Identification type" name="IDType" >
-                      <md-option *ngFor="let IDtype of IDtypes" [value]="IDtype.value">
-                        {{IDtype.viewValue}}
-                      </md-option>
-                    </md-select>
+                      <md-select placeholder="Identification type" name="emergencyIDType" >
+                        <md-option *ngFor="let IDtype of IDtypes" [value]="IDtype.identificationTypeID">
+                          {{IDtype.identificationName}}
+                        </md-option>
+                      </md-select>
                   </div>
                 </div>
                 <div class="container">
@@ -201,11 +201,11 @@
                     </md-select>
                   </div>
                   <div>
-                    <md-select placeholder="Country" name="country" >
-                      <md-option *ngFor="let country of countries" [value]="country.value">
-                        {{country.viewValue}}
-                      </md-option>
-                    </md-select>
+                      <md-select placeholder="Country" [(ngModel)]="selectedCountry" name="emergencyContactCountry" >
+                        <md-option *ngFor="let country of countries" [value]="country.countryID">
+                          {{country.countryName}}
+                        </md-option>
+                      </md-select>
                   </div>
                 </div>
               </md-card-content>
@@ -328,11 +328,11 @@
                     </md-select>
                   </div>
                   <div>
-                    <md-select placeholder="Country" name="country" >
-                      <md-option *ngFor="let country of countries" [value]="country.value">
-                        {{country.viewValue}}
-                      </md-option>
-                    </md-select>
+                      <md-select placeholder="Country" [(ngModel)]="selectedCountry" name="employeeCountry" >
+                        <md-option *ngFor="let country of countries" [value]="country.countryID">
+                          {{country.countryName}}
+                        </md-option>
+                      </md-select>
                   </div>
                 </div>
               </md-card-content>

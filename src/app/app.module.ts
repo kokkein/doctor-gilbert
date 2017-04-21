@@ -1,3 +1,4 @@
+import { MasterDataService } from './services/masterdata.service';
 import { EventService } from './services/EventService';
 import { NodeService } from './services/NodeService';
 import { CarService } from './services/carService';
@@ -78,7 +79,7 @@ const appRoutes: Routes = [
     InputMaskModule, ChipsModule, EditorModule, SharedModule, CheckboxModule,
     Ng2GoogleChartsModule, TreeTableModule, DataTableModule, DialogModule, ScheduleModule, CalendarModule
   ],
-  providers: [NodeService, CarService, EventService],
+  providers: [NodeService, CarService, EventService, MasterDataService],
   entryComponents: [DialogResultExampleDialog],
   bootstrap: [AppComponent]
 })
