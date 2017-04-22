@@ -231,14 +231,16 @@
                   </div>
                   <div>
                     <md-input-container class="input-full-width">
-                      <input mdInput placeholder="Payor" [mdAutocomplete]="autoPayor" [formControl]="payorCtrl">
+                      <input mdInput placeholder="Payor" [mdAutocomplete]="reactiveAuto" [formControl]="payorCtrl">
                     </md-input-container>
 
-                    <md-autocomplete #autoPayor="mdAutocomplete">
+                    <md-autocomplete #reactiveAuto="mdAutocomplete" [displayWith]="displayFn">
                       <md-option *ngFor="let payor of filteredPayors | async" [value]="payor">
-                        {{ payor }}
+                        <span>{{ payor.payorID }}</span>
+                        <span> ({{payor.payorName}}) </span>
                       </md-option>
                     </md-autocomplete>
+
                   </div>
                 </div>
                 <div class="container">
