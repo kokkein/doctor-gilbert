@@ -16,9 +16,16 @@
 
         <div class="container">
           <div> 
-              <md-input-container class="input-full-width">
-                <input mdInput placeholder="Patient" >
-              </md-input-container>
+            <md-input-container class="input-full-width">
+              <input mdInput placeholder="Patient" [mdAutocomplete]="reactivePatient" [formControl]="patientCtrl">
+            </md-input-container>
+
+            <md-autocomplete #reactivePatient="mdAutocomplete" [displayWith]="displayPatientFn">
+              <md-option *ngFor="let patient of filteredPatients | async" [value]="patient">
+                <span>{{ patient.patientID }}</span>
+                <span> ({{patient.name}}) </span>
+              </md-option>
+            </md-autocomplete>
           </div>
           <div>
               <md-radio-group>
@@ -52,8 +59,15 @@
             </div>
             <div>
               <md-input-container class="input-full-width">
-                <input mdInput placeholder="Payor">
+                <input mdInput placeholder="Payor" [mdAutocomplete]="reactivePayor" [formControl]="payorCtrl">
               </md-input-container>
+
+              <md-autocomplete #reactivePayor="mdAutocomplete" [displayWith]="displayPayorFn">
+                <md-option *ngFor="let payor of filteredPayors | async" [value]="payor">
+                  <span>{{ payor.payorID }}</span>
+                  <span> ({{payor.payorName}}) </span>
+                </md-option>
+              </md-autocomplete>
             </div>
           </div>
           <div class="container">

@@ -86,7 +86,8 @@ insurances = [
   }
 
   filterPayors(val: string) {
-    return val ? this.payors.filter((s) => new RegExp(`^${val}`, 'gi').test(s.payorName))
+    //`^${val}`
+    return val ? this.payors.filter((s) => new RegExp(val, 'gi').test(s.payorName))
                : this.payors;
   }
 

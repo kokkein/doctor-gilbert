@@ -43,6 +43,9 @@ export class MasterDataService {
     GetState() {
         return this.http.get('http://localhost:5000/api/state')
                     .map(res => res.json());
-
+    }
+    GetPatient() {
+        return this.http.get('http://localhost:5000/api/patientList')
+                    .map(res => res.json());
     }
 }
