@@ -1,4 +1,7 @@
 <section>
+  <p>
+    {{visitdata | json}}
+  </p>
   <form>
     <div class="toolbar">
       <div>
@@ -22,8 +25,8 @@
 
             <md-autocomplete #reactivePatient="mdAutocomplete" [displayWith]="displayPatientFn">
               <md-option *ngFor="let patient of filteredPatients | async" [value]="patient">
-                <span>{{ patient.patientID }}</span>
-                <span> ({{patient.name}}) </span>
+                <span>{{patient.name}}, </span>
+                <small><strong>NRIC:</strong>{{patient.identificationValue}}, <strong>Gender:</strong>{{patient.gender}}, <strong>D.O.B:</strong>{{patient.dob | date: 'dd/MM/yyyy'}}</small>
               </md-option>
             </md-autocomplete>
           </div>
@@ -73,7 +76,7 @@
           <div class="container">
             <div>
               <md-input-container class="input-full-width">
-                <input mdInput placeholder="Visit Doctor">
+                <input mdInput placeholder="Visit Doctor" >
               </md-input-container>
             </div>
             <div>
@@ -83,14 +86,21 @@
             </div>
             <div>
               <md-input-container class="input-full-width">
-                <input mdInput placeholder="MOH Visit type">
+                <input mdInput placeholder="MOH Visit Type" [mdAutocomplete]="reactiveMOH" [formControl]="mohCtrl">
               </md-input-container>
+
+              <md-autocomplete #reactiveMOH="mdAutocomplete" [displayWith]="displayMOHFn">
+                <md-option *ngFor="let moh of filteredMOHs | async" [value]="moh">
+                  <span>{{ moh.payorID }}</span>
+                  <span> ({{moh.payorName}}) </span>
+                </md-option>
+              </md-autocomplete>
             </div>
           </div>
           <div class="container">
             <div class="two">
               <md-input-container class="input-full-width">
-                <textarea mdInput placeholder="Remark"></textarea>
+                <textarea mdInput placeholder="Remark" [(ngModel)]="visitdata.Remark" name="Remark"></textarea>
               </md-input-container>
             </div>
           </div>
