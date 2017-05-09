@@ -91,8 +91,8 @@
 
               <md-autocomplete #reactiveMOH="mdAutocomplete" [displayWith]="displayMOHFn">
                 <md-option *ngFor="let moh of filteredMOHs | async" [value]="moh">
-                  <span>{{ moh.payorID }}</span>
-                  <span> ({{moh.payorName}}) </span>
+                  <span>{{ moh.mohVisitTypeID }}</span>
+                  <span> ({{moh.mohVisitTypeName}}) </span>
                 </md-option>
               </md-autocomplete>
             </div>

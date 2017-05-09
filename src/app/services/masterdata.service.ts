@@ -48,4 +48,8 @@ export class MasterDataService {
         return this.http.get('http://localhost:5000/api/patientList')
                     .map(res => res.json());
     }
+    GetMOHVisitType() {
+        return this.http.get('http://localhost:5000/api/MOHVisitType')
+                    .map(res => res.json());
+    }
 }
