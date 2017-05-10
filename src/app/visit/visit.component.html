@@ -47,8 +47,15 @@
             </div>
             <div>
               <md-input-container class="input-full-width">
-                <input mdInput placeholder="Department">
+                <input mdInput placeholder="Department" [mdAutocomplete]="reactiveDepartment" [formControl]="departmentCtrl">
               </md-input-container>
+
+              <md-autocomplete #reactiveDepartment="mdAutocomplete" [displayWith]="displayDepartmentFn">
+                <md-option *ngFor="let department of filteredDepartments | async" [value]="department">
+                  <span>{{ department.departmentID }}</span>
+                  <span> ({{department.departmentName}}) </span>
+                </md-option>
+              </md-autocomplete>
             </div>
           </div>
           <div class="container">
@@ -57,8 +64,15 @@
             </div>
             <div>
               <md-input-container class="input-full-width">
-                <input mdInput placeholder="Policy">
+                <input mdInput placeholder="Policy" [mdAutocomplete]="reactivePolicy" [formControl]="policyCtrl">
               </md-input-container>
+
+              <md-autocomplete #reactivePolicy="mdAutocomplete" [displayWith]="displayPolicyFn">
+                <md-option *ngFor="let policy of filteredPolicies | async" [value]="policy">
+                  <span>{{ policy.insuranceName }}, </span>
+                  <small><strong>Provider:</strong>{{ policy.providerName }}</small>
+                </md-option>
+              </md-autocomplete>
             </div>
             <div>
               <md-input-container class="input-full-width">
@@ -76,13 +90,27 @@
           <div class="container">
             <div>
               <md-input-container class="input-full-width">
-                <input mdInput placeholder="Visit Doctor" >
+                <input mdInput placeholder="Visit Doctor" [mdAutocomplete]="reactiveDoctor" [formControl]="doctorCtrl">
               </md-input-container>
+
+              <md-autocomplete #reactiveDoctor="mdAutocomplete" [displayWith]="displayDoctorFn">
+                <md-option *ngFor="let doctor of filteredDoctors | async" [value]="doctor">
+                  <span>{{ doctor.userFullName }}, </span>
+                  <small><strong>Initial:</strong>{{doctor.userInitial}}, <strong>Speciality:</strong>{{doctor.specialityID}}</small>
+                </md-option>
+              </md-autocomplete>
             </div>
             <div>
               <md-input-container class="input-full-width">
-                <input mdInput placeholder="Purpose of visit">
+                <input mdInput placeholder="Purpose of Visit" [mdAutocomplete]="reactivePurposeOfVisit" [formControl]="purposeOfVisitCtrl">
               </md-input-container>
+
+              <md-autocomplete #reactivePurposeOfVisit="mdAutocomplete" [displayWith]="displayPurposeOfVisitFn">
+                <md-option *ngFor="let purposeOfVisit of filteredPurposeOfVisits | async" [value]="purposeOfVisit">
+                  <span>{{ purposeOfVisit.visitPurposeID }}</span>
+                  <span> ({{purposeOfVisit.visitPurposeName}}) </span>
+                </md-option>
+              </md-autocomplete>
             </div>
             <div>
               <md-input-container class="input-full-width">
