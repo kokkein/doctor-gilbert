@@ -13,6 +13,11 @@ export class AppComponent {
     {name: 'Appointment', route: 'appointment'},
     {name: 'Episode', route: 'episode'},
     {name: 'Visit', route: 'visit'},
+    {name: 'Master Data', route: 'master-data'},
+    {name: 'Payor', route: 'payor'},
+    {name: 'Department', route: 'department'},
+    {name: 'MOHVisitType', route: 'mohvisit-type'},
+    {name: 'PurposeOfVisit', route: 'purpose-of-visit'},
     {name: 'Patient', route: 'patient'},
     {name: 'User', route: 'user'},
     {name: 'Vital Signs', route: 'vital'},
@@ -20,7 +25,7 @@ export class AppComponent {
     {name: 'Inventory', route: 'inventory-item'},
     {name: 'Medical Record', route: 'card'},
     {name: 'Medical Calculator', route: 'card'},
-    {name: 'Laboratory', route: 'chips'},
+    {name: 'Laboratory', route: 'laboratory'},
     {name: 'Radiology', route: 'checkbox'}
   ];
 

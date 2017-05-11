@@ -20,7 +20,7 @@
         <div class="container">
           <div> 
             <md-input-container class="input-full-width">
-              <input mdInput placeholder="Patient" [mdAutocomplete]="reactivePatient" [formControl]="patientCtrl">
+              <input mdInput placeholder="Patient" [mdAutocomplete]="reactivePatient" [formControl]="patientCtrl"  [(ngModel)]="visitdata.Patient" name="Patient">
             </md-input-container>
 
             <md-autocomplete #reactivePatient="mdAutocomplete" [displayWith]="displayPatientFn">
@@ -32,7 +32,7 @@
           </div>
           <div>
               <md-radio-group>
-                <md-radio-button *ngFor="let visitType of visitTypes" [value]="visitType">
+                <md-radio-button *ngFor="let visitType of visitTypes" [value]="visitType"  [(ngModel)]="visitdata.VisitType" name="VisitType">
                   {{visitType}}
                 </md-radio-button>
               </md-radio-group>
@@ -42,12 +42,12 @@
         <div class="container">
             <div>
               <md-input-container class="input-full-width">
-                <input mdInput type="datetime-local" placeholder="Visit Date-Time" >
+                <input mdInput type="datetime-local" placeholder="Visit Date-Time"  [(ngModel)]="visitdata.VisitDateTime" name="VisitDateTime">
               </md-input-container>
             </div>
             <div>
               <md-input-container class="input-full-width">
-                <input mdInput placeholder="Department" [mdAutocomplete]="reactiveDepartment" [formControl]="departmentCtrl">
+                <input mdInput placeholder="Department" [mdAutocomplete]="reactiveDepartment" [formControl]="departmentCtrl"  [(ngModel)]="visitdata.Department" name="Department">
               </md-input-container>
 
               <md-autocomplete #reactiveDepartment="mdAutocomplete" [displayWith]="displayDepartmentFn">
@@ -64,7 +64,7 @@
             </div>
             <div>
               <md-input-container class="input-full-width">
-                <input mdInput placeholder="Policy" [mdAutocomplete]="reactivePolicy" [formControl]="policyCtrl">
+                <input mdInput placeholder="Policy" [mdAutocomplete]="reactivePolicy" [formControl]="policyCtrl"  [(ngModel)]="visitdata.Policy" name="Policy">
               </md-input-container>
 
               <md-autocomplete #reactivePolicy="mdAutocomplete" [displayWith]="displayPolicyFn">
@@ -76,7 +76,7 @@
             </div>
             <div>
               <md-input-container class="input-full-width">
-                <input mdInput placeholder="Payor" [mdAutocomplete]="reactivePayor" [formControl]="payorCtrl">
+                <input mdInput placeholder="Payor" [mdAutocomplete]="reactivePayor" [formControl]="payorCtrl"  [(ngModel)]="visitdata.Payor" name="Payor">
               </md-input-container>
 
               <md-autocomplete #reactivePayor="mdAutocomplete" [displayWith]="displayPayorFn">
@@ -90,7 +90,7 @@
           <div class="container">
             <div>
               <md-input-container class="input-full-width">
-                <input mdInput placeholder="Visit Doctor" [mdAutocomplete]="reactiveDoctor" [formControl]="doctorCtrl">
+                <input mdInput placeholder="Visit Doctor" [mdAutocomplete]="reactiveDoctor" [formControl]="doctorCtrl"  [(ngModel)]="visitdata.Doctor" name="Doctor">
               </md-input-container>
 
               <md-autocomplete #reactiveDoctor="mdAutocomplete" [displayWith]="displayDoctorFn">
@@ -102,7 +102,7 @@
             </div>
             <div>
               <md-input-container class="input-full-width">
-                <input mdInput placeholder="Purpose of Visit" [mdAutocomplete]="reactivePurposeOfVisit" [formControl]="purposeOfVisitCtrl">
+                <input mdInput placeholder="Purpose of Visit" [mdAutocomplete]="reactivePurposeOfVisit" [formControl]="purposeOfVisitCtrl"  [(ngModel)]="visitdata.PurposeOfVisit" name="PurposeOfVisit">
               </md-input-container>
 
               <md-autocomplete #reactivePurposeOfVisit="mdAutocomplete" [displayWith]="displayPurposeOfVisitFn">
@@ -114,7 +114,7 @@
             </div>
             <div>
               <md-input-container class="input-full-width">
-                <input mdInput placeholder="MOH Visit Type" [mdAutocomplete]="reactiveMOH" [formControl]="mohCtrl">
+                <input mdInput placeholder="MOH Visit Type" [mdAutocomplete]="reactiveMOH" [formControl]="mohCtrl" [(ngModel)]="visitdata.MOHVisitType" name="MOHVisitType">
               </md-input-container>
 
               <md-autocomplete #reactiveMOH="mdAutocomplete" [displayWith]="displayMOHFn">

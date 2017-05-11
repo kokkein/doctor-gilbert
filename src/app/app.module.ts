@@ -41,6 +41,12 @@ import { TreeTableModule, TreeNode } from 'primeng/primeng';
 import { DataTableModule } from 'primeng/primeng';
 import { DialogModule } from 'primeng/primeng';
 import { ScheduleModule, CalendarModule, CheckboxModule } from 'primeng/primeng';
+import { DepartmentComponent } from './masterData/department/department.component';
+import { InsuranceComponent } from './masterData/insurance/insurance.component';
+import { PayorComponent } from './masterData/payor/payor.component';
+import { MOHVisitTypeComponent } from './masterData/mohvisit-type/mohvisit-type.component';
+import { PurposeOfVisitComponent } from './masterData/purpose-of-visit/purpose-of-visit.component';
+import { MasterDataComponent } from './masterData/master-data.component';
 
 const appRoutes: Routes = [
 { path: 'appointment', component: AppointmentComponent},
@@ -50,6 +56,12 @@ const appRoutes: Routes = [
 { path: 'inventory-item', component: InventoryItemComponent},
 { path: 'user', component: UserComponent},
 { path: 'episode', component: EpisodeComponent},
+{ path: 'master-data', component: MasterDataComponent},
+{ path: 'payor', component: PayorComponent},
+{ path: 'mohvisit-type', component: MOHVisitTypeComponent},
+{ path: 'insurance', component: InsuranceComponent},
+{ path: 'purpose-of-visit', component: PurposeOfVisitComponent},
+{ path: 'department', component: DepartmentComponent},
 ];
 
 @NgModule({
@@ -68,7 +80,7 @@ const appRoutes: Routes = [
     MedicationComponent,
     TimelineComponent,
     DiagnosisComponent,
-    VitalSignsComponent, DialogResultExampleDialog, AppointmentComponent
+    VitalSignsComponent, DialogResultExampleDialog, AppointmentComponent, DepartmentComponent, InsuranceComponent, PayorComponent, MOHVisitTypeComponent, PurposeOfVisitComponent, MasterDataComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,30 @@
+<div class="toolbar">
+    <div>
+        <button md-raised-button>Save</button>
+        <button md-raised-button>New</button>
+        <button md-raised-button>Save + New</button>
+    </div>
+</div>
+  <p>
+    {{data | json}}
+  </p>
+<section>
+    <md-card>
+      <md-card-header>
+        <md-card-title>Purpose Of Visit</md-card-title>
+        <md-card-subtitle>New Purpose Of Visit</md-card-subtitle>
+      </md-card-header>
+      <md-card-content>
+        <div class="ui-g">
+            <div class="ui-g-6">
+                <md-input-container class="input-full-width">
+                  <input mdInput required placeholder="Purpose Of Visit Description" [(ngModel)]="data.PurposeOfVisit" name="PurposeOfVisit">
+                </md-input-container>
+            </div>
+            <div class="ui-g-6">
+              <md-checkbox [(ngModel)]="data.Active" name="Active">Active</md-checkbox>
+            </div>
+        </div>
+      </md-card-content>
+    </md-card>
+</section>
