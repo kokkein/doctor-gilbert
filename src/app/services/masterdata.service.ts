@@ -64,4 +64,12 @@ export class MasterDataService {
         return this.http.get('http://localhost:5000/api/Department')
                     .map(res => res.json());
     }
+
+
+//Add Data
+    CreatePurposeOfVisit(purposeOfVisit) {
+        return this.http.post('http://localhost:5000/api/Department',purposeOfVisit)
+                    .map(res => res.json());
+    }
+
 }

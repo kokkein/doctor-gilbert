@@ -47,6 +47,8 @@ import { PayorComponent } from './masterData/payor/payor.component';
 import { MOHVisitTypeComponent } from './masterData/mohvisit-type/mohvisit-type.component';
 import { PurposeOfVisitComponent } from './masterData/purpose-of-visit/purpose-of-visit.component';
 import { MasterDataComponent } from './masterData/master-data.component';
+import { GrowlModule } from 'primeng/primeng';
+
 
 const appRoutes: Routes = [
 { path: 'appointment', component: AppointmentComponent},
@@ -79,7 +81,7 @@ const appRoutes: Routes = [
     LaboratoryComponent,
     MedicationComponent,
     TimelineComponent,
-    DiagnosisComponent,
+    DiagnosisComponent, 
     VitalSignsComponent, DialogResultExampleDialog, AppointmentComponent, DepartmentComponent, InsuranceComponent, PayorComponent, MOHVisitTypeComponent, PurposeOfVisitComponent, MasterDataComponent
   ],
   imports: [
@@ -87,7 +89,7 @@ const appRoutes: Routes = [
     FormsModule, ReactiveFormsModule,
     HttpModule, RouterModule.forRoot(appRoutes),
     MaterialModule.forRoot(),
-    BrowserAnimationsModule, FlexLayoutModule,
+    BrowserAnimationsModule, FlexLayoutModule, GrowlModule, 
     InputMaskModule, ChipsModule, EditorModule, SharedModule, CheckboxModule,
     Ng2GoogleChartsModule, TreeTableModule, DataTableModule, DialogModule, ScheduleModule, CalendarModule
   ],
