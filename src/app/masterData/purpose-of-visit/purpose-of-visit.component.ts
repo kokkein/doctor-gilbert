@@ -25,12 +25,10 @@ export class PurposeOfVisitComponent implements OnInit {
   onSave() {
 
     this.MasterDataService.CreatePurposeOfVisit(this.data)
-      .subscribe(x => {
+      .subscribe(x => console.log(x));
+
           this.msgs = [];
-          this.msgs.push({severity:'success', summary:'Info Message', detail:x});
-        });
-
-
+          this.msgs.push({severity:'success', summary:'Info Message', detail:''});
   }
 
 }
