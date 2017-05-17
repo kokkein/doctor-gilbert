@@ -19,16 +19,19 @@ export class PurposeOfVisitComponent implements OnInit {
   constructor(private MasterDataService: MasterDataService) { }
 
   ngOnInit() {
-    this.data.Active = true;
+    this.data.active = true;
   }
 
   onSave() {
 
     this.MasterDataService.CreatePurposeOfVisit(this.data)
-      .subscribe(x => console.log(x));
-
+      .subscribe(x => {
+        console.log(x)
           this.msgs = [];
-          this.msgs.push({severity:'success', summary:'Info Message', detail:''});
+          this.msgs.push({severity:'success', summary:'Info Message', detail:'"' + x.visitPurposeName + '" Created Sucessfully!'});
+      });
+
+
   }
 
 }
