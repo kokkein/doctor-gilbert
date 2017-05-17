@@ -88,7 +88,7 @@ const appRoutes: Routes = [
     BrowserModule,
     FormsModule, ReactiveFormsModule,
     HttpModule, RouterModule.forRoot(appRoutes),
-    MaterialModule.forRoot(),
+    MaterialModule,
     BrowserAnimationsModule, FlexLayoutModule, GrowlModule, 
     InputMaskModule, ChipsModule, EditorModule, SharedModule, CheckboxModule,
     Ng2GoogleChartsModule, TreeTableModule, DataTableModule, DialogModule, ScheduleModule, CalendarModule

@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Message } from 'primeng/primeng';
+import { Observable } from 'rxjs/Observable';
+import { FormControl, FormGroup } from '@angular/forms';
+import { MasterDataService } from "app/services/masterdata.service";
 
 @Component({
   selector: 'app-mohvisit-type',
@@ -8,11 +12,21 @@ import { Component, OnInit } from '@angular/core';
 export class MOHVisitTypeComponent implements OnInit {
 
   data: any = {};
-
-  constructor() { }
+  msgs: Message[] = [];
+  
+  constructor(private MasterDataService: MasterDataService) { }
 
   ngOnInit() {
-    this.data.Active = true;
+    this.data.active = true;
   }
+
+  onSave() {
+
+    this.MasterDataService.CreatePurposeOfVisit(this.data)
+      .subscribe(x => {
+        console.log(x)
+          this.msgs = [];
+          this.msgs.push({severity:'success', summary:'Info Message', detail:'"' + x.visitPurposeName + '" Created Sucessfully!'});
+    });
 
 }

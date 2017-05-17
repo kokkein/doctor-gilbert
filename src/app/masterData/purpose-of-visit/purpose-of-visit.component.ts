@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Message } from 'primeng/primeng';
 import { Observable } from 'rxjs/Observable';
-import { FormControl } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 import { MasterDataService } from "app/services/masterdata.service";
 
 
@@ -29,7 +29,7 @@ export class PurposeOfVisitComponent implements OnInit {
         console.log(x)
           this.msgs = [];
           this.msgs.push({severity:'success', summary:'Info Message', detail:'"' + x.visitPurposeName + '" Created Sucessfully!'});
-      });
+    });
 
 
   }

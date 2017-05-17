@@ -1,6 +1,6 @@
 <div class="toolbar">
     <div>
-        <button md-raised-button>Save</button>
+        <button md-raised-button (click)="onSave()">Save</button>
         <button md-raised-button>New</button>
         <button md-raised-button>Save + New</button>
     </div>
@@ -22,7 +22,7 @@
                 </md-input-container>
             </div>
             <div class="ui-g-6">
-              <md-checkbox [(ngModel)]="data.Active" name="Active">Active</md-checkbox>
+              <md-checkbox [(ngModel)]="data.active" name="active">Active</md-checkbox>
             </div>
         </div>
       </md-card-content>
