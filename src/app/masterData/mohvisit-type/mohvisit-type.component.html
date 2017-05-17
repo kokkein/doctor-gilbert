@@ -9,6 +9,7 @@
     {{data | json}}
   </p>
 <section>
+    <p-growl [(value)]="msgs" life=3000></p-growl>
     <md-card>
       <md-card-header>
         <md-card-title>MOH Visit Type</md-card-title>
@@ -18,7 +19,7 @@
         <div class="ui-g">
             <div class="ui-g-6">
                 <md-input-container class="input-full-width">
-                  <input mdInput placeholder="MOH Visit Type Description" [(ngModel)]="data.MOHVisitType" name="MOHVisitType">
+                  <input mdInput placeholder="MOH Visit Type Description" [(ngModel)]="data.mohVisitTypeName" name="mohVisitTypeName">
                 </md-input-container>
             </div>
             <div class="ui-g-6">

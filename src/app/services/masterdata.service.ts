@@ -68,8 +68,11 @@ export class MasterDataService {
 
 //Add Data
     CreatePurposeOfVisit(purposeOfVisit) {
-        return this.http.post('http://localhost:5000/api/VisitPurpose',purposeOfVisit)
+        return this.http.post('http://localhost:5000/api/VisitPurpose', purposeOfVisit)
                     .map(res => res.json());
     }
-
+    CreateMOHVisitType(MOHVisitType) {
+        return this.http.post('http://localhost:5000/api/MOHVisitType', MOHVisitType)
+                    .map(res => res.json());
+    }
 }

@@ -22,11 +22,11 @@ export class MOHVisitTypeComponent implements OnInit {
 
   onSave() {
 
-    this.MasterDataService.CreatePurposeOfVisit(this.data)
+    this.MasterDataService.CreateMOHVisitType(this.data)
       .subscribe(x => {
         console.log(x)
           this.msgs = [];
-          this.msgs.push({severity:'success', summary:'Info Message', detail:'"' + x.visitPurposeName + '" Created Sucessfully!'});
+          this.msgs.push({severity:'success', summary:'Info Message', detail:'"' + x.mohVisitTypeName + '" Created Sucessfully!'});
     });
-
+  }
 }
