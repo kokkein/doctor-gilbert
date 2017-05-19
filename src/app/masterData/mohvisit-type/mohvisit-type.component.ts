@@ -26,20 +26,36 @@ export class MOHVisitTypeComponent implements OnInit {
   ngOnInit() {
     this.data.active = true;
 
-    this.MasterDataService.GetMOHVisitTypeByID(this.data.mohVisitTypeID)
-      .subscribe(m => {
-        this.data = m;
-      } );
+    if (this.data.mohVisitTypeID)
+    {
+      this.MasterDataService.GetMOHVisitTypeByID(this.data.mohVisitTypeID)
+        .subscribe(m => {
+          this.data = m;
+        }, err => {
+          if (err.status == 404)
+            this.msgs = [];
+            this.msgs.push({severity:'error', summary:'Info Message', detail:'Record Not Found!'});
+            this.data = {};
+        } );
+    }
 
   }
 
   onSave() {
 
-    this.MasterDataService.CreateMOHVisitType(this.data)
-      .subscribe(x => {
-        console.log(x)
-          this.msgs = [];
-          this.msgs.push({severity:'success', summary:'Info Message', detail:'"' + x.mohVisitTypeName + '" Created Sucessfully!'});
-    });
+    if (this.data.mohVisitTypeID){
+      this.MasterDataService.UpdateMOHVisitTypeByID(this.data)
+        .subscribe(x => {
+            this.msgs = [];
+            this.msgs.push({severity:'success', summary:'Info Message', detail:'"' + x.mohVisitTypeName + '" Updated Sucessfully!'});
+            //this.router.navigate(['/home']);
+      });
+    }
+    else
+      this.MasterDataService.CreateMOHVisitType(this.data)
+        .subscribe(x => {
+            this.msgs = [];
+            this.msgs.push({severity:'success', summary:'Info Message', detail:'"' + x.mohVisitTypeName + '" Created Sucessfully!'});
+      });
   }
 }
