@@ -18,7 +18,8 @@ export class MOHVisitTypeComponent implements OnInit {
   
   constructor(private MasterDataService: MasterDataService, private route: ActivatedRoute, private router: Router) {  
     route.params.subscribe(p=>{
-      this.data.mohVisitTypeID = +p['id'];
+      if (p['id']!=null)
+        this.data.mohVisitTypeID = +p['id'];
     });
   }
 
