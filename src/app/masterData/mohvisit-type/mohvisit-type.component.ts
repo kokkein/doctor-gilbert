@@ -3,6 +3,7 @@ import { Message } from 'primeng/primeng';
 import { Observable } from 'rxjs/Observable';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MasterDataService } from "app/services/masterdata.service";
+import { Router, ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: 'app-mohvisit-type',
@@ -13,11 +14,22 @@ export class MOHVisitTypeComponent implements OnInit {
 
   data: any = {};
   msgs: Message[] = [];
+  mohVisitTypeID;
   
-  constructor(private MasterDataService: MasterDataService) { }
+  constructor(private MasterDataService: MasterDataService, private route: ActivatedRoute, private router: Router) {  
+    route.params.subscribe(p=>{
+      this.data.mohVisitTypeID = +p['id'];
+    });
+  }
 
   ngOnInit() {
     this.data.active = true;
+
+    this.MasterDataService.GetMOHVisitTypeByID(this.data.mohVisitTypeID)
+      .subscribe(m => {
+        this.data = m;
+      } );
+
   }
 
   onSave() {

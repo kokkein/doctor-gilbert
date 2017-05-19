@@ -52,8 +52,16 @@ export class MasterDataService {
         return this.http.get('http://localhost:5000/api/MOHVisitType')
                     .map(res => res.json());
     }
+    GetMOHVisitTypeByID(id) {
+        return this.http.get('http://localhost:5000/api/MOHVisitType/' + id)
+                    .map(res => res.json());
+    }
     GetPurposeOfVisit() {
         return this.http.get('http://localhost:5000/api/VisitPurpose')
+                    .map(res => res.json());
+    }
+    GetPurposeOfVisitByID(id) {
+        return this.http.get('http://localhost:5000/api/VisitPurpose/' + id)
                     .map(res => res.json());
     }
     GetDGUser() {

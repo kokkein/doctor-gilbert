@@ -61,6 +61,7 @@ const appRoutes: Routes = [
 { path: 'master-data', component: MasterDataComponent},
 { path: 'payor', component: PayorComponent},
 { path: 'mohvisit-type', component: MOHVisitTypeComponent},
+{ path: 'mohvisit-type/:id', component: MOHVisitTypeComponent},
 { path: 'insurance', component: InsuranceComponent},
 { path: 'purpose-of-visit', component: PurposeOfVisitComponent},
 { path: 'department', component: DepartmentComponent},
