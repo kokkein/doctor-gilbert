@@ -4,6 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MasterDataService } from "app/services/masterdata.service";
 import { Router, ActivatedRoute } from "@angular/router";
+import { DataTableModule } from 'primeng/primeng';
 
 @Component({
   selector: 'app-mohvisit-type',
@@ -13,6 +14,7 @@ import { Router, ActivatedRoute } from "@angular/router";
 export class MOHVisitTypeComponent implements OnInit {
 
   data: any = {};
+  dataList: any = [];
   msgs: Message[] = [];
   mohVisitTypeID;
   
@@ -20,24 +22,31 @@ export class MOHVisitTypeComponent implements OnInit {
     route.params.subscribe(p=>{
       if (p['id']!=null)
         this.data.mohVisitTypeID = +p['id'];
+        if (this.data.mohVisitTypeID)
+        {
+          this.retrieveData();
+        }
     });
+  }
+
+  retrieveData(){
+      this.MasterDataService.GetMOHVisitTypeByID(this.data.mohVisitTypeID)
+      .subscribe(m => {
+        this.data = m;
+      }, err => {
+        if (err.status == 404)
+          this.msgs = [];
+          this.msgs.push({severity:'error', summary:'Info Message', detail:'Record Not Found!'});
+          this.data = {};
+      } );
   }
 
   ngOnInit() {
     this.data.active = true;
-
-    if (this.data.mohVisitTypeID)
-    {
-      this.MasterDataService.GetMOHVisitTypeByID(this.data.mohVisitTypeID)
-        .subscribe(m => {
-          this.data = m;
-        }, err => {
-          if (err.status == 404)
-            this.msgs = [];
-            this.msgs.push({severity:'error', summary:'Info Message', detail:'Record Not Found!'});
-            this.data = {};
-        } );
-    }
+      this.MasterDataService.GetMOHVisitType()
+        .subscribe(x => {
+          this.dataList =x;
+     });
 
   }
 

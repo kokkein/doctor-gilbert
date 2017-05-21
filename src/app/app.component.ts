@@ -25,8 +25,8 @@ export class AppComponent {
     {name: 'Inventory', route: 'inventory-item'},
     {name: 'Medical Record', route: 'card'},
     {name: 'Medical Calculator', route: 'card'},
-    {name: 'Laboratory', route: 'laboratory'},
-    {name: 'Radiology', route: 'checkbox'}
+    {name: 'Laboratory', route: 'mohvisit-type/3'},
+    {name: 'Radiology', route: 'mohvisit-type/2'}
   ];
 
   selectedOption: string;
