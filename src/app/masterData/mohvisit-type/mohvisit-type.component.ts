@@ -50,6 +50,12 @@ export class MOHVisitTypeComponent implements OnInit {
 
   }
 
+    onRowSelect(event) {
+        //this.msgs = [];
+        //this.msgs.push({severity: 'info', summary: 'Selected', detail: event.data.mohVisitTypeID});
+        this.router.navigate(['/mohvisit-type/', event.data.mohVisitTypeID]);
+    }
+
   onSave() {
 
     if (this.data.mohVisitTypeID){

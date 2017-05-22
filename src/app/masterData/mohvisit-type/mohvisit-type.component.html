@@ -30,16 +30,9 @@
     </md-card>
 </section>
 
-<p-dataTable [value]="dataList">
+<p-dataTable [value]="dataList" selectionMode="single" (onRowSelect)="onRowSelect($event)" dataKey="mohVisitTypeID">
     <p-column field="mohVisitTypeID" header="ID"></p-column>
     <p-column field="mohVisitTypeName" header="MOH Visit Type Name"></p-column>
     <p-column field="active" header="Active"></p-column>
 
 </p-dataTable>
-    <md-nav-list>
-      <a md-list-item [routerLink]="['/mohvisit-type/1']">1</a>
-      <a md-list-item [routerLink]="['/mohvisit-type/2']">2</a>
-      <a md-list-item [routerLink]="['/mohvisit-type/3']">3</a>
-      <a md-list-item [routerLink]="['/mohvisit-type/4']">4</a>
-      <hr>
-    </md-nav-list>

@@ -20,7 +20,7 @@
         <div class="ui-g">
             <div class="ui-g-6">
                 <md-input-container class="input-full-width">
-                  <input mdInput required placeholder="Purpose Of Visit Description" [(ngModel)]="data.visitPurposeName" name="visitPurposeName">
+                  <input mdInput placeholder="Purpose Of Visit Description" [(ngModel)]="data.visitPurposeName" name="visitPurposeName">
                 </md-input-container>
             </div>
             <div class="ui-g-6">
@@ -31,3 +31,10 @@
       </md-card-content>
     </md-card>
 </section>
+
+<p-dataTable [value]="dataList" selectionMode="single" (onRowSelect)="onRowSelect($event)" dataKey="visitPurposeID">
+    <p-column field="visitPurposeID" header="ID"></p-column>
+    <p-column field="visitPurposeName" header="Visit Purpose Name"></p-column>
+    <p-column field="active" header="Active"></p-column>
+
+</p-dataTable>

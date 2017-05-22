@@ -89,4 +89,8 @@ export class MasterDataService {
         return this.http.put('http://localhost:5000/api/MOHVisitType/' + MOHVisitType.mohVisitTypeID, MOHVisitType)
                     .map(res => res.json());
     }
+    UpdatePurposeOfVisitByID(PurposeOfVisit) {
+        return this.http.put('http://localhost:5000/api/VisitPurpose/' + PurposeOfVisit.visitPurposeID, PurposeOfVisit)
+                    .map(res => res.json());
+    }
 }
