@@ -48,7 +48,7 @@ import { MOHVisitTypeComponent } from './masterData/mohvisit-type/mohvisit-type.
 import { PurposeOfVisitComponent } from './masterData/purpose-of-visit/purpose-of-visit.component';
 import { MasterDataComponent } from './masterData/master-data.component';
 import { GrowlModule } from 'primeng/primeng';
-
+import { MenuModule, TieredMenuModule } from 'primeng/primeng';
 
 const appRoutes: Routes = [
 { path: 'appointment', component: AppointmentComponent},
@@ -90,8 +90,8 @@ const appRoutes: Routes = [
     BrowserModule,
     FormsModule, ReactiveFormsModule,
     HttpModule, RouterModule.forRoot(appRoutes),
-    MaterialModule,
-    BrowserAnimationsModule, FlexLayoutModule, GrowlModule, 
+    MaterialModule, MenuModule,
+    BrowserAnimationsModule, FlexLayoutModule, GrowlModule, TieredMenuModule,
     InputMaskModule, ChipsModule, EditorModule, SharedModule, CheckboxModule,
     Ng2GoogleChartsModule, TreeTableModule, DataTableModule, DialogModule, ScheduleModule, CalendarModule
   ],

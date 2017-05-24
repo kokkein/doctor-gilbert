@@ -1,3 +1,41 @@
-<p>
-  master-data works!
-</p>
+<section >
+  
+  <div class="ui-g">
+      <div class="ui-g-6">
+        <md-card>
+          <md-card-header>
+            <md-card-title>Master Data Listing</md-card-title>
+            <i class="material-icons">view_module</i>
+          </md-card-header>
+          <md-card-content>
+        <md-nav-list>
+          <a *ngFor="let menuItem of menuItems"
+            md-list-item [routerLink]="[menuItem.overview]">
+            {{menuItem.name}}
+          </a>
+          <hr>
+        </md-nav-list>
+          </md-card-content>
+        </md-card>
+      </div>
+      <div class="ui-g-6">
+        <md-card>
+          <md-card-header>
+            <md-card-title>Master Data New Record</md-card-title>
+            <i class="material-icons">plus_one</i>
+          </md-card-header>
+          <md-card-content>
+        <md-nav-list>
+          <a *ngFor="let menuItem of menuItems"
+            md-list-item [routerLink]="[menuItem.newRecord]">
+            {{menuItem.name}}
+          </a>
+          <hr>
+        </md-nav-list>
+          </md-card-content>
+        </md-card>
+      </div>
+  </div>
+
+
+</section>
