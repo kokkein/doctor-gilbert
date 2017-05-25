@@ -4,8 +4,12 @@
       <div class="ui-g-6">
         <md-card>
           <md-card-header>
-            <md-card-title>Master Data Listing</md-card-title>
-            <i class="material-icons">view_module</i>
+            <md-card-title></md-card-title>
+              <md-toolbar color="accent">
+                  <span>Master Data Listing</span>
+                  <span class="spacer"></span>
+                    <i class="material-icons">view_module</i>
+              </md-toolbar>
           </md-card-header>
           <md-card-content>
         <md-nav-list>
@@ -13,7 +17,6 @@
             md-list-item [routerLink]="[menuItem.overview]">
             {{menuItem.name}}
           </a>
-          <hr>
         </md-nav-list>
           </md-card-content>
         </md-card>
@@ -21,8 +24,12 @@
       <div class="ui-g-6">
         <md-card>
           <md-card-header>
-            <md-card-title>Master Data New Record</md-card-title>
-            <i class="material-icons">plus_one</i>
+            <md-card-title></md-card-title>
+              <md-toolbar color="accent">
+                  <span>Master Data New Record</span>
+                  <span class="spacer"></span>
+                    <i class="material-icons">plus_one</i>
+              </md-toolbar>
           </md-card-header>
           <md-card-content>
         <md-nav-list>
@@ -30,7 +37,6 @@
             md-list-item [routerLink]="[menuItem.newRecord]">
             {{menuItem.name}}
           </a>
-          <hr>
         </md-nav-list>
           </md-card-content>
         </md-card>
