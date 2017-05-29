@@ -1,3 +1,80 @@
-<p>
-  payor works!
-</p>
+<div class="toolbar">
+    <div>
+        <button md-raised-button>Save</button>
+        <button md-raised-button>New</button>
+        <button md-raised-button>Save + New</button>
+    </div>
+</div>
+  <p>
+    {{data | json}}
+  </p>
+<section>
+    <md-card>
+      <md-card-header>
+        <md-card-title>Payor</md-card-title>
+        <md-card-subtitle>New Payor</md-card-subtitle>
+      </md-card-header>
+      <md-card-content>
+        <div class="ui-g">
+            <div class="ui-g-8">
+                <md-input-container class="input-full-width">
+                  <input mdInput placeholder="Payor Name" [(ngModel)]="data.Department" name="Department">
+                </md-input-container>
+            </div>
+            <div class="ui-g-4">
+              <md-checkbox [(ngModel)]="data.Active" name="Active">Active</md-checkbox>
+            </div>
+        </div>
+        <div class="ui-g">
+            <div class="ui-g-3">
+                <md-input-container class="input-full-width">
+                  <input mdInput placeholder="Phone" [(ngModel)]="data.phone" name="phone">
+                </md-input-container>
+            </div>
+            <div class="ui-g-3">
+                <md-input-container class="input-full-width">
+                  <input mdInput placeholder="Fax" [(ngModel)]="data.fax" name="fax">
+                </md-input-container>
+            </div>
+            <div class="ui-g-6">
+                <md-input-container class="input-full-width">
+                  <input mdInput type="email" placeholder="Email" [(ngModel)]="data.email" name="email">
+                </md-input-container>
+            </div>
+        </div>
+        <div class="ui-g">
+            <div class="ui-g-8">
+                <md-input-container class="input-full-width">
+                  <textarea mdInput placeholder="Address" [(ngModel)]="data.address" name="address"></textarea>
+                </md-input-container>
+            </div>
+            <div class="ui-g-4">
+                <md-input-container class="input-full-width">
+                  <input mdInput placeholder="City" [(ngModel)]="data.city" name="city">
+                </md-input-container>
+            </div>
+        </div>
+        <div class="ui-g">
+            <div class="ui-g-4">
+                <md-input-container class="input-full-width">
+                  <input mdInput type="number" placeholder="Postal Code" [(ngModel)]="data.zipcode" name="zipcode">
+                </md-input-container>
+            </div>
+            <div class="ui-g-4">
+                <md-select placeholder="State" name="state" [(ngModel)]="data.state" name="state">
+                  <md-option *ngFor="let state of states" [value]="state.stateID" >
+                    {{state.stateName}}
+                  </md-option>
+                </md-select>
+            </div>
+            <div class="ui-g-4">
+                <md-select placeholder="Country" [(ngModel)]="data.countryID" name="countryID" >
+                  <md-option *ngFor="let country of countries" [value]="country.countryID">
+                    {{country.countryName}}
+                  </md-option>
+                </md-select>
+            </div>
+        </div>
+      </md-card-content>
+    </md-card>
+</section>

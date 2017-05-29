@@ -28,17 +28,18 @@ export class MasterDataService {
     GetPayor() {
         return this.http.get('http://localhost:5000/api/payor')
                     .map(res => res.json());
-
+    }
+    GetPayorByID(id) {
+        return this.http.get('http://localhost:5000/api/payor/' + id)
+                    .map(res => res.json());
     }
     GetRelationship() {
         return this.http.get('http://localhost:5000/api/relationship')
                     .map(res => res.json());
-
     }
     GetTitle() {
         return this.http.get('http://localhost:5000/api/title')
                     .map(res => res.json());
-
     }
     GetState() {
         return this.http.get('http://localhost:5000/api/state')
@@ -75,12 +76,16 @@ export class MasterDataService {
 
 
 //Add Data
-    CreatePurposeOfVisit(purposeOfVisit) {
-        return this.http.post('http://localhost:5000/api/VisitPurpose', purposeOfVisit)
+    CreatePurposeOfVisit(PurposeOfVisit) {
+        return this.http.post('http://localhost:5000/api/VisitPurpose', PurposeOfVisit)
                     .map(res => res.json());
     }
     CreateMOHVisitType(MOHVisitType) {
         return this.http.post('http://localhost:5000/api/MOHVisitType', MOHVisitType)
+                    .map(res => res.json());
+    }
+    CreatePayor(Payor) {
+        return this.http.post('http://localhost:5000/api/payor', Payor)
                     .map(res => res.json());
     }
 
@@ -91,6 +96,10 @@ export class MasterDataService {
     }
     UpdatePurposeOfVisitByID(PurposeOfVisit) {
         return this.http.put('http://localhost:5000/api/VisitPurpose/' + PurposeOfVisit.visitPurposeID, PurposeOfVisit)
+                    .map(res => res.json());
+    }
+    UpdatePayorByID(Payor) {
+        return this.http.put('http://localhost:5000/api/payor/' + Payor.payorID, Payor)
                     .map(res => res.json());
     }
 }
