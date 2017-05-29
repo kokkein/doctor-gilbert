@@ -1,6 +1,6 @@
 <div class="toolbar">
     <div>
-        <button md-raised-button>Save</button>
+        <button md-raised-button (click)="onSave()">Save</button>
         <button md-raised-button>New</button>
         <button md-raised-button>Save + New</button>
     </div>
@@ -9,6 +9,7 @@
     {{data | json}}
   </p>
 <section>
+  <p-growl [(value)]="msgs" life=3000></p-growl>
     <md-card>
       <md-card-header>
         <md-card-title>Payor</md-card-title>
@@ -18,7 +19,7 @@
         <div class="ui-g">
             <div class="ui-g-8">
                 <md-input-container class="input-full-width">
-                  <input mdInput placeholder="Payor Name" [(ngModel)]="data.Department" name="Department">
+                  <input mdInput placeholder="Payor Name" [(ngModel)]="data.payorName" name="payorName">
                 </md-input-container>
             </div>
             <div class="ui-g-4">

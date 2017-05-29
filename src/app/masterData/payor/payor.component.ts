@@ -32,7 +32,7 @@ export class PayorComponent implements OnInit {
   }
 
   retrieveData(){
-      this.MasterDataService.GetPayor(this.data.payorID)
+      this.MasterDataService.GetPayorByID(this.data.payorID)
       .subscribe(m => {
         this.data = m;
       }, err => {
@@ -51,5 +51,23 @@ export class PayorComponent implements OnInit {
     this.states = states;});
 
   }
+
+  onSave() {
+
+    if (this.data.payorID){
+      this.MasterDataService.UpdatePayorByID(this.data)
+        .subscribe(x => {
+            this.msgs = [];
+            this.msgs.push({severity:'success', summary:'Info Message', detail:'"' + x.payorName + '" Updated Sucessfully!'});
+      });
+    }
+    else
+      this.MasterDataService.CreatePayor(this.data)
+        .subscribe(x => {
+            this.msgs = [];
+            this.msgs.push({severity:'success', summary:'Info Message', detail:'"' + x.payorName + '" Created Sucessfully!'});
+      });
+  }
+
 
 }
