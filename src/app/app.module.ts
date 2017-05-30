@@ -67,6 +67,7 @@ const appRoutes: Routes = [
 { path: 'purpose-of-visit', component: PurposeOfVisitComponent},
 { path: 'purpose-of-visit/:id', component: PurposeOfVisitComponent},
 { path: 'department', component: DepartmentComponent},
+{ path: 'department/:id', component: DepartmentComponent},
 ];
 
 @NgModule({
