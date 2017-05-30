@@ -73,6 +73,10 @@ export class MasterDataService {
         return this.http.get('http://localhost:5000/api/Department')
                     .map(res => res.json());
     }
+    GetDepartmentByID(id) {
+        return this.http.get('http://localhost:5000/api/Department/' + id)
+                    .map(res => res.json());
+    }
 
 
 //Add Data
@@ -88,6 +92,10 @@ export class MasterDataService {
         return this.http.post('http://localhost:5000/api/payor', Payor)
                     .map(res => res.json());
     }
+    CreateDepartment(Department) {
+        return this.http.post('http://localhost:5000/api/department', Department)
+                    .map(res => res.json());
+    }
 
 //Update Data
     UpdateMOHVisitTypeByID(MOHVisitType) {
@@ -100,6 +108,10 @@ export class MasterDataService {
     }
     UpdatePayorByID(Payor) {
         return this.http.put('http://localhost:5000/api/payor/' + Payor.payorID, Payor)
+                    .map(res => res.json());
+    }
+    UpdateDepartmentByID(Department) {
+        return this.http.put('http://localhost:5000/api/Department/' + Department.departmentID, Department)
                     .map(res => res.json());
     }
 }
