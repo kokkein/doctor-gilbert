@@ -25,6 +25,11 @@
         <button md-button (click)="toggleMenu()" title="Toggle Main Menu">
           <i class="material-icons">apps</i> Menu
         </button>
+        <button md-button (click)="toggleMasterData()" title="Master Data">
+          <i class="material-icons">folder_special</i> Master Data
+        </button>
+
+        
         <button md-button (click)="root.dir = (root.dir == 'rtl' ? 'ltr' : 'rtl')" title="Toggle between RTL and LTR">
           <i class="material-icons">swap_horiz</i> {{root.dir.toUpperCase()}}
         </button>

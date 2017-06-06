@@ -1,5 +1,6 @@
 import { Component, AnimationTransitionEvent, ViewEncapsulation, ElementRef } from '@angular/core';
 import { MdDialog, MdDialogRef, MdDialogConfig} from '@angular/material';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -27,7 +28,7 @@ export class AppComponent {
 
   selectedOption: string;
 
-  constructor(private _element: ElementRef, public dialog: MdDialog) {}
+  constructor(private _element: ElementRef, public dialog: MdDialog, private router: Router) {}
 
   toggleMenu() {
     let dialogRef = this.dialog.open(DialogResultExampleDialog);
@@ -36,7 +37,9 @@ export class AppComponent {
     });
   }
 
-
+  toggleMasterData(){
+    this.router.navigate(['/master-data']);
+  }
 
   toggleFullscreen() {
     let elem = this._element.nativeElement.querySelector('.demo-content');
