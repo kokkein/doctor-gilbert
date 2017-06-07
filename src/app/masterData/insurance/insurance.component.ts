@@ -20,10 +20,9 @@ export class InsuranceComponent implements OnInit {
   dataList: any = [];
   msgs: Message[] = [];
   insuranceID;
+  test;
 
   constructor(private MasterDataService: MasterDataService, private route: ActivatedRoute, private router: Router) { 
-    this.payorCtrl = new FormControl({payorID: 13, payorName: 'Tokio Marine Life Insurance Malaysia Bhd.'});
-    
     route.params.subscribe(p=>{
       if (p['id']!=null)
         this.data.insuranceID = +p['id'];
@@ -32,6 +31,7 @@ export class InsuranceComponent implements OnInit {
           this.retrieveData();
         }
     });
+  
   }
 
   displayPayorFn(value: any): string {
@@ -47,6 +47,7 @@ export class InsuranceComponent implements OnInit {
       this.MasterDataService.GetInsuranceByID(this.data.insuranceID)
       .subscribe(m => {
         this.data = m;
+        this.payorCtrl = new FormControl({payorID: 12, payorName: m.providerName});
       }, err => {
         if (err.status == 404)
           this.msgs = [];
@@ -56,7 +57,8 @@ export class InsuranceComponent implements OnInit {
   }
 
   onSave() {
-
+    this.data.providerName = this.payorCtrl.value.payorID;
+  
     if (this.data.insuranceID){
       this.MasterDataService.UpdateInsuranceByID(this.data)
         .subscribe(x => {

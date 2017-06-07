@@ -1,7 +1,7 @@
 <div class="toolbar">
     <div>
         <button md-raised-button (click)="onSave()">Save</button>
-        <button md-raised-button>New</button>
+        <button md-raised-button (click)="onload()">New</button>
         <button md-raised-button>Save + New</button>
     </div>
 </div>
@@ -29,7 +29,7 @@
         <div class="ui-g">
           <div class="ui-g-6">
               <md-input-container class="input-full-width">
-                <input mdInput placeholder="Payor" [mdAutocomplete]="reactivePayor" [formControl]="payorCtrl"  [(ngModel)]="data.providerName" name="providerName">
+                <input mdInput placeholder="Payor" [mdAutocomplete]="reactivePayor" [formControl]="payorCtrl" >
               </md-input-container>
 
               <md-autocomplete #reactivePayor="mdAutocomplete" [displayWith]="displayPayorFn">
