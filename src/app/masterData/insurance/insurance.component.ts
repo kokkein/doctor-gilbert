@@ -59,7 +59,7 @@ export class InsuranceComponent implements OnInit {
   }
 
   onSave() {
-    this.data.providerName = this.payorCtrl.value.payorID;
+    this.data.payorID = this.payorCtrl.value.payorID;
   
     if (this.data.insuranceID){
       this.MasterDataService.UpdateInsuranceByID(this.data)
