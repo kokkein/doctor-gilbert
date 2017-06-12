@@ -23,6 +23,8 @@ export class InsuranceComponent implements OnInit {
   test;
 
   constructor(private MasterDataService: MasterDataService, private route: ActivatedRoute, private router: Router) { 
+    this.payorCtrl = new FormControl({payorID: 0, payorName: ''});
+
     route.params.subscribe(p=>{
       if (p['id']!=null)
         this.data.insuranceID = +p['id'];
@@ -47,7 +49,7 @@ export class InsuranceComponent implements OnInit {
       this.MasterDataService.GetInsuranceByID(this.data.insuranceID)
       .subscribe(m => {
         this.data = m;
-        this.payorCtrl = new FormControl({payorID: 12, payorName: m.providerName});
+        this.payorCtrl = new FormControl({payorID: m.payorResource.payorID, payorName: m.payorResource.payorName});
       }, err => {
         if (err.status == 404)
           this.msgs = [];
