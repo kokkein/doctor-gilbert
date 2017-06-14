@@ -79,6 +79,14 @@ export class MasterDataService {
         return this.http.get(this.sURL + 'Department/' + id)
                     .map(res => res.json());
     }
+    GetInventory() {
+        return this.http.get(this.sURL + 'Inventory')
+                    .map(res => res.json());
+    }
+    GetInventoryByID(id) {
+        return this.http.get(this.sURL + 'Inventory/' + id)
+                    .map(res => res.json());
+    }
 
 
 //Add Data
@@ -102,6 +110,10 @@ export class MasterDataService {
         return this.http.post(this.sURL + 'Insurance', Insurance)
                     .map(res => res.json());
     }
+    CreateInventory(Inventory) {
+        return this.http.post(this.sURL + 'Inventory', Inventory)
+                    .map(res => res.json());
+    }
 
 //Update Data
     UpdateMOHVisitTypeByID(MOHVisitType) {
@@ -122,6 +134,10 @@ export class MasterDataService {
     }
     UpdateInsuranceByID(Insurance) {
         return this.http.put(this.sURL + 'Insurance/' + Insurance.insuranceID, Insurance)
+                    .map(res => res.json());
+    }
+    UpdateInventoryByID(Inventory) {
+        return this.http.put(this.sURL + 'Inventory/' + Inventory.inventoryID, Inventory)
                     .map(res => res.json());
     }
 }

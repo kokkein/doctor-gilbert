@@ -1,13 +1,14 @@
-<section>
-  <form>
-    <div class="toolbar">
-      <div>
-        <button md-raised-button>Save</button>
+<div class="toolbar">
+    <div>
+        <button md-raised-button (click)="onSave()">Save</button>
         <button md-raised-button>New</button>
         <button md-raised-button>Save + New</button>
-      </div>
     </div>
-
+</div>
+  <p>
+    {{data | json}}
+  </p>
+<section>
     <md-card>
       <md-card-header>
         <md-card-title>Inventory Item</md-card-title>
@@ -17,49 +18,49 @@
           <div class="container">
             <div> 
               <md-input-container class="input-full-width">
-                <input mdInput placeholder="Code" >
+                <input mdInput [(ngModel)]="data.inventoryCode" name="inventoryCode" placeholder="Code" >
               </md-input-container>
             </div>
             <div>
               <md-input-container class="input-full-width">
-                <input mdInput placeholder="Description" >
+                <input mdInput [(ngModel)]="data.inventoryDescription" name="inventoryDescription" placeholder="Description" >
               </md-input-container>
             </div>
             <div>
-              <md-checkbox>Active</md-checkbox>
+              <md-checkbox [(ngModel)]="data.active" name="active">Active</md-checkbox>
             </div>
           </div>
           <div class="container">
             <div>
               <md-input-container class="input-full-width">
-                <input mdInput placeholder="Brand Name" >
+                <input mdInput [(ngModel)]="data.inventoryBrandID" name="inventoryBrandID" placeholder="Brand Name" >
               </md-input-container>
             </div>
             <div>
               <md-input-container class="input-full-width">
-                <input mdInput placeholder="Generic Name">
+                <input mdInput [(ngModel)]="data.inventoryGenericID" name="inventoryGenericID" placeholder="Generic Name">
               </md-input-container>
             </div>
             <div>
               <md-input-container class="input-full-width">
-                <input mdInput placeholder="Other Name">
+                <input mdInput [(ngModel)]="data.inventoryOtherName" name="inventoryOtherName" placeholder="Other Name">
               </md-input-container>
             </div>
           </div>
           <div class="container">
             <div>
               <md-input-container class="input-full-width">
-                <input mdInput placeholder="ATC Classification">
+                <input mdInput [(ngModel)]="data.inventoryATCClassificationID" name="inventoryATCClassificationID" placeholder="ATC Classification">
               </md-input-container>
             </div>
             <div>
               <md-input-container class="input-full-width">
-                <input mdInput placeholder="Category">
+                <input mdInput [(ngModel)]="data.inventoryCategoryID" name="inventoryCategoryID" placeholder="Category">
               </md-input-container>
             </div>
             <div>
               <md-input-container class="input-full-width">
-                <input mdInput placeholder="Sub Category">
+                <input mdInput [(ngModel)]="data.inventorySubCategoryID" name="inventorySubCategoryID" placeholder="Sub Category">
               </md-input-container>
             </div>
           </div>
@@ -81,14 +82,13 @@
           </div>
           <div class="container">
             <div>
-              <md-checkbox>Over The Counter</md-checkbox>
-              <md-checkbox>Use Batch</md-checkbox>
-              <md-checkbox>Expiry Control</md-checkbox>
-              <md-checkbox>Chargeable</md-checkbox>
+              <md-checkbox [(ngModel)]="data.otc" name="otc">Over The Counter</md-checkbox>
+              <md-checkbox [(ngModel)]="data.useBatch" name="useBatch">Use Batch</md-checkbox>
+              <md-checkbox [(ngModel)]="data.expiryControl" name="expiryControl">Expiry Control</md-checkbox>
+              <md-checkbox [(ngModel)]="data.chargeable" name="chargeable">Chargeable</md-checkbox>
             </div>
           </div>
       </md-card-content>
     </md-card>
 
-  </form>
 </section>
