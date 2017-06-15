@@ -49,6 +49,13 @@ import { PurposeOfVisitComponent } from './masterData/purpose-of-visit/purpose-o
 import { MasterDataComponent } from './masterData/master-data.component';
 import { GrowlModule } from 'primeng/primeng';
 import { MenuModule, TieredMenuModule } from 'primeng/primeng';
+import { InventoryBrandComponent } from './masterData/inventory-brand/inventory-brand.component';
+import { InventoryGenericComponent } from './masterData/inventory-generic/inventory-generic.component';
+import { InventoryAtcComponent } from './masterData/inventory-atc/inventory-atc.component';
+import { InventoryCategoryComponent } from './masterData/inventory-category/inventory-category.component';
+import { InventorySubcategoryComponent } from './masterData/inventory-subcategory/inventory-subcategory.component';
+import { InventoryMedicationclassComponent } from './masterData/inventory-medicationclass/inventory-medicationclass.component';
+import { InventoryPregnancycategoryComponent } from './masterData/inventory-pregnancycategory/inventory-pregnancycategory.component';
 
 const appRoutes: Routes = [
 { path: 'appointment', component: AppointmentComponent},
@@ -70,6 +77,20 @@ const appRoutes: Routes = [
 { path: 'purpose-of-visit/:id', component: PurposeOfVisitComponent},
 { path: 'department', component: DepartmentComponent},
 { path: 'department/:id', component: DepartmentComponent},
+{ path: 'inventory-atc', component: InventoryAtcComponent},
+{ path: 'inventory-atc/:id', component: InventoryAtcComponent},
+{ path: 'inventory-brand', component: InventoryBrandComponent},
+{ path: 'inventory-brand/:id', component: InventoryBrandComponent},
+{ path: 'inventory-category', component: InventoryCategoryComponent},
+{ path: 'inventory-category/:id', component: InventoryCategoryComponent},
+{ path: 'inventory-generic', component: InventoryGenericComponent},
+{ path: 'inventory-generic/:id', component: InventoryGenericComponent},
+{ path: 'inventory-medicationclass', component: InventoryMedicationclassComponent},
+{ path: 'inventory-medicationclass/:id', component: InventoryMedicationclassComponent},
+{ path: 'inventory-pregnancycategory', component: InventoryPregnancycategoryComponent},
+{ path: 'inventory-pregnancycategory/:id', component: InventoryPregnancycategoryComponent},
+{ path: 'inventory-subcategory', component: InventorySubcategoryComponent},
+{ path: 'inventory-subcategory/:id', component: InventorySubcategoryComponent},
 ];
 
 @NgModule({
@@ -78,9 +99,9 @@ const appRoutes: Routes = [
     PatientComponent,
     VisitComponent,
     VitalComponent,
-    InventoryComponent,
-    InventoryItemComponent,
-    UserComponent,
+    InventoryComponent,InventorySubcategoryComponent,InventoryPregnancycategoryComponent,
+    InventoryItemComponent,InventoryMedicationclassComponent,InventoryGenericComponent,
+    UserComponent,InventoryCategoryComponent,InventoryBrandComponent,InventoryAtcComponent,
     EpisodeComponent,
     DocumentComponent,
     RadiologyComponent,
@@ -88,7 +109,7 @@ const appRoutes: Routes = [
     MedicationComponent,
     TimelineComponent,
     DiagnosisComponent, 
-    VitalSignsComponent, DialogResultExampleDialog, AppointmentComponent, DepartmentComponent, InsuranceComponent, PayorComponent, MOHVisitTypeComponent, PurposeOfVisitComponent, MasterDataComponent
+    VitalSignsComponent, DialogResultExampleDialog, AppointmentComponent, DepartmentComponent, InsuranceComponent, PayorComponent, MOHVisitTypeComponent, PurposeOfVisitComponent, MasterDataComponent, InventoryBrandComponent, InventoryGenericComponent, InventoryAtcComponent, InventoryCategoryComponent, InventorySubcategoryComponent, InventoryMedicationclassComponent, InventoryPregnancycategoryComponent
   ],
   imports: [
     BrowserModule,
