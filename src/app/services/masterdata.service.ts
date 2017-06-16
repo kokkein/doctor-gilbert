@@ -87,6 +87,62 @@ export class MasterDataService {
         return this.http.get(this.sURL + 'Inventory/' + id)
                     .map(res => res.json());
     }
+    GetInventoryBrand() {
+        return this.http.get(this.sURL + 'InventoryBrand')
+                    .map(res => res.json());
+    }
+    GetInventoryBrandByID(id) {
+        return this.http.get(this.sURL + 'InventoryBrand/' + id)
+                    .map(res => res.json());
+    }
+    GetInventoryCategory() {
+        return this.http.get(this.sURL + 'InventoryCategory')
+                    .map(res => res.json());
+    }
+    GetInventoryCategoryByID(id) {
+        return this.http.get(this.sURL + 'InventoryCategory/' + id)
+                    .map(res => res.json());
+    }
+    GetInventorySubCategory() {
+        return this.http.get(this.sURL + 'InventorySubCategory')
+                    .map(res => res.json());
+    }
+    GetInventorySubCategoryByID(id) {
+        return this.http.get(this.sURL + 'InventorySubCategory/' + id)
+                    .map(res => res.json());
+    }
+    GetInventoryGeneric() {
+        return this.http.get(this.sURL + 'InventoryGeneric')
+                    .map(res => res.json());
+    }
+    GetInventoryGenericByID(id) {
+        return this.http.get(this.sURL + 'InventoryGeneric/' + id)
+                    .map(res => res.json());
+    }
+    GetInventoryMedicationClass() {
+        return this.http.get(this.sURL + 'InventoryMedicationClass')
+                    .map(res => res.json());
+    }
+    GetInventoryMedicationClassByID(id) {
+        return this.http.get(this.sURL + 'InventoryMedicationClass/' + id)
+                    .map(res => res.json());
+    }
+    GetInventoryPregnancyCategory() {
+        return this.http.get(this.sURL + 'InventoryPregnancyCategory')
+                    .map(res => res.json());
+    }
+    GetInventoryPregnancyCategoryByID(id) {
+        return this.http.get(this.sURL + 'InventoryPregnancyCategory/' + id)
+                    .map(res => res.json());
+    }
+    GetInventoryATCClassification() {
+        return this.http.get(this.sURL + 'InventoryATCClassification')
+                    .map(res => res.json());
+    }
+    GetInventoryATCClassificationByID(id) {
+        return this.http.get(this.sURL + 'InventoryATCClassification/' + id)
+                    .map(res => res.json());
+    }
 
 
 //Add Data
@@ -114,6 +170,34 @@ export class MasterDataService {
         return this.http.post(this.sURL + 'Inventory', Inventory)
                     .map(res => res.json());
     }
+    CreateInventoryBrand(InventoryBrand) {
+        return this.http.post(this.sURL + 'InventoryBrand', InventoryBrand)
+                    .map(res => res.json());
+    }
+    CreateInventoryCategory(InventoryCategory) {
+        return this.http.post(this.sURL + 'InventoryCategory', InventoryCategory)
+                    .map(res => res.json());
+    }
+    CreateInventorySubCategory(InventorySubCategory) {
+        return this.http.post(this.sURL + 'InventorySubCategory', InventorySubCategory)
+                    .map(res => res.json());
+    }
+    CreateInventoryGeneric(InventoryGeneric) {
+        return this.http.post(this.sURL + 'InventoryGeneric', InventoryGeneric)
+                    .map(res => res.json());
+    }
+    CreateInventoryMedicationClass(InventoryMedicationClass) {
+        return this.http.post(this.sURL + 'InventoryMedicationClass', InventoryMedicationClass)
+                    .map(res => res.json());
+    }
+    CreateInventoryPregnancyCategory(InventoryPregnancyCategory) {
+        return this.http.post(this.sURL + 'InventoryPregnancyCategory', InventoryPregnancyCategory)
+                    .map(res => res.json());
+    }
+    CreateInventoryATCClassification(InventoryATCClassification) {
+        return this.http.post(this.sURL + 'InventoryATCClassification', InventoryATCClassification)
+                    .map(res => res.json());
+    }
 
 //Update Data
     UpdateMOHVisitTypeByID(MOHVisitType) {
@@ -138,6 +222,34 @@ export class MasterDataService {
     }
     UpdateInventoryByID(Inventory) {
         return this.http.put(this.sURL + 'Inventory/' + Inventory.inventoryID, Inventory)
+                    .map(res => res.json());
+    }
+    UpdateInventoryBrandByID(InventoryBrand) {
+        return this.http.put(this.sURL + 'InventoryBrand/' + InventoryBrand.inventoryBrandID, InventoryBrand)
+                    .map(res => res.json());
+    }
+    UpdateInventoryCategoryByID(InventoryCategory) {
+        return this.http.put(this.sURL + 'InventoryCategory/' + InventoryCategory.inventoryCategoryID, InventoryCategory)
+                    .map(res => res.json());
+    }
+    UpdateInventorySubCategoryByID(InventorySubCategory) {
+        return this.http.put(this.sURL + 'InventorySubCategory/' + InventorySubCategory.inventorySubCategoryID, InventorySubCategory)
+                    .map(res => res.json());
+    }
+    UpdateInventoryGenericByID(InventoryGeneric) {
+        return this.http.put(this.sURL + 'InventoryGeneric/' + InventoryGeneric.inventoryGenericID, InventoryGeneric)
+                    .map(res => res.json());
+    }
+    UpdateInventoryMedicationClassByID(InventoryMedicationClass) {
+        return this.http.put(this.sURL + 'InventoryMedicationClass/' + InventoryMedicationClass.inventoryMedicationClassID, InventoryMedicationClass)
+                    .map(res => res.json());
+    }
+    UpdateInventoryPregnancyCategoryByID(InventoryPregnancyCategory) {
+        return this.http.put(this.sURL + 'InventoryPregnancyCategory/' + InventoryPregnancyCategory.inventoryPregnancyCategoryID, InventoryPregnancyCategory)
+                    .map(res => res.json());
+    }
+    UpdateInventoryATCClassificationByID(InventoryATCClassification) {
+        return this.http.put(this.sURL + 'InventoryATCClassification/' + InventoryATCClassification.inventoryATCClassificationID, InventoryATCClassification)
                     .map(res => res.json());
     }
 }

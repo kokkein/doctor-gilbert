@@ -12,12 +12,25 @@
               </md-toolbar>
           </md-card-header>
           <md-card-content>
-        <md-nav-list>
-          <a *ngFor="let menuItem of menuItems"
-            md-list-item [routerLink]="[menuItem.overview]">
-            {{menuItem.name}}
-          </a>
-        </md-nav-list>
+            <div class="ui-g">
+                <div class="ui-g-6">
+                    <md-nav-list>
+                    <a *ngFor="let menuItem of menuItemsOne"
+                      md-list-item [routerLink]="[menuItem.overview]">
+                      {{menuItem.name}}
+                    </a>
+                  </md-nav-list>
+                </div>
+                <div class="ui-g-6">
+                    <md-nav-list>
+                    <a *ngFor="let menuItem of menuItemsTwo"
+                      md-list-item [routerLink]="[menuItem.overview]">
+                      {{menuItem.name}}
+                    </a>
+                  </md-nav-list>
+                </div>
+            </div>
+
           </md-card-content>
         </md-card>
       </div>
@@ -26,18 +39,30 @@
           <md-card-header>
             <md-card-title></md-card-title>
               <md-toolbar color="accent">
-                  <span>Master Data New Record</span>
+                  <span>New Master Data Record</span>
                   <span class="spacer"></span>
                     <i class="material-icons">plus_one</i>
               </md-toolbar>
           </md-card-header>
           <md-card-content>
-        <md-nav-list>
-          <a *ngFor="let menuItem of menuItems"
-            md-list-item [routerLink]="[menuItem.newRecord]">
-            {{menuItem.name}}
-          </a>
-        </md-nav-list>
+            <div class="ui-g">
+                <div class="ui-g-6">
+                    <md-nav-list>
+                    <a *ngFor="let menuItem of menuItemsOne"
+                      md-list-item [routerLink]="[menuItem.newRecord]">
+                      {{menuItem.name}}
+                    </a>
+                  </md-nav-list>
+                </div>
+                <div class="ui-g-6">
+                    <md-nav-list>
+                    <a *ngFor="let menuItem of menuItemsTwo"
+                      md-list-item [routerLink]="[menuItem.newRecord]">
+                      {{menuItem.name}}
+                    </a>
+                  </md-nav-list>
+                </div>
+            </div>
           </md-card-content>
         </md-card>
       </div>

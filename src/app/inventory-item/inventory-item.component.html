@@ -107,15 +107,15 @@
           <div class="container">
             <div>
               <md-select placeholder="Medication Class" name="medicationClass" >
-                <md-option *ngFor="let medicationClass of medicationClasses" [value]="medicationClass.value">
-                  {{medicationClass.viewValue}}
+                <md-option *ngFor="let medicationClass of medicationClasses" [value]="medicationClass.inventoryMedicationClassID">
+                  {{medicationClass.inventoryMedicationClassName}}
                 </md-option>
               </md-select>
             </div>
             <div>
               <md-select placeholder="Pregnancy Category" name="pregnancyCategory" >
-                <md-option *ngFor="let pregnancyCategory of pregnancyCategories" [value]="pregnancyCategory.value">
-                  {{pregnancyCategory.viewValue}}
+                <md-option *ngFor="let pregnancyCategory of pregnancyCategories" [value]="pregnancyCategory.inventoryPregnancyCategoryID">
+                  {{pregnancyCategory.inventoryPregnancyCategoryName}}
                 </md-option>
               </md-select>
             </div>
