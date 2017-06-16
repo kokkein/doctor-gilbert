@@ -53,7 +53,7 @@
               <md-autocomplete #reactiveinventoryGeneric="mdAutocomplete" [displayWith]="displayinventoryGenericFn">
                 <md-option *ngFor="let inventoryGeneric of filteredinventoryGenerics | async" [value]="inventoryGeneric">
                   <span>{{ inventoryGeneric.inventoryGenericID }}</span>
-                  <span> ({{inventoryGeneric.inventoryGenericBrand}}) </span>
+                  <span> ({{inventoryGeneric.inventoryGenericName}}) </span>
                 </md-option>
               </md-autocomplete>
 
@@ -73,7 +73,7 @@
               <md-autocomplete #reactiveinventoryATCClassification="mdAutocomplete" [displayWith]="displayinventoryATCClassificationFn">
                 <md-option *ngFor="let inventoryATCClassification of filteredinventoryATCClassifications | async" [value]="inventoryATCClassification">
                   <span>{{ inventoryATCClassification.inventoryATCClassificationID }}</span>
-                  <span> ({{inventoryATCClassification.inventoryATCClassificationName}}) </span>
+                  <span> ({{inventoryATCClassification.inventoryATCClassificationCode}}, {{inventoryATCClassification.inventoryATCClassificationName}}) </span>
                 </md-option>
               </md-autocomplete>
 
@@ -106,14 +106,14 @@
           </div>
           <div class="container">
             <div>
-              <md-select placeholder="Medication Class" name="medicationClass" >
+              <md-select placeholder="Medication Class" name="medicationClass" class="input-full-width">
                 <md-option *ngFor="let medicationClass of medicationClasses" [value]="medicationClass.inventoryMedicationClassID">
                   {{medicationClass.inventoryMedicationClassName}}
                 </md-option>
               </md-select>
             </div>
             <div>
-              <md-select placeholder="Pregnancy Category" name="pregnancyCategory" >
+              <md-select placeholder="Pregnancy Category" name="pregnancyCategory" class="input-full-width">
                 <md-option *ngFor="let pregnancyCategory of pregnancyCategories" [value]="pregnancyCategory.inventoryPregnancyCategoryID">
                   {{pregnancyCategory.inventoryPregnancyCategoryName}}
                 </md-option>

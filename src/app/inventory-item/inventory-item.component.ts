@@ -56,7 +56,6 @@ export class InventoryItemComponent implements OnInit {
     return value && typeof value === 'object' ? value.inventorySubCategoryName : value;
   }
   filterInventorySubCategorys(val: string) {
-    //`^${val}`
     return val ? this.inventorySubCategorys.filter((s) => new RegExp(val, 'gi').test(s.inventorySubCategoryName))
                : this.inventorySubCategorys;
   }
@@ -64,7 +63,6 @@ export class InventoryItemComponent implements OnInit {
     return value && typeof value === 'object' ? value.inventoryCategoryName : value;
   }
   filterInventoryCategorys(val: string) {
-    //`^${val}`
     return val ? this.inventoryCategorys.filter((s) => new RegExp(val, 'gi').test(s.inventoryCategoryName))
                : this.inventoryCategorys;
   }
@@ -72,7 +70,6 @@ export class InventoryItemComponent implements OnInit {
     return value && typeof value === 'object' ? value.inventoryBrandName : value;
   }
   filterBrandNames(val: string) {
-    //`^${val}`
     return val ? this.brandNames.filter((s) => new RegExp(val, 'gi').test(s.inventoryBrandName))
                : this.brandNames;
   }
@@ -80,7 +77,6 @@ export class InventoryItemComponent implements OnInit {
     return value && typeof value === 'object' ? value.inventoryGenericName : value;
   }
   filterInventoryGenerics(val: string) {
-    //`^${val}`
     return val ? this.inventoryGenerics.filter((s) => new RegExp(val, 'gi').test(s.inventoryGenericName))
                : this.inventoryGenerics;
   }
@@ -88,12 +84,18 @@ export class InventoryItemComponent implements OnInit {
     return value && typeof value === 'object' ? value.inventoryATCClassificationName : value;
   }
   filterInventoryATCClassifications(val: string) {
-    //`^${val}`
     return val ? this.inventoryATCClassifications.filter((s) => new RegExp(val, 'gi').test(s.inventoryATCClassificationName))
                : this.inventoryATCClassifications;
   }
 
   constructor(private MasterDataService: MasterDataService, private route: ActivatedRoute, private router: Router) {  
+    
+    this.inventoryBrandCtrl = new FormControl({inventoryBrandID: 0, inventoryBrandName: ''});
+    this.inventoryGenericCtrl = new FormControl({inventoryGenericID: 0, inventoryGenericName: ''});
+    this.inventoryATCClassificationCtrl = new FormControl({inventoryATCClassificationID: 0, inventoryATCClassificationName: ''});
+    this.inventoryCategoryCtrl = new FormControl({inventoryCategoryID: 0, inventoryCategoryName: ''});
+    this.inventorySubCategoryCtrl = new FormControl({inventorySubCategoryID: 0, inventorySubCategoryName: ''});
+
     route.params.subscribe(p=>{
       if (p['id']!=null)
         this.data.inventoryID = +p['id'];
@@ -117,11 +119,7 @@ export class InventoryItemComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.data.active = true;
-    this.MasterDataService.GetInventory()
-        .subscribe(x => {
-          this.dataList =x;
-    });
+    
     this.MasterDataService.GetInventoryPregnancyCategory()
         .subscribe(x => {
           this.pregnancyCategories = x;
@@ -130,6 +128,8 @@ export class InventoryItemComponent implements OnInit {
         .subscribe(x => {
           this.medicationClasses = x;
     });
+    
+    
     this.MasterDataService.GetInventoryBrand().subscribe(brandName => {
     this.brandNames = brandName;
     //here only start filter
@@ -138,6 +138,7 @@ export class InventoryItemComponent implements OnInit {
         .map(val => this.displayinventoryBrandFn(val))
         .map(name => this.filterBrandNames(name));
     });
+    
     this.MasterDataService.GetInventoryGeneric().subscribe(generic => {
     this.inventoryGenerics = generic;
     //here only start filter
@@ -147,7 +148,7 @@ export class InventoryItemComponent implements OnInit {
         .map(name => this.filterInventoryGenerics(name));
     });
     this.MasterDataService.GetInventoryATCClassification().subscribe(atc => {
-    this.inventoryGenerics = atc;
+    this.inventoryATCClassifications = atc;
     //here only start filter
     this.filteredinventoryATCClassifications = this.inventoryATCClassificationCtrl.valueChanges
         .startWith(this.inventoryATCClassificationCtrl.value)
@@ -170,6 +171,7 @@ export class InventoryItemComponent implements OnInit {
         .map(val => this.displayinventorySubCategoryFn(val))
         .map(name => this.filterInventorySubCategorys(name));
     });
+  
   }
 
   onSave() {
