@@ -65,6 +65,7 @@ const appRoutes: Routes = [
 { path: 'inventory-item', component: InventoryItemComponent},
 { path: 'inventory-item/:id', component: InventoryItemComponent},
 { path: 'user', component: UserComponent},
+{ path: 'user/:id', component: UserComponent},
 { path: 'episode', component: EpisodeComponent},
 { path: 'master-data', component: MasterDataComponent},
 { path: 'payor', component: PayorComponent},

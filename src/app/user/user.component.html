@@ -1,12 +1,15 @@
 <section>
-  <form>
+  <p-growl [(value)]="msgs" life=3000></p-growl>
     <div class="toolbar">
       <div>
-        <button md-raised-button>Save</button>
-        <button md-raised-button>Save & Create User</button>
+        <button md-raised-button (click)="onSave()">Save</button>
+        <button md-raised-button>New</button>
+        <button md-raised-button>Save + New</button>
       </div>
     </div>
-
+  <p>
+    {{data | json}}
+  </p>
     <md-card>
       <md-card-header>
         <md-card-title>User Master</md-card-title>
@@ -212,5 +215,4 @@
         </md-tab-group>
       </md-card-content>
     </md-card>
-  </form>
 </section>
