@@ -20,13 +20,13 @@ export class UserComponent implements OnInit {
     data: any = {};
     dataList: any = [];
     msgs: Message[] = [];
-    departmentID;
+    dgUserID;
 
   constructor(private MasterDataService: MasterDataService, private route: ActivatedRoute, private router: Router) {  
     route.params.subscribe(p=>{
       if (p['id']!=null)
-        this.data.departmentID = +p['id'];
-        if (this.data.departmentID)
+        this.data.dgUserID = +p['id'];
+        if (this.data.dgUserID)
         {
           this.retrieveData();
         }
@@ -34,7 +34,7 @@ export class UserComponent implements OnInit {
   }
 
   retrieveData(){
-      this.MasterDataService.GetDepartmentByID(this.data.departmentID)
+      this.MasterDataService.GetDGUserByID(this.data.dgUserID)
       .subscribe(m => {
         this.data = m;
       }, err => {
@@ -47,7 +47,7 @@ export class UserComponent implements OnInit {
 
   ngOnInit() {
     this.data.active = true;
-      this.MasterDataService.GetDepartment()
+      this.MasterDataService.GetDGUser()
         .subscribe(x => {
           this.dataList =x;
      });
@@ -55,18 +55,18 @@ export class UserComponent implements OnInit {
 
   onSave() {
 
-    if (this.data.departmentID){
-      this.MasterDataService.UpdateDepartmentByID(this.data)
+    if (this.data.dgUserID){
+      this.MasterDataService.UpdateDGUserByID(this.data)
         .subscribe(x => {
             this.msgs = [];
-            this.msgs.push({severity:'success', summary:'Info Message', detail:'"' + x.departmentName + '" Updated Sucessfully!'});
+            this.msgs.push({severity:'success', summary:'Info Message', detail:'"' + x.userFullName + '" Updated Sucessfully!'});
       });
     }
     else
-      this.MasterDataService.CreateDepartment(this.data)
+      this.MasterDataService.CreateDGUser(this.data)
         .subscribe(x => {
             this.msgs = [];
-            this.msgs.push({severity:'success', summary:'Info Message', detail:'"' + x.departmentName + '" Created Sucessfully!'});
+            this.msgs.push({severity:'success', summary:'Info Message', detail:'"' + x.userFullName + '" Created Sucessfully!'});
       });
   }
 

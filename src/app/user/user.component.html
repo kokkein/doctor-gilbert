@@ -26,11 +26,11 @@
                   <div class="container">
                     <div> 
                       <md-input-container class="input-full-width">
-                        <input mdInput placeholder="Full name" >
+                        <input mdInput placeholder="Full name"  [(ngModel)]="data.userFullName" name="userFullName">
                       </md-input-container>
                     </div>
                     <div>
-                      <md-select placeholder="Title" name="title" >
+                      <md-select placeholder="Title" name="title" [(ngModel)]="data.titleID">
                         <md-option *ngFor="let title of titles" [value]="title.value">
                           {{title.viewValue}}
                         </md-option>
@@ -38,43 +38,43 @@
                     </div>
                     <div>
                       <md-input-container class="input-full-width">
-                        <input mdInput placeholder="Initial" >
+                        <input mdInput placeholder="Initial" [(ngModel)]="data.userInitial" name="userInitial">
                       </md-input-container>
                     </div>
                   </div>
                   <div class="container">
                     <div>
                       <md-input-container class="input-full-width">
-                        <input mdInput placeholder="Mobile Phone">
+                        <input mdInput placeholder="Mobile Phone" [(ngModel)]="data.mobile" name="mobile">
                       </md-input-container>
                     </div>
                     <div>
                       <md-input-container class="input-full-width">
-                        <input mdInput placeholder="Phone">
+                        <input mdInput placeholder="Phone" [(ngModel)]="data.phone" name="phone">
                       </md-input-container>
                     </div>
                     <div>
                       <md-input-container class="input-full-width">
-                        <input mdInput type="number" placeholder="Extension">
-                      </md-input-container>
-                    </div>
-                  </div>
-                  <div class="container">
-                    <div>
-                      <md-input-container class="input-full-width">
-                        <input mdInput type="email" placeholder="Email">
+                        <input mdInput type="number" placeholder="Extension" [(ngModel)]="data.extension" name="extension">
                       </md-input-container>
                     </div>
                   </div>
                   <div class="container">
                     <div>
                       <md-input-container class="input-full-width">
-                        <input mdInput placeholder="User name">
+                        <input mdInput type="email" placeholder="Email" [(ngModel)]="data.email" name="email">
+                      </md-input-container>
+                    </div>
+                  </div>
+                  <div class="container">
+                    <div>
+                      <md-input-container class="input-full-width">
+                        <input mdInput placeholder="User name" [(ngModel)]="data.userName" name="userName">
                       </md-input-container>
                     </div>
                     <div>
                       <md-input-container class="input-full-width">
-                        <input mdInput type="password" placeholder="Password">
+                        <input mdInput type="password" placeholder="Password" [(ngModel)]="data.userPassword" name="userPassword"> 
                       </md-input-container>
                     </div>
                     <div>
@@ -85,8 +85,8 @@
                   </div>
                   <div class="container">
                     <div>
-                      <md-checkbox>Active User</md-checkbox>
-                      <md-checkbox>System Adminstrator</md-checkbox>
+                      <md-checkbox [(ngModel)]="data.active" name="active">Active User</md-checkbox>
+                      <md-checkbox [(ngModel)]="data.administrator" name="administrator">System Adminstrator</md-checkbox>
                     </div>
                   </div>
               </md-card-content>
@@ -101,23 +101,23 @@
                   <div class="container">
                     <div>
                       <md-input-container class="input-full-width">
-                        <input mdInput placeholder="Company Name">
+                        <input mdInput placeholder="Company Name" [(ngModel)]="data.companyName" name="companyName">
                       </md-input-container>
                     </div>
                     <div>
                       <md-input-container class="input-full-width">
-                        <input mdInput placeholder="Business Registration Number">
+                        <input mdInput placeholder="Business Registration Number" [(ngModel)]="data.businessRegistrationNumber" name="businessRegistrationNumber">
                       </md-input-container>
                     </div>
                   </div>
                   <div class="container">
                     <div>
                       <md-input-container class="input-full-width">
-                        <input mdInput placeholder="GST number">
+                        <input mdInput placeholder="GST number" [(ngModel)]="data.gstNumber" name="gstNumber">
                       </md-input-container>
                     </div>
                     <div>
-                      <md-select placeholder="Speciality" name="speciality" >
+                      <md-select placeholder="Speciality" name="speciality" [(ngModel)]="data.specialityID">>
                         <md-option *ngFor="let speciality of specialities" [value]="speciality.value">
                           {{speciality.viewValue}}
                         </md-option>
@@ -125,39 +125,31 @@
                     </div>
                     <div>
                       <md-input-container class="input-full-width">
-                        <input mdInput placeholder="Doctor Invoice Running Number">
+                        <input mdInput placeholder="Doctor Invoice Running Number" [(ngModel)]="data.doctorRunningNumber" name="doctorRunningNumber">
                       </md-input-container>
                     </div>
                   </div>
                   <div class="container">
                     <div>
                       <md-input-container class="input-full-width">
-                        <input mdInput placeholder="Mobile Phone">
+                        <input mdInput placeholder="Mobile Phone" [(ngModel)]="data.companyMobile" name="companyMobile">
                       </md-input-container>
                     </div>
                     <div>
                       <md-input-container class="input-full-width">
-                        <input mdInput placeholder="Phone">
+                        <input mdInput placeholder="Phone" [(ngModel)]="data.companyPhone" name="companyPhone">
                       </md-input-container>
                     </div>
                     <div>
                       <md-input-container class="input-full-width">
-                        <input mdInput placeholder="Fax">
+                        <input mdInput placeholder="Fax" [(ngModel)]="data.companyFax" name="companyFax">
                       </md-input-container>
                     </div>
                   </div>
                   <div class="container">
                     <div>
                       <md-input-container class="input-full-width">
-                        <input mdInput type="email" placeholder="Email">
-                      </md-input-container>
-                    </div>
-                  </div>
-
-                  <div class="container">
-                    <div>
-                      <md-input-container class="input-full-width">
-                        <textarea mdInput placeholder="Address"></textarea>
+                        <input mdInput type="email" placeholder="Email" [(ngModel)]="data.companyEmail" name="companyEmail">
                       </md-input-container>
                     </div>
                   </div>
@@ -165,23 +157,31 @@
                   <div class="container">
                     <div>
                       <md-input-container class="input-full-width">
-                        <input mdInput placeholder="City">
+                        <textarea mdInput placeholder="Address" [(ngModel)]="data.address" name="address"></textarea>
+                      </md-input-container>
+                    </div>
+                  </div>
+
+                  <div class="container">
+                    <div>
+                      <md-input-container class="input-full-width">
+                        <input mdInput placeholder="City" [(ngModel)]="data.city" name="city">
                       </md-input-container>
                     </div>
                     <div>
                       <md-input-container class="input-full-width">
-                        <input mdInput type="number" placeholder="Postal Code">
+                        <input mdInput type="number" placeholder="Postal Code" [(ngModel)]="data.zipcode" name="zipcode">
                       </md-input-container>
                     </div>
                     <div>
-                      <md-select placeholder="State" name="state" >
+                      <md-select placeholder="State" name="state"  [(ngModel)]="data.state">
                         <md-option *ngFor="let state of states" [value]="state.value">
                           {{state.viewValue}}
                         </md-option>
                       </md-select>
                     </div>
                     <div>
-                      <md-select placeholder="Country" name="country" >
+                      <md-select placeholder="Country" name="country" [(ngModel)]="data.countryID">
                         <md-option *ngFor="let country of countries" [value]="country.value">
                           {{country.viewValue}}
                         </md-option>
@@ -200,12 +200,12 @@
                   <div class="container">
                     <div>
                       <md-input-container class="input-full-width">
-                        <input mdInput placeholder="FreeText1">
+                        <input mdInput placeholder="FreeText1" [(ngModel)]="data.freeText1" name="freeText1">
                       </md-input-container>
                     </div>
                     <div>
                       <md-input-container class="input-full-width">
-                        <input mdInput placeholder="FreeText2">
+                        <input mdInput placeholder="FreeText2" [(ngModel)]="data.freeText2" name="freeText2">
                       </md-input-container>
                     </div>
                   </div>

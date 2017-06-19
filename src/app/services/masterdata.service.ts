@@ -71,6 +71,10 @@ export class MasterDataService {
         return this.http.get(this.sURL + 'DGUser')
                     .map(res => res.json());
     }
+    GetDGUserByID(id) {
+        return this.http.get(this.sURL + 'DGUser/' + id)
+                    .map(res => res.json());
+    }
     GetDepartment() {
         return this.http.get(this.sURL + 'Department')
                     .map(res => res.json());
@@ -198,6 +202,10 @@ export class MasterDataService {
         return this.http.post(this.sURL + 'InventoryATCClassification', InventoryATCClassification)
                     .map(res => res.json());
     }
+    CreateDGUser(DGUser) {
+        return this.http.post(this.sURL + 'DGUser', DGUser)
+                    .map(res => res.json());
+    }
 
 //Update Data
     UpdateMOHVisitTypeByID(MOHVisitType) {
@@ -250,6 +258,10 @@ export class MasterDataService {
     }
     UpdateInventoryATCClassificationByID(InventoryATCClassification) {
         return this.http.put(this.sURL + 'InventoryATCClassification/' + InventoryATCClassification.inventoryATCClassificationID, InventoryATCClassification)
+                    .map(res => res.json());
+    }
+    UpdateDGUserByID(DGUser) {
+        return this.http.put(this.sURL + 'DGUser/' + DGUser.dgUserID, DGUser)
                     .map(res => res.json());
     }
 }
