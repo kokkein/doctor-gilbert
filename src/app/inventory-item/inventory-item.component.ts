@@ -110,11 +110,11 @@ export class InventoryItemComponent implements OnInit {
       this.MasterDataService.GetInventoryByID(this.data.inventoryID)
       .subscribe(m => {
         this.data = m;
-        this.inventoryBrandCtrl = new FormControl({inventoryBrandID: m.inventoryBrandID, inventoryBrandName: m.inventoryBrand});
-        this.inventoryGenericCtrl = new FormControl({inventoryGenericID: m.inventoryGenericID, inventoryGenericName: m.inventoryGeneric});
-        this.inventoryATCClassificationCtrl = new FormControl({inventoryATCClassificationID: m.inventoryATCClassificationID, inventoryATCClassificationName: m.inventoryATCClassification});
-        this.inventoryCategoryCtrl = new FormControl({inventoryCategoryID: m.inventoryCategoryID, inventoryCategoryName: m.inventoryCategory});
-        this.inventorySubCategoryCtrl = new FormControl({inventorySubCategoryID: m.inventorySubCategoryID, inventorySubCategoryName: m.inventorySubCategory});
+        this.inventoryBrandCtrl = new FormControl({inventoryBrandID: m.inventoryBrandResource.inventoryBrandID, inventoryBrandName: m.inventoryBrandResource.inventoryBrandName});
+        this.inventoryGenericCtrl = new FormControl({inventoryGenericID: m.inventoryGenericResource.inventoryGenericID, inventoryGenericName: m.inventoryGenericResource.inventoryGenericName});
+        this.inventoryATCClassificationCtrl = new FormControl({inventoryATCClassificationID: m.inventoryATCClassificationResource.inventoryATCClassificationID, inventoryATCClassificationName: m.inventoryATCClassificationResource.inventoryATCClassificationName});
+        this.inventoryCategoryCtrl = new FormControl({inventoryCategoryID: m.inventoryCategoryResource.inventoryCategoryID, inventoryCategoryName: m.inventoryCategoryResource.inventoryCategoryName});
+        this.inventorySubCategoryCtrl = new FormControl({inventorySubCategoryID: m.inventorySubCategoryResource.inventorySubCategoryID, inventorySubCategoryName: m.inventorySubCategoryResource.inventorySubCategoryName});
 
       }, err => {
         if (err.status == 404)
@@ -181,6 +181,11 @@ export class InventoryItemComponent implements OnInit {
   }
 
   onSave() {
+    this.data.inventoryBrandID = this.inventoryBrandCtrl.value.inventoryBrandID;
+    this.data.inventoryGenericID = this.inventoryGenericCtrl.value.inventoryGenericID;
+    this.data.inventoryATCClassificationID = this.inventoryATCClassificationCtrl.value.inventoryATCClassificationID;
+    this.data.inventoryCategoryID = this.inventoryCategoryCtrl.value.inventoryCategoryID;
+    this.data.inventorySubCategoryID = this.inventorySubCategoryCtrl.value.inventorySubCategoryID;
 
     if (this.data.inventoryID){
       this.MasterDataService.UpdateInventoryByID(this.data)
