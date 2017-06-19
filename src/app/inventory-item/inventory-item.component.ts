@@ -110,6 +110,12 @@ export class InventoryItemComponent implements OnInit {
       this.MasterDataService.GetInventoryByID(this.data.inventoryID)
       .subscribe(m => {
         this.data = m;
+        this.inventoryBrandCtrl = new FormControl({inventoryBrandID: m.inventoryBrandID, inventoryBrandName: m.inventoryBrand});
+        this.inventoryGenericCtrl = new FormControl({inventoryGenericID: m.inventoryGenericID, inventoryGenericName: m.inventoryGeneric});
+        this.inventoryATCClassificationCtrl = new FormControl({inventoryATCClassificationID: m.inventoryATCClassificationID, inventoryATCClassificationName: m.inventoryATCClassification});
+        this.inventoryCategoryCtrl = new FormControl({inventoryCategoryID: m.inventoryCategoryID, inventoryCategoryName: m.inventoryCategory});
+        this.inventorySubCategoryCtrl = new FormControl({inventorySubCategoryID: m.inventorySubCategoryID, inventorySubCategoryName: m.inventorySubCategory});
+
       }, err => {
         if (err.status == 404)
           this.msgs = [];
