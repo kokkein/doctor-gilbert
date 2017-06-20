@@ -51,6 +51,22 @@ export class UserComponent implements OnInit {
         .subscribe(x => {
           this.dataList =x;
      });
+      this.MasterDataService.GetTitle()
+        .subscribe(x => {
+          this.titles =x;
+     });
+      this.MasterDataService.GetState()
+        .subscribe(x => {
+          this.states =x;
+     });
+      this.MasterDataService.GetCountry()
+        .subscribe(x => {
+          this.countries =x;
+     });
+      this.MasterDataService.GetSpeciality()
+        .subscribe(x => {
+          this.specialities =x;
+     });
   }
 
   onSave() {

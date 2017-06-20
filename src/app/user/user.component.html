@@ -31,8 +31,8 @@
                     </div>
                     <div>
                       <md-select placeholder="Title" name="title" [(ngModel)]="data.titleID">
-                        <md-option *ngFor="let title of titles" [value]="title.value">
-                          {{title.viewValue}}
+                        <md-option *ngFor="let title of titles" [value]="title.titleID">
+                          {{title.titleName}}
                         </md-option>
                       </md-select>
                     </div>
@@ -118,8 +118,8 @@
                     </div>
                     <div>
                       <md-select placeholder="Speciality" name="speciality" [(ngModel)]="data.specialityID">>
-                        <md-option *ngFor="let speciality of specialities" [value]="speciality.value">
-                          {{speciality.viewValue}}
+                        <md-option *ngFor="let speciality of specialities" [value]="speciality.specialityID">
+                          {{speciality.specialityName}}
                         </md-option>
                       </md-select>
                     </div>
@@ -174,16 +174,16 @@
                       </md-input-container>
                     </div>
                     <div>
-                      <md-select placeholder="State" name="state"  [(ngModel)]="data.state">
-                        <md-option *ngFor="let state of states" [value]="state.value">
-                          {{state.viewValue}}
+                      <md-select placeholder="State" name="state"  [(ngModel)]="data.stateID">
+                        <md-option *ngFor="let state of states" [value]="state.stateID">
+                          {{state.stateName}}
                         </md-option>
                       </md-select>
                     </div>
                     <div>
                       <md-select placeholder="Country" name="country" [(ngModel)]="data.countryID">
-                        <md-option *ngFor="let country of countries" [value]="country.value">
-                          {{country.viewValue}}
+                        <md-option *ngFor="let country of countries" [value]="country.countryID">
+                          {{country.countryName}}
                         </md-option>
                       </md-select>
                     </div>
@@ -206,6 +206,54 @@
                     <div>
                       <md-input-container class="input-full-width">
                         <input mdInput placeholder="FreeText2" [(ngModel)]="data.freeText2" name="freeText2">
+                      </md-input-container>
+                    </div>
+                  </div>
+                  <div class="container">
+                    <div>
+                      <md-input-container class="input-full-width">
+                        <input mdInput placeholder="FreeText3" [(ngModel)]="data.freeText3" name="freeText3">
+                      </md-input-container>
+                    </div>
+                    <div>
+                      <md-input-container class="input-full-width">
+                        <input mdInput placeholder="FreeText4" [(ngModel)]="data.freeText4" name="freeText4">
+                      </md-input-container>
+                    </div>
+                  </div>
+                  <div class="container">
+                    <div>
+                      <md-input-container class="input-full-width">
+                        <input mdInput placeholder="FreeText5" [(ngModel)]="data.freeText5" name="freeText5">
+                      </md-input-container>
+                    </div>
+                    <div>
+                      <md-input-container class="input-full-width">
+                        <input mdInput placeholder="FreeText6" [(ngModel)]="data.freeText6" name="freeText6">
+                      </md-input-container>
+                    </div>
+                  </div>
+                  <div class="container">
+                    <div>
+                      <md-input-container class="input-full-width">
+                        <input mdInput placeholder="FreeText7" [(ngModel)]="data.freeText7" name="freeText7">
+                      </md-input-container>
+                    </div>
+                    <div>
+                      <md-input-container class="input-full-width">
+                        <input mdInput placeholder="FreeText8" [(ngModel)]="data.freeText8" name="freeText8">
+                      </md-input-container>
+                    </div>
+                  </div>
+                  <div class="container">
+                    <div>
+                      <md-input-container class="input-full-width">
+                        <input mdInput placeholder="FreeText9" [(ngModel)]="data.freeText9" name="freeText9">
+                      </md-input-container>
+                    </div>
+                    <div>
+                      <md-input-container class="input-full-width">
+                        <input mdInput placeholder="FreeText10" [(ngModel)]="data.freeText10" name="freeText10">
                       </md-input-container>
                     </div>
                   </div>

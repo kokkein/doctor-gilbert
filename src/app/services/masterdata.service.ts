@@ -147,6 +147,14 @@ export class MasterDataService {
         return this.http.get(this.sURL + 'InventoryATCClassification/' + id)
                     .map(res => res.json());
     }
+    GetSpeciality() {
+        return this.http.get(this.sURL + 'Speciality')
+                    .map(res => res.json());
+    }
+    GetSpecialityByID(id) {
+        return this.http.get(this.sURL + 'Speciality/' + id)
+                    .map(res => res.json());
+    }
 
 
 //Add Data
@@ -206,6 +214,10 @@ export class MasterDataService {
         return this.http.post(this.sURL + 'DGUser', DGUser)
                     .map(res => res.json());
     }
+    CreateSpeciality(Speciality) {
+        return this.http.post(this.sURL + 'Speciality', Speciality)
+                    .map(res => res.json());
+    }
 
 //Update Data
     UpdateMOHVisitTypeByID(MOHVisitType) {
@@ -262,6 +274,10 @@ export class MasterDataService {
     }
     UpdateDGUserByID(DGUser) {
         return this.http.put(this.sURL + 'DGUser/' + DGUser.dgUserID, DGUser)
+                    .map(res => res.json());
+    }
+    UpdateSpecialityByID(Speciality) {
+        return this.http.put(this.sURL + 'Speciality/' + Speciality.specialityID, Speciality)
                     .map(res => res.json());
     }
 }

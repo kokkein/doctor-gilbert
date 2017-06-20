@@ -56,6 +56,7 @@ import { InventoryCategoryComponent } from './masterData/inventory-category/inve
 import { InventorySubcategoryComponent } from './masterData/inventory-subcategory/inventory-subcategory.component';
 import { InventoryMedicationclassComponent } from './masterData/inventory-medicationclass/inventory-medicationclass.component';
 import { InventoryPregnancycategoryComponent } from './masterData/inventory-pregnancycategory/inventory-pregnancycategory.component';
+import { SpecialityComponent } from './masterdata/speciality/speciality.component';
 
 const appRoutes: Routes = [
 { path: 'appointment', component: AppointmentComponent},
@@ -110,7 +111,7 @@ const appRoutes: Routes = [
     MedicationComponent,
     TimelineComponent,
     DiagnosisComponent, 
-    VitalSignsComponent, DialogResultExampleDialog, AppointmentComponent, DepartmentComponent, InsuranceComponent, PayorComponent, MOHVisitTypeComponent, PurposeOfVisitComponent, MasterDataComponent, InventoryBrandComponent, InventoryGenericComponent, InventoryAtcComponent, InventoryCategoryComponent, InventorySubcategoryComponent, InventoryMedicationclassComponent, InventoryPregnancycategoryComponent
+    VitalSignsComponent, DialogResultExampleDialog, AppointmentComponent, DepartmentComponent, InsuranceComponent, PayorComponent, MOHVisitTypeComponent, PurposeOfVisitComponent, MasterDataComponent, InventoryBrandComponent, InventoryGenericComponent, InventoryAtcComponent, InventoryCategoryComponent, InventorySubcategoryComponent, InventoryMedicationclassComponent, InventoryPregnancycategoryComponent, SpecialityComponent
   ],
   imports: [
     BrowserModule,
