@@ -1,3 +1,5 @@
+import { SpecialityComponent } from './masterData/speciality/speciality.component';
+import { SpeechRecognitionService } from './services/SpeechRecognitionService';
 import { MasterDataService } from './services/masterdata.service';
 import { EventService } from './services/EventService';
 import { NodeService } from './services/NodeService';
@@ -56,7 +58,6 @@ import { InventoryCategoryComponent } from './masterData/inventory-category/inve
 import { InventorySubcategoryComponent } from './masterData/inventory-subcategory/inventory-subcategory.component';
 import { InventoryMedicationclassComponent } from './masterData/inventory-medicationclass/inventory-medicationclass.component';
 import { InventoryPregnancycategoryComponent } from './masterData/inventory-pregnancycategory/inventory-pregnancycategory.component';
-import { SpecialityComponent } from './masterdata/speciality/speciality.component';
 
 const appRoutes: Routes = [
 { path: 'appointment', component: AppointmentComponent},
@@ -93,6 +94,8 @@ const appRoutes: Routes = [
 { path: 'inventory-pregnancycategory/:id', component: InventoryPregnancycategoryComponent},
 { path: 'inventory-subcategory', component: InventorySubcategoryComponent},
 { path: 'inventory-subcategory/:id', component: InventorySubcategoryComponent},
+{ path: 'speciality', component: SpecialityComponent},
+{ path: 'speciality/:id', component: SpecialityComponent},
 ];
 
 @NgModule({
@@ -122,7 +125,7 @@ const appRoutes: Routes = [
     InputMaskModule, ChipsModule, EditorModule, SharedModule, CheckboxModule,
     Ng2GoogleChartsModule, TreeTableModule, DataTableModule, DialogModule, ScheduleModule, CalendarModule
   ],
-  providers: [NodeService, CarService, EventService, MasterDataService],
+  providers: [NodeService, CarService, EventService, MasterDataService, SpeechRecognitionService],
   entryComponents: [DialogResultExampleDialog],
   bootstrap: [AppComponent]
 })

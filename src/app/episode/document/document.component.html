@@ -5,6 +5,7 @@
         <button md-raised-button>Edit</button>
         <button md-raised-button>New</button>
         <button md-raised-button>Void</button>
+        <button md-mini-fab (click)="activateSpeech()"><i class="material-icons">{{showRecording ? 'hearing' : 'mic'}}</i></button>
     </div>
 </div>
 <section>
@@ -20,7 +21,7 @@
         </md-list>
     </article>
     <aside>
-        <p>New Document</p>
+        <p>New Document</p> <div>{{showRecording ? 'Listening...' : 'Record'}}</div>
         <p-editor [(ngModel)]="text" [style]="{'height':'320px'}"></p-editor>
     </aside>
   </div>

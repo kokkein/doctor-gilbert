@@ -117,7 +117,7 @@
                       </md-input-container>
                     </div>
                     <div>
-                      <md-select placeholder="Speciality" name="speciality" [(ngModel)]="data.specialityID">>
+                      <md-select placeholder="Speciality" name="speciality" [(ngModel)]="data.specialityID">
                         <md-option *ngFor="let speciality of specialities" [value]="speciality.specialityID">
                           {{speciality.specialityName}}
                         </md-option>

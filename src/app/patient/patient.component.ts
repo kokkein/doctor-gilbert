@@ -1,8 +1,11 @@
-import { MasterDataService } from './../services/masterdata.service';
+import { Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { Message } from 'primeng/primeng';
+import { Observable } from 'rxjs/Observable';
+import { FormControl, FormGroup } from '@angular/forms';
+import { MasterDataService } from "app/services/masterdata.service";
 import 'rxjs/add/operator/startWith';
-import {Observable} from 'rxjs/Observable';
 
 @Component({
   selector: 'app-patient',
@@ -11,18 +14,22 @@ import {Observable} from 'rxjs/Observable';
 })
 export class PatientComponent implements OnInit {
 
-  inUse = true;
-  countries;
-  titles;
-  IDtypes;
-  relationship;
-  payors;
-  states;
+    data: any = {};
+    dataList: any = [];
+    msgs: Message[] = [];
+    dgUserID;
+    inUse = true;
+    countries;
+    titles;
+    IDtypes;
+    relationship;
+    payors;
+    states;
+    
+    selectedCountry= 190;
+    reactiveStates: any;
   
-  selectedCountry= 190;
-  reactiveStates: any;
-
-  tdDisabled = false;
+    tdDisabled = false;
 
 
 //payors =
