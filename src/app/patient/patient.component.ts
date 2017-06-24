@@ -84,14 +84,9 @@ insurances = [
 
   }
 
-  displayFn(value: any): string {
+  displayPayorFn(value: any): string {
     return value && typeof value === 'object' ? value.payorName : value;
   }
-
-  filterInsurances(val: string) {
-    return val ? this.insurances.filter((s) => new RegExp(val, 'gi').test(s)) : this.insurances;
-  }
-
   filterPayors(val: string) {
     //`^${val}`
     return val ? this.payors.filter((s) => new RegExp(val, 'gi').test(s.payorName))
@@ -105,18 +100,13 @@ insurances = [
     this.MDS.GetIdentificationType().subscribe(indetificationType => {
     this.IDtypes = indetificationType;});
 
-    //this.MDS.GetInsurance().subscribe(insurance => {
-    //this.insurances = insurance;});
-
     this.MDS.GetPayor().subscribe(payor => {
     this.payors = payor;
-
     //here only start filter
     this.filteredPayors = this.payorCtrl.valueChanges
         .startWith(this.payorCtrl.value)
-        .map(val => this.displayFn(val))
+        .map(val => this.displayPayorFn(val))
         .map(name => this.filterPayors(name));
-
     });
 
     this.MDS.GetRelationship().subscribe(relationship => {
