@@ -62,6 +62,7 @@ import { InventoryPregnancycategoryComponent } from './masterData/inventory-preg
 const appRoutes: Routes = [
 { path: 'appointment', component: AppointmentComponent},
 { path: 'patient', component: PatientComponent},
+{ path: 'patient/:id', component: PatientComponent},
 { path: 'visit', component: VisitComponent},
 { path: 'vital', component: VitalComponent},
 { path: 'inventory-item', component: InventoryItemComponent},
