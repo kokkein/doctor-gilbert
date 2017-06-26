@@ -51,7 +51,7 @@ export class MasterDataService {
         return this.http.get(this.sURL + 'Patient/Patient')
                     .map(res => res.json());
     }
-    GetPatientByID() {
+    GetPatientByID(id) {
         return this.http.get(this.sURL + 'Patient/Patient/' + id)
                     .map(res => res.json());
     }
