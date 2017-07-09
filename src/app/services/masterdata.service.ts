@@ -223,7 +223,7 @@ export class MasterDataService {
                     .map(res => res.json());
     }
     CreatePatient(Patient) {
-        return this.http.post(this.sURL + 'Patient/Patient', Patient)
+        return this.http.post(this.sURL + 'Patient/CreatePatient', Patient)
                     .map(res => res.json());
     }
 

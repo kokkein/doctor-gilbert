@@ -1,5 +1,4 @@
 <section>
-  <p-growl [(value)]="msgs" life=3000></p-growl>
     <div class="toolbar">
       <div>
         <button md-raised-button (click)="onSave()">Save</button>
@@ -11,7 +10,7 @@
   <p>
     {{data | json}}
   </p>
-
+  <p-growl [(value)]="msgs" life=3000></p-growl>
     <md-card>
       <md-card-header md-colors=":{backgroundColor: 'default-primary-700'}">
         <md-card-title>Patient Master</md-card-title>
@@ -39,9 +38,9 @@
                       </md-select>
                     </div>
                     <div>
-                      <md-radio-group class="input-full-width">
-                        <md-radio-button *ngFor="let sex of gender" [value]="gender">
-                          {{sex}}
+                      <md-radio-group class="input-full-width" name="gender" [(ngModel)]="data.gender">
+                        <md-radio-button *ngFor="let sex of gender" [value]="sex.OptionVal">
+                          {{sex.Option}}
                         </md-radio-button>
                       </md-radio-group>
                     </div>
@@ -50,7 +49,7 @@
                   <div class="container">
                     <div>
                       <md-input-container class="input-full-width">
-                        <input mdInput type="date" placeholder="Date of Birth" [(ngModel)]="data.dob" name="dob">
+                        <input mdInput type="date" placeholder="Date of Birth" [ngModel]="data.dob| date:'yyyy-MM-dd'" (ngModelChange)="data.dob = $event" name="dob">
                       </md-input-container>
                     </div>
                     <div>
@@ -111,7 +110,7 @@
                       </md-select>
                     </div>
                     <div>
-                      <md-select placeholder="Country" [(ngModel)]="selectedCountry" name="countryID" [(ngModel)]="data.countryID">
+                      <md-select placeholder="Country" name="countryID" [(ngModel)]="data.countryID">
                         <md-option *ngFor="let country of countries" [value]="country.countryID">
                           {{country.countryName}}
                         </md-option>
@@ -144,7 +143,7 @@
                 <div class="container">
                   <div>
                     <md-input-container class="input-full-width">
-                      <input mdInput type="date" placeholder="Date of Birth" [(ngModel)]="data.patientEmergencyResources.dob" name="patientEmergencyResources.dob">
+                      <input mdInput type="date" placeholder="Date of Birth" [ngModel]="data.patientEmergencyResources.dob| date:'yyyy-MM-dd'" (ngModelChange)="data.patientEmergencyResources.dob = $event" name="patientEmergencyResources.dob">
                     </md-input-container>
                   </div>
                   <div>
@@ -206,7 +205,7 @@
                     </md-select>
                   </div>
                   <div>
-                      <md-select placeholder="Country" [(ngModel)]="selectedCountry" name="patientEmergencyResources.countryID" [(ngModel)]="data.patientEmergencyResources.countryID" >
+                      <md-select placeholder="Country" name="patientEmergencyResources.countryID" [(ngModel)]="data.patientEmergencyResources.countryID" >
                         <md-option *ngFor="let country of countries" [value]="country.countryID">
                           {{country.countryName}}
                         </md-option>
@@ -225,7 +224,7 @@
                 <div class="container">
                   <div> 
                     <md-input-container class="input-full-width">
-                      <input mdInput placeholder="Insurance" [mdAutocomplete]="reactiveInsurance" [formControl]="insuranceCtrl">
+                      <input mdInput placeholder="Insurance" [mdAutocomplete]="reactiveInsurance" [formControl]="insuranceCtrl"  name="patientPolicyResources.insuranceID">
                     </md-input-container>
 
                     <md-autocomplete #reactiveInsurance="mdAutocomplete" [displayWith]="displayInsuranceFn">
@@ -237,7 +236,7 @@
                   </div>
                   <div>
                     <md-input-container class="input-full-width">
-                      <input mdInput placeholder="Payor" [mdAutocomplete]="reactiveAuto" [formControl]="payorCtrl">
+                      <input mdInput placeholder="Payor" [mdAutocomplete]="reactiveAuto" [formControl]="payorCtrl"  name="patientPolicyResources.payorID">
                     </md-input-container>
 
                     <md-autocomplete #reactiveAuto="mdAutocomplete" [displayWith]="displayPayorFn">
@@ -252,12 +251,12 @@
                 <div class="container">
                   <div>
                     <md-input-container class="input-full-width">
-                      <input mdInput type="date" placeholder="Start Date" [(ngModel)]="data.patientPolicyResources.startDate" name="patientPolicyResources.startDate">
+                      <input mdInput type="date" placeholder="Start Date" [ngModel]="data.patientPolicyResources.startDate| date:'yyyy-MM-dd'" (ngModelChange)="data.patientPolicyResources.startDate = $event" name="patientPolicyResources.startDate">
                     </md-input-container>
                   </div>
                   <div>
                     <md-input-container class="input-full-width">
-                      <input mdInput type="date" placeholder="End date" [(ngModel)]="data.patientPolicyResources.endDate" name="patientPolicyResources.endDate">
+                      <input mdInput type="date" placeholder="End date" [ngModel]="data.patientPolicyResources.endDate| date:'yyyy-MM-dd'" (ngModelChange)="data.patientPolicyResources.endDate = $event" name="patientPolicyResources.endDate">
                     </md-input-container>
                   </div>
                   <div>
@@ -306,14 +305,14 @@
                   </div>
                   <div>
                     <md-input-container class="input-full-width">
-                      <input mdInput type="email" placeholder="Email" [(ngModel)]="data.patientEmployeeResources.address" name="patientEmployeeResources.address">
+                      <input mdInput type="email" placeholder="Email" [(ngModel)]="data.patientEmployeeResources.email" name="patientEmployeeResources.email">
                     </md-input-container>
                   </div>
                 </div>
                 <div class="container">
                   <div>
                     <md-input-container class="input-full-width">
-                      <textarea mdInput placeholder="Address" [(ngModel)]="data.patientEmployeeResources.userFullName" name="patientEmployeeResources.userFullName"></textarea>
+                      <textarea mdInput placeholder="Address" [(ngModel)]="data.patientEmployeeResources.address" name="patientEmployeeResources.address"></textarea>
                     </md-input-container>
                   </div>
                 </div>
@@ -336,7 +335,7 @@
                     </md-select>
                   </div>
                   <div>
-                      <md-select placeholder="Country" [(ngModel)]="selectedCountry" name="patientEmployeeResources.countryID" [(ngModel)]="data.patientEmployeeResources.countryID" >
+                      <md-select placeholder="Country"  name="patientEmployeeResources.countryID" [(ngModel)]="data.patientEmployeeResources.countryID" >
                         <md-option *ngFor="let country of countries" [value]="country.countryID">
                           {{country.countryName}}
                         </md-option>

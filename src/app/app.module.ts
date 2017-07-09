@@ -4,6 +4,7 @@ import { MasterDataService } from './services/masterdata.service';
 import { EventService } from './services/EventService';
 import { NodeService } from './services/NodeService';
 import { CarService } from './services/carService';
+import { MdDatepickerModule } from '@angular/material'
 
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
@@ -12,7 +13,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { Routes, RouterModule } from '@angular/router';
 import { AppComponent, DialogResultExampleDialog } from './app.component';
-import { MaterialModule} from '@angular/material';
+import { MaterialModule, MdNativeDateModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 import 'hammerjs';
@@ -121,7 +122,7 @@ const appRoutes: Routes = [
     BrowserModule,
     FormsModule, ReactiveFormsModule,
     HttpModule, RouterModule.forRoot(appRoutes),
-    MaterialModule, MenuModule,
+    MaterialModule, MenuModule, MdNativeDateModule,
     BrowserAnimationsModule, FlexLayoutModule, GrowlModule, TieredMenuModule,
     InputMaskModule, ChipsModule, EditorModule, SharedModule, CheckboxModule,
     Ng2GoogleChartsModule, TreeTableModule, DataTableModule, DialogModule, ScheduleModule, CalendarModule

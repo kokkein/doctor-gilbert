@@ -6,6 +6,7 @@ import { Observable } from 'rxjs/Observable';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MasterDataService } from "app/services/masterdata.service";
 import 'rxjs/add/operator/startWith';
+import { MdDatepickerModule } from '@angular/material'
 
 @Component({
   selector: 'app-patient',
@@ -32,7 +33,6 @@ export class PatientComponent implements OnInit {
     states;
     patientID;
     
-    selectedCountry= 190;
     reactiveStates: any;
   
     tdDisabled = false;
@@ -43,11 +43,10 @@ export class PatientComponent implements OnInit {
     payorCtrl: FormControl;
     filteredPayors: any;
 
-  gender = [
-    'Male',
-    'Female'
-  ];
-
+    gender = [
+      {Option:'Male', OptionVal:'M'},
+      {Option:'Female', OptionVal:'F'}
+    ];
 
   constructor(private MasterDataService: MasterDataService, private route: ActivatedRoute, private router: Router) {
     this.payorCtrl = new FormControl({payorID: 0, payorName: ''});
@@ -68,7 +67,6 @@ export class PatientComponent implements OnInit {
     return value && typeof value === 'object' ? value.payorName : value;
   }
   filterPayors(val: string) {
-    //`^${val}`
     return val ? this.payors.filter((s) => new RegExp(val, 'gi').test(s.payorName))
                : this.payors;
   }
@@ -76,7 +74,6 @@ export class PatientComponent implements OnInit {
     return value && typeof value === 'object' ? value.insuranceName : value;
   }
   filterInsurances(val: string) {
-    //`^${val}`
     return val ? this.insurances.filter((s) => new RegExp(val, 'gi').test(s.insuranceName))
                : this.insurances;
   }
@@ -116,6 +113,8 @@ export class PatientComponent implements OnInit {
 
   onSave() {
 
+    this.data.patientPolicyResources.insuranceID = this.insuranceCtrl.value.insuranceID;
+    this.data.patientPolicyResources.payorID = this.payorCtrl.value.payorID;
     if (this.data.patientID){
       this.MasterDataService.UpdatePatientByID(this.data)
         .subscribe(x => {
