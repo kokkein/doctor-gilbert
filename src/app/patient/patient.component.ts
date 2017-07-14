@@ -20,6 +20,7 @@ export class PatientComponent implements OnInit {
       patientPolicyResources: {},
       patientEmployeeResources: {}
     };
+    datat: any;
     dataList: any = [];
     msgs: Message[] = [];
     dgUserID;
@@ -78,6 +79,10 @@ export class PatientComponent implements OnInit {
                : this.insurances;
   }
   ngOnInit() {
+
+    this.payorCtrl = new FormControl({payorID: 0, payorName: 'm.payorName'});
+    this.insuranceCtrl = new FormControl({insuranceID: 0, insuranceName: ''});
+
     this.MasterDataService.GetCountry().subscribe(countries => {
     this.countries = countries;});
     
@@ -133,6 +138,29 @@ export class PatientComponent implements OnInit {
       this.MasterDataService.GetPatientByID(this.data.patientID)
       .subscribe(m => {
         this.data = m;
+        if (m.patientEmergencyResources == null)
+          this.data.patientEmergencyResources = {};
+        if (this.data.patientPolicyResources == null)
+          this.data.patientPolicyResources = {};
+        if (this.data.patientEmployeeResources == null)
+          this.data.patientEmployeeResources = {};
+
+
+this.payorCtrl = new FormControl({payorID: 0, payorName: ''});
+this.insuranceCtrl = new FormControl({insuranceID: 0, insuranceName: ''});
+          
+        if (this.data.patientPolicyResources != null) { 
+          this.MasterDataService.GetPayorByID(m.patientPolicyResources.payorID)
+          .subscribe(p =>{
+              this.payorCtrl = new FormControl({payorID: p.payorID, payorName: p.payorName});
+          })
+
+          this.MasterDataService.GetInsuranceByID(m.patientPolicyResources.insuranceID)
+          .subscribe(i =>{
+              this.insuranceCtrl = new FormControl({insuranceID: i.insuranceID, insuranceName: i.insuranceName});
+          })
+        }
+
       }, err => {
         if (err.status == 404)
           this.msgs = [];
