@@ -145,9 +145,8 @@ export class PatientComponent implements OnInit {
         if (this.data.patientEmployeeResources == null)
           this.data.patientEmployeeResources = {};
 
-
-this.payorCtrl = new FormControl({payorID: 0, payorName: ''});
-this.insuranceCtrl = new FormControl({insuranceID: 0, insuranceName: ''});
+        this.payorCtrl = new FormControl({payorID: 0, payorName: ''});
+        this.insuranceCtrl = new FormControl({insuranceID: 0, insuranceName: ''});
           
         if (this.data.patientPolicyResources != null) { 
           this.MasterDataService.GetPayorByID(m.patientPolicyResources.payorID)
