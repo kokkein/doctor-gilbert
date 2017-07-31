@@ -98,6 +98,8 @@ const appRoutes: Routes = [
 { path: 'inventory-subcategory/:id', component: InventorySubcategoryComponent},
 { path: 'speciality', component: SpecialityComponent},
 { path: 'speciality/:id', component: SpecialityComponent},
+{ path: 'Appointment', component: AppointmentComponent},
+{ path: 'Appointment/:id', component: AppointmentComponent},
 ];
 
 @NgModule({

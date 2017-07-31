@@ -159,6 +159,14 @@ export class MasterDataService {
         return this.http.get(this.sURL + 'Speciality/' + id)
                     .map(res => res.json());
     }
+    GetAppointment() {
+        return this.http.get(this.sURL + 'Appointment/Appointment')
+                    .map(res => res.json());
+    }
+    GetAppointmentByID(id) {
+        return this.http.get(this.sURL + 'Appointment/Appointment/' + id)
+                    .map(res => res.json());
+    }
 
 
 //Add Data
@@ -226,6 +234,10 @@ export class MasterDataService {
         return this.http.post(this.sURL + 'Patient/CreatePatient', Patient)
                     .map(res => res.json());
     }
+    CreateAppointment(Appointment) {
+        return this.http.post(this.sURL + 'Appointment/CreateAppointment', Appointment)
+                    .map(res => res.json());
+    }
 
 //Update Data
     UpdateMOHVisitTypeByID(MOHVisitType) {
@@ -290,6 +302,10 @@ export class MasterDataService {
     }
     UpdatePatientByID(Patient) {
         return this.http.put(this.sURL + 'Patient/Patient/' + Patient.patientID, Patient)
+                    .map(res => res.json());
+    }
+    UpdateAppointmentByID(Appointment) {
+        return this.http.put(this.sURL + 'Appointment/Appointment/' + Appointment.appointmentID, Appointment)
                     .map(res => res.json());
     }
 }

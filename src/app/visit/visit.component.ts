@@ -108,6 +108,7 @@ export class VisitComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.visitdata.VisitDateTime = "2017-08-12T15:14";
     this.MasterDataService.GetInsurance().subscribe(policy => {
     this.policies = policy;
     //here only start filter

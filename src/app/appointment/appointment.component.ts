@@ -11,7 +11,8 @@ export class AppointmentComponent implements OnInit {
     events: any[];
     header: any;
     event: MyEvent;
-    
+    dd: string;
+
     dialogVisible: boolean = false;
     
     idGen: number = 100;
@@ -19,7 +20,32 @@ export class AppointmentComponent implements OnInit {
     constructor(private eventService: EventService) { }
 
     ngOnInit() {
-        this.eventService.getEvents().then(events => {this.events = events;});
+                this.events = [
+            {
+                "title": "All Day Event",
+                "start": "2017-07-01T15:15:00"
+            },
+            {
+                "title": "Long Event with end date",
+                "start": "2017-07-07T18:18",
+                "end": "2017-07-24T11:11"
+            },
+            {
+                "title": "Repeating Event",
+                "start": '2017-07-24T12:12'
+            },
+            {
+                "title": "Repeating Event with time",
+                "start": "2017-07-24T13:13",
+                "allDay" : false,
+                "descr": "This is a cool event"
+            },
+            {
+                "title": "Conference for few day",
+                "start": "2017-07-11T14:14",
+                "end": "2017-07-13"
+            }
+        ];
         
         this.header = {
 			left: 'prev,next today',
@@ -31,6 +57,7 @@ export class AppointmentComponent implements OnInit {
     handleDayClick(event) {
         this.event = new MyEvent();
         this.event.start = event.date.format();
+        
         this.dialogVisible = true;
     }
     
@@ -48,10 +75,16 @@ export class AppointmentComponent implements OnInit {
             end.stripTime();
             this.event.end = end.format();
         }
-
+        
         this.event.id = e.calEvent.id;
-        this.event.start = start.format();
+        var b: Date = new Date(e.calEvent.start);
+        console.log(e.calEvent.start);
+        this.event.start = e.calEvent.start;
         this.event.allDay = e.calEvent.allDay;
+        this.event.descr = e.calEvent.descr;
+        
+        this.dd = e.calEvent.start._i; //"2017-07-24T13:13";
+
         this.dialogVisible = true;
     }
     
@@ -99,5 +132,7 @@ export class MyEvent {
     title: string;
     start: string;
     end: string;
+    url: string;
+    descr: string;
     allDay: boolean = true;
 }
