@@ -18,26 +18,71 @@
             <div class="ui-grid-row">
                 <md-input-container class="input-full-width">
                     <input mdInput type="datetime-local" [(ngModel)]="dd" placeholder="Start" name="Start">
-                </md-input-container>          
-            
+                </md-input-container>      
+                <md-input-container class="input-full-width">
+                    <input mdInput type="datetime-local" [(ngModel)]="event.end" placeholder="End" name="End">
+                </md-input-container>    
+                <md-input-container class="input-full-width">
+                    <input mdInput type="time" [(ngModel)]="event.duration" placeholder="Duration" name="Duration">
+                </md-input-container>
+            </div>
+            <div class="ui-grid-row">
+
+                <md-select placeholder="Purpose of Visit" name="Purpose" class="input-full-width" [(ngModel)]="event.purpose">
+                    <md-option *ngFor="let Purpose of purposeOfVisits" [value]="Purpose.visitPurposeID">
+                        {{Purpose.visitPurposeName}}
+                    </md-option>
+                </md-select>
+                <md-checkbox [(ngModel)]="event.allDay" name="allday">All Day</md-checkbox>
             </div>
             <div class="ui-grid-row">
               <md-input-container class="input-full-width">
-                    <input mdInput type="datetime-local" [(ngModel)]="event.end" placeholder="End" name="End">
+                <input mdInput placeholder="Visit Doctor" [mdAutocomplete]="reactiveDoctor" [formControl]="doctorCtrl"  [(ngModel)]="event.Doctor" name="Doctor">
+              </md-input-container>
+
+              <md-autocomplete #reactiveDoctor="mdAutocomplete" [displayWith]="displayDoctorFn">
+                <md-option *ngFor="let doctor of filteredDoctors | async" [value]="doctor">
+                  <span>{{ doctor.userFullName }}, </span>
+                  <small><strong>Initial:</strong>{{doctor.userInitial}}, <strong>Speciality:</strong>{{doctor.specialityID}}</small>
+                </md-option>
+              </md-autocomplete>
+            </div>
+
+            <div class="ui-grid-row">
+                <md-input-container class="input-half-width">
+                    <input mdInput  [(ngModel)]="event.purpose" placeholder="Mobile" name="Mobile">
                 </md-input-container>
+                <md-input-container class="input-half-width">
+                    <input mdInput  [(ngModel)]="event.visittype" placeholder="Phone" name="Phone">
+                </md-input-container>
+                <md-input-container class="input-full-width">
+                    <input mdInput  [(ngModel)]="event.visittype" placeholder="Email" name="Email">
+                </md-input-container>
+            </div>
+            <div class="ui-grid-row">
+
+                <md-input-container class="input-full-width">
+                <input mdInput placeholder="Patient (Registered)" [mdAutocomplete]="reactivePatient" [formControl]="patientCtrl"  [(ngModel)]="event.Patient" name="Patient">
+                </md-input-container>
+
+                <md-autocomplete #reactivePatient="mdAutocomplete" [displayWith]="displayPatientFn">
+                <md-option *ngFor="let patient of filteredPatients | async" [value]="patient">
+                    <span>{{patient.name}}, </span>
+                    <small><strong>NRIC:</strong>{{patient.identificationValue}}, <strong>Gender:</strong>{{patient.gender}}, <strong>D.O.B:</strong>{{patient.dob | date: 'dd/MM/yyyy'}}</small>
+                </md-option>
+                </md-autocomplete>
+
             </div>
             <div class="ui-grid-row">
                 <md-input-container class="input-full-width">
                     <input mdInput placeholder="Description" id="Description" [(ngModel)]="dd" >
                 </md-input-container>
             </div>
-            <div class="ui-grid-row">
-                <div class="ui-grid-col-4"><label for="allday">All Day</label></div>
-                <div class="ui-grid-col-8"><p-checkbox [(ngModel)]="event.allDay" binary="checkbox"></p-checkbox></div>
-            </div>
         </div>
         <p-footer>
             <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
+                <button md-raised-button (click)="deleteEvent()" [disabled]="!event?.id">Delete</button>
+                <button md-raised-button (click)="saveEvent()" [disabled]="!event?.id">Save</button>
                 <button type="button" pButton icon="fa-close" (click)="deleteEvent()" label="Delete" [disabled]="!event?.id"></button>
                 <button type="button" pButton icon="fa-check" (click)="saveEvent()" label="Save" [disabled]="!event?.start"></button>
             </div>

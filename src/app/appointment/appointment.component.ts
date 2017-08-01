@@ -1,5 +1,10 @@
+import { FormControl } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { MasterDataService } from './../services/masterdata.service';
 import { Component, OnInit } from '@angular/core';
 import { EventService } from './../services/EventService';
+import 'rxjs/add/operator/startWith';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-appointment',
@@ -12,38 +17,47 @@ export class AppointmentComponent implements OnInit {
     header: any;
     event: MyEvent;
     dd: string;
+    purposeOfVisits;
 
+    patients;
+    patientCtrl: FormControl;
+    filteredPatients: any;
+    doctors;
+    doctorCtrl: FormControl;
+    filteredDoctors: any;
     dialogVisible: boolean = false;
     
     idGen: number = 100;
     
-    constructor(private eventService: EventService) { }
+    constructor(private MasterDataService: MasterDataService, private route: ActivatedRoute, private router: Router, private eventService: EventService) { 
+        
+    }
 
     ngOnInit() {
-                this.events = [
+        this.events = [
             {
                 "title": "All Day Event",
-                "start": "2017-07-01T15:15:00"
+                "start": "2017-08-01T15:15:00"
             },
             {
                 "title": "Long Event with end date",
-                "start": "2017-07-07T18:18",
-                "end": "2017-07-24T11:11"
+                "start": "2017-08-07T18:18",
+                "end": "2017-08-24T11:11"
             },
             {
                 "title": "Repeating Event",
-                "start": '2017-07-24T12:12'
+                "start": '2017-08-24T12:12'
             },
             {
                 "title": "Repeating Event with time",
-                "start": "2017-07-24T13:13",
+                "start": "2017-08-24T13:13",
                 "allDay" : false,
                 "descr": "This is a cool event"
             },
             {
                 "title": "Conference for few day",
-                "start": "2017-07-11T14:14",
-                "end": "2017-07-13"
+                "start": "2017-08-11T14:14",
+                "end": "2017-08-13"
             }
         ];
         
@@ -51,9 +65,51 @@ export class AppointmentComponent implements OnInit {
 			left: 'prev,next today',
 			center: 'title',
 			right: 'month,agendaWeek,agendaDay,listWeek,listMonth'
-		};
+        };
+        
+        this.patientCtrl = new FormControl({patientID: 0, name: ''});
+        this.doctorCtrl = new FormControl({dgUserID: 0, userFullName: ''});
+        this.MasterDataService.GetPurposeOfVisit().subscribe(purposeOfVisit => {
+        this.purposeOfVisits = purposeOfVisit;
+
+        });
+
+        this.MasterDataService.GetPatient().subscribe(patient => {
+        this.patients = patient;
+        //here only start filter
+        this.filteredPatients = this.patientCtrl.valueChanges
+            .startWith(this.patientCtrl.value)
+            .map(val => this.displayPatientFn(val))
+            .map(name => this.filterPatients(name));
+        });
+
+        this.MasterDataService.GetDGUser().subscribe(doctor => {
+        this.doctors = doctor;
+        //here only start filter
+        this.filteredDoctors = this.doctorCtrl.valueChanges
+            .startWith(this.doctorCtrl.value)
+            .map(val => this.displayDoctorFn(val))
+            .map(name => this.filterDoctors(name));
+        });
+
     }
-    
+
+    displayPatientFn(value: any): string {
+        return value && typeof value === 'object' ? value.name : value;
+    }
+    filterPatients(val: string) {
+        //`^${val}`
+        return val ? this.patients.filter((s) => new RegExp(val, 'gi').test(s.name))
+                   : this.patients;
+    }
+    displayDoctorFn(value: any): string {
+        return value && typeof value === 'object' ? value.userFullName : value;
+    }
+    filterDoctors(val: string) {
+    //`^${val}`
+        return val ? this.doctors.filter((s) => new RegExp(val, 'gi').test(s.userFullName))
+               : this.doctors;
+    }
     handleDayClick(event) {
         this.event = new MyEvent();
         this.event.start = event.date.format();
