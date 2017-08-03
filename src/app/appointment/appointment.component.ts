@@ -16,7 +16,8 @@ export class AppointmentComponent implements OnInit {
     events: any[];
     header: any;
     event: MyEvent;
-    dd: string;
+    startDT: string;
+    endDT: string;
     purposeOfVisits;
 
     patients;
@@ -37,7 +38,8 @@ export class AppointmentComponent implements OnInit {
         this.events = [
             {
                 "title": "All Day Event",
-                "start": "2017-08-01T15:15:00"
+                "start": "2017-08-01T15:15:00",
+                "end": "2017-08-01T15:45:00"
             },
             {
                 "title": "Long Event with end date",
@@ -46,18 +48,20 @@ export class AppointmentComponent implements OnInit {
             },
             {
                 "title": "Repeating Event",
-                "start": '2017-08-24T12:12'
+                "start": "017-08-24T12:12",
+                "end": "2017-08-24T15:15:00"
             },
             {
                 "title": "Repeating Event with time",
                 "start": "2017-08-24T13:13",
+                "end": "2017-08-24T15:15",
                 "allDay" : false,
                 "descr": "This is a cool event"
             },
             {
                 "title": "Conference for few day",
                 "start": "2017-08-11T14:14",
-                "end": "2017-08-13"
+                "end": "2017-08-13T20:00"
             }
         ];
         
@@ -112,8 +116,11 @@ export class AppointmentComponent implements OnInit {
     }
     handleDayClick(event) {
         this.event = new MyEvent();
-        this.event.start = event.date.format();
-        
+        this.event.start = event.date.format('YYYY-MM-DDTHH:mm');
+        this.event.start = event.date.format('YYYY-MM-DD') + 'T' + event.date.format('HH:mm');
+        var r = new Date(event.date.format('YYYY-MM-DD HH:mm'));
+        this.event.descr = r.toLocaleTimeString();
+        this.event.end = event.date.format('YYYY-MM-DD') + 'T' + event.date.format('HH:mm') + 1;
         this.dialogVisible = true;
     }
     
@@ -133,13 +140,12 @@ export class AppointmentComponent implements OnInit {
         }
         
         this.event.id = e.calEvent.id;
-        var b: Date = new Date(e.calEvent.start);
-        console.log(e.calEvent.start);
         this.event.start = e.calEvent.start;
         this.event.allDay = e.calEvent.allDay;
         this.event.descr = e.calEvent.descr;
         
-        this.dd = e.calEvent.start._i; //"2017-07-24T13:13";
+        this.event.start = e.calEvent.start._i; //"2017-07-24T13:13";
+        this.event.end = e.calEvent.end._i; //"2017-07-24T13:13";
 
         this.dialogVisible = true;
     }

@@ -17,7 +17,7 @@
             </div>
             <div class="ui-grid-row">
                 <md-input-container class="input-full-width">
-                    <input mdInput type="datetime-local" [(ngModel)]="dd" placeholder="Start" name="Start">
+                    <input mdInput type="datetime-local" [(ngModel)]="event.start" placeholder="Start" name="Start">
                 </md-input-container>      
                 <md-input-container class="input-full-width">
                     <input mdInput type="datetime-local" [(ngModel)]="event.end" placeholder="End" name="End">
@@ -75,7 +75,7 @@
             </div>
             <div class="ui-grid-row">
                 <md-input-container class="input-full-width">
-                    <input mdInput placeholder="Description" id="Description" [(ngModel)]="dd" >
+                    <input mdInput placeholder="Description" id="Description" [(ngModel)]="event.descr" >
                 </md-input-container>
             </div>
         </div>
