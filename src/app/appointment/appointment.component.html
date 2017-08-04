@@ -4,6 +4,7 @@
         <md-card-title>Appointment</md-card-title>
       </md-card-header>
       <md-card-content>
+         {{data|json}}
     <p-schedule [height]="500" [events]="events" [header]="header" [eventLimit]="4" [editable]="true" [eventDurationEditable]="true"
                 (onDayClick)="handleDayClick($event)" (onEventClick)="handleEventClick($event)"></p-schedule>
     
@@ -17,13 +18,13 @@
             </div>
             <div class="ui-grid-row">
                 <md-input-container class="input-full-width">
-                    <input mdInput type="datetime-local" [(ngModel)]="event.start" placeholder="Start" name="Start">
+                    <input mdInput (change)="onDateChanged()" type="datetime-local" [(ngModel)]="event.start" placeholder="Start" name="Start">
                 </md-input-container>      
                 <md-input-container class="input-full-width">
-                    <input mdInput type="datetime-local" [(ngModel)]="event.end" placeholder="End" name="End">
+                    <input mdInput (change)="onDateChanged()" type="datetime-local" [(ngModel)]="event.end" placeholder="End" name="End">
                 </md-input-container>    
                 <md-input-container class="input-full-width">
-                    <input mdInput type="number" [(ngModel)]="event.duration" placeholder="Duration(Minutes)" name="Duration">
+                    <input mdInput (change)="onDurationChanged()" type="number" [(ngModel)]="event.duration" placeholder="Duration(Minutes)" name="Duration">
                 </md-input-container>
             </div>
             <div class="ui-grid-row">
@@ -81,8 +82,8 @@
         </div>
         <p-footer>
             <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
-                <button md-raised-button (click)="deleteEvent()" [disabled]="!event?.id">Delete</button>
-                <button md-raised-button (click)="saveEvent()" [disabled]="!event?.id">Save</button>
+                <button md-raised-button (click)="onDateChanged()" >Delete</button>
+                <button md-raised-button (click)="onDateChanged()" >Save</button>
                 <button type="button" pButton icon="fa-close" (click)="deleteEvent()" label="Delete" [disabled]="!event?.id"></button>
                 <button type="button" pButton icon="fa-check" (click)="saveEvent()" label="Save" [disabled]="!event?.start"></button>
             </div>

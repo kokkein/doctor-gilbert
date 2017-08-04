@@ -13,10 +13,10 @@ import * as moment from 'moment';
   styleUrls: ['./appointment.component.css']
 })
 export class AppointmentComponent implements OnInit {
-
+    
+    data: any = {};
     events: any[];
     header: any;
-    timeformat: any;
     event: MyEvent;
     startDT: string;
     endDT: string;
@@ -36,24 +36,44 @@ export class AppointmentComponent implements OnInit {
         
     }
 
+    onDateChanged(){
+        var start = moment.utc(this.event.start, "HH:mm");
+        var end = moment.utc(this.event.end, "HH:mm");
+        
+        // calculate the duration
+        var d = moment.duration(end.diff(start));
+        
+        // format a string result
+        var s = moment.utc(+d).format('H:mm');
+        this.event.duration = d.asMinutes();
+    }
+
+    onDurationChanged(){
+        this.event.end = moment(this.event.start).add(this.event.duration, 'm').format('YYYY-MM-DD') + 'T' + moment(this.event.start).add(this.event.duration, 'm').format('HH:mm');
+    }
+
     ngOnInit() {
         this.events = [
             {
+                "id": 1,
                 "title": "All Day Event",
                 "start": "2017-08-01T15:15:00",
                 "end": "2017-08-01T15:45:00"
             },
             {
+                "id": 2,
                 "title": "Long Event with end date",
                 "start": "2017-08-07T18:18",
                 "end": "2017-08-24T11:11"
             },
             {
+                "id": 3,
                 "title": "Repeating Event",
                 "start": "017-08-24T12:12",
                 "end": "2017-08-24T15:15:00"
             },
             {
+                "id": 4,
                 "title": "Repeating Event with time",
                 "start": "2017-08-24T13:13",
                 "end": "2017-08-24T15:15",
@@ -61,6 +81,7 @@ export class AppointmentComponent implements OnInit {
                 "descr": "This is a cool event"
             },
             {
+                "id": 5,
                 "title": "Conference for few day",
                 "start": "2017-08-11T14:14",
                 "end": "2017-08-13T20:00"
@@ -155,7 +176,7 @@ export class AppointmentComponent implements OnInit {
     
     saveEvent() {
         //update
-        if(this.event.id) {
+        if (this.event.id) {
             let index: number = this.findEventIndexById(this.event.id);
             if(index >= 0) {
                 this.events[index] = this.event;
@@ -165,10 +186,20 @@ export class AppointmentComponent implements OnInit {
         else {
             this.event.id = this.idGen++;
             this.events.push(this.event);
-            this.event = null;
+            //this.event = null;
         }
-        
+
         this.dialogVisible = false;
+
+        if (this.event.id){
+            this.data.id = this.event.id;
+        }
+        this.data.title = this.event.title;
+        this.data.start = this.event.start;
+        this.data.end = this.event.end;
+        this.data.duration = this.event.duration;
+        this.data.descr = this.event.descr;
+        this.data.allDay = this.event.allDay;
     }
     
     deleteEvent() {
