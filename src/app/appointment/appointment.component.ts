@@ -5,6 +5,7 @@ import { Component, OnInit } from '@angular/core';
 import { EventService } from './../services/EventService';
 import 'rxjs/add/operator/startWith';
 import { Observable } from 'rxjs/Observable';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-appointment',
@@ -15,6 +16,7 @@ export class AppointmentComponent implements OnInit {
 
     events: any[];
     header: any;
+    timeformat: any;
     event: MyEvent;
     startDT: string;
     endDT: string;
@@ -65,6 +67,7 @@ export class AppointmentComponent implements OnInit {
             }
         ];
         
+
         this.header = {
 			left: 'prev,next today',
 			center: 'title',
@@ -118,13 +121,9 @@ export class AppointmentComponent implements OnInit {
         this.event = new MyEvent();
         //this.event.start = event.date.format('YYYY-MM-DDTHH:mm');
         this.event.start = event.date.format('YYYY-MM-DD') + 'T' + event.date.format('HH:mm');
-        var r = new Date(event.date.format('YYYY-MM-DD HH:mm'));
-        //r.setMinutes(r.getMinutes() + 30);
-        this.event.descr = JSON.stringify(event.date.format('YYYY-MM-DD') + 'T' + event.date.format('HH:mm'));
-        this.event.end = r.getDate() + 'T' + r.getMinutes() + 30;
-        console.log(JSON.stringify(event.date.format('YYYY-MM-DD') + 'T' + event.date.format('HH:mm')));
-
-        //this.event.end = event.date.format('YYYY-MM-DD') + 'T' + event.date.format('HH:mm') + 1;
+        this.event.descr = moment(event.date.format('YYYY-MM-DD HH:mm')).add(30, 'm').format();
+        this.event.end = moment(event.date.format('YYYY-MM-DD HH:mm')).add(30, 'm').format('YYYY-MM-DD') + 'T' + moment(event.date.format('YYYY-MM-DD HH:mm')).add(30, 'm').format('HH:mm');
+        this.event.duration = 30;
         this.dialogVisible = true;
     }
     
@@ -200,5 +199,6 @@ export class MyEvent {
     end: string;
     url: string;
     descr: string;
+    duration: number;
     allDay: boolean = true;
 }

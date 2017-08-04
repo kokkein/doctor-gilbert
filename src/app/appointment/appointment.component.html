@@ -4,7 +4,7 @@
         <md-card-title>Appointment</md-card-title>
       </md-card-header>
       <md-card-content>
-    <p-schedule [events]="events" [header]="header" [eventLimit]="4" [editable]="true" [eventDurationEditable]="true"
+    <p-schedule [height]="500" [events]="events" [header]="header" [eventLimit]="4" [editable]="true" [eventDurationEditable]="true"
                 (onDayClick)="handleDayClick($event)" (onEventClick)="handleEventClick($event)"></p-schedule>
     
     <p-dialog header="Appointment Details" [(visible)]="dialogVisible" [responsive]="true" showEffect="fade" [modal]="false" [contentStyle]="{'overflow':'visible'}"
@@ -23,7 +23,7 @@
                     <input mdInput type="datetime-local" [(ngModel)]="event.end" placeholder="End" name="End">
                 </md-input-container>    
                 <md-input-container class="input-full-width">
-                    <input mdInput type="time" [(ngModel)]="event.duration" placeholder="Duration" name="Duration">
+                    <input mdInput type="number" [(ngModel)]="event.duration" placeholder="Duration(Minutes)" name="Duration">
                 </md-input-container>
             </div>
             <div class="ui-grid-row">
