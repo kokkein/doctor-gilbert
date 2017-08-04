@@ -116,11 +116,15 @@ export class AppointmentComponent implements OnInit {
     }
     handleDayClick(event) {
         this.event = new MyEvent();
-        this.event.start = event.date.format('YYYY-MM-DDTHH:mm');
+        //this.event.start = event.date.format('YYYY-MM-DDTHH:mm');
         this.event.start = event.date.format('YYYY-MM-DD') + 'T' + event.date.format('HH:mm');
         var r = new Date(event.date.format('YYYY-MM-DD HH:mm'));
-        this.event.descr = r.toLocaleTimeString();
-        this.event.end = event.date.format('YYYY-MM-DD') + 'T' + event.date.format('HH:mm') + 1;
+        //r.setMinutes(r.getMinutes() + 30);
+        this.event.descr = JSON.stringify(event.date.format('YYYY-MM-DD') + 'T' + event.date.format('HH:mm'));
+        this.event.end = r.getDate() + 'T' + r.getMinutes() + 30;
+        console.log(JSON.stringify(event.date.format('YYYY-MM-DD') + 'T' + event.date.format('HH:mm')));
+
+        //this.event.end = event.date.format('YYYY-MM-DD') + 'T' + event.date.format('HH:mm') + 1;
         this.dialogVisible = true;
     }
     
