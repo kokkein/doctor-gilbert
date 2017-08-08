@@ -18,10 +18,10 @@
             </div>
             <div class="ui-grid-row">
                 <md-input-container class="input-full-width">
-                    <input mdInput (change)="onDateChanged()" type="datetime-local" [(ngModel)]="event.start" placeholder="Start" name="Start">
+                    <input mdInput (change)="onDateChanged()" type="datetime-local" [(ngModel)]="event.start" placeholder="Start" name="start">
                 </md-input-container>      
                 <md-input-container class="input-full-width">
-                    <input mdInput (change)="onDateChanged()" type="datetime-local" [(ngModel)]="event.end" placeholder="End" name="End">
+                    <input mdInput (change)="onDateChanged()" type="datetime-local" [(ngModel)]="event.end" placeholder="End" name="end">
                 </md-input-container>    
                 <md-input-container class="input-full-width">
                     <input mdInput (change)="onDurationChanged()" type="number" [(ngModel)]="event.duration" placeholder="Duration(Minutes)" name="Duration">
@@ -51,13 +51,13 @@
 
             <div class="ui-grid-row">
                 <md-input-container class="input-half-width">
-                    <input mdInput  [(ngModel)]="event.purpose" placeholder="Mobile" name="Mobile">
+                    <input mdInput  [(ngModel)]="event.mobile" placeholder="Mobile" name="mobile">
                 </md-input-container>
                 <md-input-container class="input-half-width">
-                    <input mdInput  [(ngModel)]="event.visittype" placeholder="Phone" name="Phone">
+                    <input mdInput  [(ngModel)]="event.phone" placeholder="Phone" name="phone">
                 </md-input-container>
                 <md-input-container class="input-full-width">
-                    <input mdInput  [(ngModel)]="event.visittype" placeholder="Email" name="Email">
+                    <input mdInput  [(ngModel)]="event.email" placeholder="Email" name="email">
                 </md-input-container>
             </div>
             <div class="ui-grid-row">
@@ -76,7 +76,7 @@
             </div>
             <div class="ui-grid-row">
                 <md-input-container class="input-full-width">
-                    <input mdInput placeholder="Description" id="Description" [(ngModel)]="event.descr" >
+                    <input mdInput placeholder="Description" id="Description" [(ngModel)]="event.description" name="description" >
                 </md-input-container>
             </div>
         </div>
@@ -84,7 +84,7 @@
             <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
                 <button md-raised-button (click)="onDateChanged()" >Delete</button>
                 <button md-raised-button (click)="onDateChanged()" >Save</button>
-                <button type="button" pButton icon="fa-close" (click)="deleteEvent()" label="Delete" [disabled]="!event?.id"></button>
+                <button type="button" pButton icon="fa-close" (click)="deleteEvent()" label="Delete" [disabled]="!event?.appointmentID"></button>
                 <button type="button" pButton icon="fa-check" (click)="saveEvent()" label="Save" [disabled]="!event?.start"></button>
             </div>
         </p-footer>

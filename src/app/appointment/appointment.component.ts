@@ -38,7 +38,7 @@ export class AppointmentComponent implements OnInit {
 
     onDateChanged(){
         var start = moment.utc(this.event.start, "HH:mm");
-        var end = moment.utc(this.event.end, "HH:mm");
+        var end = moment.utc(this.event.start, "HH:mm");
         
         // calculate the duration
         var d = moment.duration(end.diff(start));
@@ -49,45 +49,49 @@ export class AppointmentComponent implements OnInit {
     }
 
     onDurationChanged(){
-        this.event.end = moment(this.event.start).add(this.event.duration, 'm').format('YYYY-MM-DD') + 'T' + moment(this.event.start).add(this.event.duration, 'm').format('HH:mm');
+        this.event.end= moment(this.event.start).add(this.event.duration, 'm').format('YYYY-MM-DD') + 'T' + moment(this.event.start).add(this.event.duration, 'm').format('HH:mm');
     }
 
     ngOnInit() {
         this.events = [
             {
-                "id": 1,
+                "appointmentID": 1,
                 "title": "All Day Event",
-                "start": "2017-08-01T15:15:00",
-                "end": "2017-08-01T15:45:00"
+                "start": "2017-08-01T12:22:00",
+                "end": "2017-08-01T12:12:00"
             },
             {
-                "id": 2,
+                "appointmentID": 2,
                 "title": "Long Event with end date",
-                "start": "2017-08-07T18:18",
-                "end": "2017-08-24T11:11"
+                "start": "2017-08-07T18:18:00",
+                "end": "2017-08-24T11:11:00"
             },
             {
-                "id": 3,
+                "appointmentID": 3,
                 "title": "Repeating Event",
-                "start": "017-08-24T12:12",
+                "start": "017-08-24T12:12:00",
                 "end": "2017-08-24T15:15:00"
             },
             {
-                "id": 4,
+                "appointmentID": 4,
                 "title": "Repeating Event with time",
-                "start": "2017-08-24T13:13",
-                "end": "2017-08-24T15:15",
+                "start": "2017-08-24T13:13:00",
+                "end": "2017-08-24T15:15:00",
                 "allDay" : false,
-                "descr": "This is a cool event"
+                "description": "This is a cool event"
             },
             {
-                "id": 5,
+                "appointmentID": 5,
                 "title": "Conference for few day",
-                "start": "2017-08-11T14:14",
-                "end": "2017-08-13T20:00"
+                "start": "2017-08-11T14:14:00",
+                "end": "2017-08-13T20:00:00"
             }
+            
         ];
         
+        this.MasterDataService.GetAppointment().subscribe(appointment => {
+            this.events = appointment;
+        });
 
         this.header = {
 			left: 'prev,next today',
@@ -142,7 +146,7 @@ export class AppointmentComponent implements OnInit {
         this.event = new MyEvent();
         //this.event.start = event.date.format('YYYY-MM-DDTHH:mm');
         this.event.start = event.date.format('YYYY-MM-DD') + 'T' + event.date.format('HH:mm');
-        this.event.descr = moment(event.date.format('YYYY-MM-DD HH:mm')).add(30, 'm').format();
+        this.event.description = moment(event.date.format('YYYY-MM-DD HH:mm')).add(30, 'm').format();
         this.event.end = moment(event.date.format('YYYY-MM-DD HH:mm')).add(30, 'm').format('YYYY-MM-DD') + 'T' + moment(event.date.format('YYYY-MM-DD HH:mm')).add(30, 'm').format('HH:mm');
         this.event.duration = 30;
         this.dialogVisible = true;
@@ -154,6 +158,7 @@ export class AppointmentComponent implements OnInit {
         
         let start = e.calEvent.start;
         let end = e.calEvent.end;
+  /*
         if(e.view.name === 'month') {
             start.stripTime();
         }
@@ -162,48 +167,54 @@ export class AppointmentComponent implements OnInit {
             end.stripTime();
             this.event.end = end.format();
         }
-        
-        this.event.id = e.calEvent.id;
+        */
+        this.event.appointmentID = e.calEvent.appointmentID;
         this.event.start = e.calEvent.start;
         this.event.allDay = e.calEvent.allDay;
-        this.event.descr = e.calEvent.descr;
-        
-        this.event.start = e.calEvent.start._i; //"2017-07-24T13:13";
-        this.event.end = e.calEvent.end._i; //"2017-07-24T13:13";
+        this.event.duration = e.calEvent.duration;
+        this.event.mobile = e.calEvent.mobile;
+        this.event.phone = e.calEvent.phone;
+        this.event.email = e.calEvent.email;
+
+        this.event.description = e.calEvent.description;
+        this.event.start = moment(e.calEvent.start).format('YYYY-MM-DDTHH:mm');// + 'T' + moment(e.calEvent.start).format('HH:mm') ;//e.calEvent.start; //"2017-07-24T13:13";
+        this.event.end = moment(e.calEvent.end).format('YYYY-MM-DDTHH:mm'); //"2017-07-24T13:13";
+        //this.event.description  = moment(e.calEvent.start).toISOString() + 'T' + moment(e.calEvent.start).format('hh:mm:ss') ;
+        console.log(e.calEvent.start);
 
         this.dialogVisible = true;
     }
     
     saveEvent() {
         //update
-        if (this.event.id) {
-            let index: number = this.findEventIndexById(this.event.id);
+        if (this.event.appointmentID) {
+            let index: number = this.findEventIndexById(this.event.appointmentID);
             if(index >= 0) {
                 this.events[index] = this.event;
             }
         }
         //new
         else {
-            this.event.id = this.idGen++;
+            this.event.appointmentID = this.idGen++;
             this.events.push(this.event);
             //this.event = null;
         }
 
         this.dialogVisible = false;
 
-        if (this.event.id){
-            this.data.id = this.event.id;
+        if (this.event.appointmentID){
+            this.data.id = this.event.appointmentID;
         }
         this.data.title = this.event.title;
         this.data.start = this.event.start;
-        this.data.end = this.event.end;
+        this.data.end= this.event.end;
         this.data.duration = this.event.duration;
-        this.data.descr = this.event.descr;
+        this.data.description = this.event.description;
         this.data.allDay = this.event.allDay;
     }
     
     deleteEvent() {
-        let index: number = this.findEventIndexById(this.event.id);
+        let index: number = this.findEventIndexById(this.event.appointmentID);
         if(index >= 0) {
             this.events.splice(index, 1);
         }
@@ -213,7 +224,7 @@ export class AppointmentComponent implements OnInit {
     findEventIndexById(id: number) {
         let index = -1;
         for(let i = 0; i < this.events.length; i++) {
-            if(id == this.events[i].id) {
+            if(id == this.events[i].appointmentID) {
                 index = i;
                 break;
             }
@@ -224,12 +235,20 @@ export class AppointmentComponent implements OnInit {
 }
 
 export class MyEvent {
-    id: number;
-    title: string;
+    appointmentID: number;
     start: string;
     end: string;
-    url: string;
-    descr: string;
     duration: number;
-    allDay: boolean = true;
+    title: string;
+    description: string;
+    createdByID: number;
+    visitPurposeID: number;
+    allDay: boolean = false;
+    patientID: number;
+    visitDoctorID: number;
+    mobile: string;
+    phone: string;
+    email: string;
+    gender: string;
+    visitDepartmentID: number;
 }
