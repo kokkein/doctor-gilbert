@@ -80,7 +80,7 @@ export class PatientComponent implements OnInit {
   }
   ngOnInit() {
 
-    this.payorCtrl = new FormControl({payorID: 0, payorName: 'm.payorName'});
+    this.payorCtrl = new FormControl({payorID: 0, payorName: ''});
     this.insuranceCtrl = new FormControl({insuranceID: 0, insuranceName: ''});
 
     this.MasterDataService.GetCountry().subscribe(countries => {

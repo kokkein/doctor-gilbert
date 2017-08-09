@@ -29,7 +29,7 @@
             </div>
             <div class="ui-grid-row">
 
-                <md-select placeholder="Purpose of Visit" name="Purpose" class="input-full-width" [(ngModel)]="event.purpose">
+                <md-select placeholder="Purpose of Visit" name="Purpose" class="input-full-width" [(ngModel)]="event.visitPurposeID">
                     <md-option *ngFor="let Purpose of purposeOfVisits" [value]="Purpose.visitPurposeID">
                         {{Purpose.visitPurposeName}}
                     </md-option>
@@ -38,7 +38,7 @@
             </div>
             <div class="ui-grid-row">
               <md-input-container class="input-full-width">
-                <input mdInput placeholder="Visit Doctor" [mdAutocomplete]="reactiveDoctor" [formControl]="doctorCtrl"  [(ngModel)]="event.Doctor" name="Doctor">
+                <input mdInput placeholder="Visit Doctor" [mdAutocomplete]="reactiveDoctor" [formControl]="doctorCtrl"  [(ngModel)]="event.visitDoctorID" name="visitDoctorID">
               </md-input-container>
 
               <md-autocomplete #reactiveDoctor="mdAutocomplete" [displayWith]="displayDoctorFn">
@@ -63,7 +63,7 @@
             <div class="ui-grid-row">
 
                 <md-input-container class="input-full-width">
-                <input mdInput placeholder="Patient (Registered)" [mdAutocomplete]="reactivePatient" [formControl]="patientCtrl"  [(ngModel)]="event.Patient" name="Patient">
+                <input mdInput placeholder="Patient (Registered)" [mdAutocomplete]="reactivePatient" [formControl]="patientCtrl"  [(ngModel)]="event.patientID" name="patientID">
                 </md-input-container>
 
                 <md-autocomplete #reactivePatient="mdAutocomplete" [displayWith]="displayPatientFn">

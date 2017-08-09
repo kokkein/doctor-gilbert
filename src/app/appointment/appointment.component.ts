@@ -168,6 +168,16 @@ export class AppointmentComponent implements OnInit {
             this.event.end = end.format();
         }
         */
+
+        this.MasterDataService.GetPatientByID(e.calEvent.patientID)
+        .subscribe(i =>{
+            this.patientCtrl = new FormControl({patientID: i.patientID, name: i.name});
+        })
+        this.MasterDataService.GetDGUserByID(e.calEvent.visitDoctorID)
+        .subscribe(i =>{
+            this.doctorCtrl = new FormControl({dgUserID: i.dgUserID, userFullName: i.userFullName});
+        })
+
         this.event.appointmentID = e.calEvent.appointmentID;
         this.event.start = e.calEvent.start;
         this.event.allDay = e.calEvent.allDay;
@@ -175,8 +185,12 @@ export class AppointmentComponent implements OnInit {
         this.event.mobile = e.calEvent.mobile;
         this.event.phone = e.calEvent.phone;
         this.event.email = e.calEvent.email;
-
+        this.event.visitPurposeID = e.calEvent.visitPurposeID;
+        //this.event.patientID = e.calEvent.patientID;
+        //this.event.visitDoctorID = e.calEvent.visitDoctorID;
         this.event.description = e.calEvent.description;
+        this.event.gender = e.calEvent.gender;
+        this.event.visitDepartmentID = e.calEvent.visitDepartmentID;
         this.event.start = moment(e.calEvent.start).format('YYYY-MM-DDTHH:mm');// + 'T' + moment(e.calEvent.start).format('HH:mm') ;//e.calEvent.start; //"2017-07-24T13:13";
         this.event.end = moment(e.calEvent.end).format('YYYY-MM-DDTHH:mm'); //"2017-07-24T13:13";
         //this.event.description  = moment(e.calEvent.start).toISOString() + 'T' + moment(e.calEvent.start).format('hh:mm:ss') ;
