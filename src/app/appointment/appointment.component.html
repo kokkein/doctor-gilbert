@@ -5,6 +5,7 @@
       </md-card-header>
       <md-card-content>
          {{data|json}}
+         <p-growl [(value)]="msgs" life=3000></p-growl>
     <p-schedule [height]="500" [events]="events" [header]="header" [eventLimit]="4" [editable]="true" [eventDurationEditable]="true"
                 (onDayClick)="handleDayClick($event)" (onEventClick)="handleEventClick($event)"></p-schedule>
     
@@ -38,7 +39,7 @@
             </div>
             <div class="ui-grid-row">
               <md-input-container class="input-full-width">
-                <input mdInput placeholder="Visit Doctor" [mdAutocomplete]="reactiveDoctor" [formControl]="doctorCtrl"  [(ngModel)]="event.visitDoctorID" name="visitDoctorID">
+                <input mdInput placeholder="Visit Doctor" [mdAutocomplete]="reactiveDoctor" [formControl]="doctorCtrl"  [(ngModel)]="event.dgUserID" name="dgUserID">
               </md-input-container>
 
               <md-autocomplete #reactiveDoctor="mdAutocomplete" [displayWith]="displayDoctorFn">

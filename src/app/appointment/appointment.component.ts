@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { MasterDataService } from './../services/masterdata.service';
 import { Component, OnInit } from '@angular/core';
 import { EventService } from './../services/EventService';
+import { Message } from 'primeng/primeng';
 import 'rxjs/add/operator/startWith';
 import { Observable } from 'rxjs/Observable';
 import * as moment from 'moment';
@@ -21,6 +22,7 @@ export class AppointmentComponent implements OnInit {
     startDT: string;
     endDT: string;
     purposeOfVisits;
+    msgs: Message[] = [];
 
     patients;
     patientCtrl: FormControl;
@@ -30,7 +32,7 @@ export class AppointmentComponent implements OnInit {
     filteredDoctors: any;
     dialogVisible: boolean = false;
     
-    idGen: number = 100;
+    idGen: number = 900000000;
     
     constructor(private MasterDataService: MasterDataService, private route: ActivatedRoute, private router: Router, private eventService: EventService) { 
         
@@ -72,21 +74,6 @@ export class AppointmentComponent implements OnInit {
                 "start": "017-08-24T12:12:00",
                 "end": "2017-08-24T15:15:00"
             },
-            {
-                "appointmentID": 4,
-                "title": "Repeating Event with time",
-                "start": "2017-08-24T13:13:00",
-                "end": "2017-08-24T15:15:00",
-                "allDay" : false,
-                "description": "This is a cool event"
-            },
-            {
-                "appointmentID": 5,
-                "title": "Conference for few day",
-                "start": "2017-08-11T14:14:00",
-                "end": "2017-08-13T20:00:00"
-            }
-            
         ];
         
         this.MasterDataService.GetAppointment().subscribe(appointment => {
@@ -146,7 +133,6 @@ export class AppointmentComponent implements OnInit {
         this.event = new MyEvent();
         //this.event.start = event.date.format('YYYY-MM-DDTHH:mm');
         this.event.start = event.date.format('YYYY-MM-DD') + 'T' + event.date.format('HH:mm');
-        this.event.description = moment(event.date.format('YYYY-MM-DD HH:mm')).add(30, 'm').format();
         this.event.end = moment(event.date.format('YYYY-MM-DD HH:mm')).add(30, 'm').format('YYYY-MM-DD') + 'T' + moment(event.date.format('YYYY-MM-DD HH:mm')).add(30, 'm').format('HH:mm');
         this.event.duration = 30;
         this.dialogVisible = true;
@@ -186,15 +172,12 @@ export class AppointmentComponent implements OnInit {
         this.event.phone = e.calEvent.phone;
         this.event.email = e.calEvent.email;
         this.event.visitPurposeID = e.calEvent.visitPurposeID;
-        //this.event.patientID = e.calEvent.patientID;
-        //this.event.visitDoctorID = e.calEvent.visitDoctorID;
         this.event.description = e.calEvent.description;
         this.event.gender = e.calEvent.gender;
         this.event.visitDepartmentID = e.calEvent.visitDepartmentID;
-        this.event.start = moment(e.calEvent.start).format('YYYY-MM-DDTHH:mm');// + 'T' + moment(e.calEvent.start).format('HH:mm') ;//e.calEvent.start; //"2017-07-24T13:13";
-        this.event.end = moment(e.calEvent.end).format('YYYY-MM-DDTHH:mm'); //"2017-07-24T13:13";
-        //this.event.description  = moment(e.calEvent.start).toISOString() + 'T' + moment(e.calEvent.start).format('hh:mm:ss') ;
-        console.log(e.calEvent.start);
+        this.event.start = moment(e.calEvent.start).format('YYYY-MM-DDTHH:mm');
+        this.event.end = moment(e.calEvent.end).format('YYYY-MM-DDTHH:mm'); 
+        
 
         this.dialogVisible = true;
     }
@@ -215,16 +198,45 @@ export class AppointmentComponent implements OnInit {
         }
 
         this.dialogVisible = false;
-
-        if (this.event.appointmentID){
-            this.data.id = this.event.appointmentID;
+        
+        // > 900000000 means is newly created appointment
+        if (this.event.appointmentID < 900000000){
+            this.data.appointmentID = this.event.appointmentID;
         }
+        
         this.data.title = this.event.title;
         this.data.start = this.event.start;
         this.data.end= this.event.end;
         this.data.duration = this.event.duration;
         this.data.description = this.event.description;
         this.data.allDay = this.event.allDay;
+
+        this.data.mobile = this.event.mobile;
+        this.data.phone = this.event.phone;
+        this.data.email = this.event.email;
+        this.data.visitPurposeID = this.event.visitPurposeID;
+        this.data.gender = this.event.gender ;
+        this.data.visitDepartmentID = this.event.visitDepartmentID;
+        this.data.patientID = this.patientCtrl.value.patientID;
+        this.data.visitDoctorID = this.doctorCtrl.value.dgUserID;
+
+        this.onSave();
+    }
+
+    onSave() {
+        if (this.data.appointmentID){
+          this.MasterDataService.UpdateAppointmentByID(this.data)
+            .subscribe(x => {
+                this.msgs = [];
+                this.msgs.push({severity:'success', summary:'Info Message', detail:'"' + x.title + '" Updated Sucessfully!'});
+          });
+        }
+        else
+          this.MasterDataService.CreateAppointment(this.data)
+            .subscribe(x => {
+                this.msgs = [];
+                this.msgs.push({severity:'success', summary:'Info Message', detail:'"' + x.title + '" Created Sucessfully!'});
+          });
     }
     
     deleteEvent() {
