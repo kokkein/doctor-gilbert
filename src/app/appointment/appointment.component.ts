@@ -155,6 +155,9 @@ export class AppointmentComponent implements OnInit {
         }
         */
 
+        this.patientCtrl = new FormControl({patientID: 0, name: ''});
+        this.doctorCtrl = new FormControl({dgUserID: 0, userFullName: ''});
+
         this.MasterDataService.GetPatientByID(e.calEvent.patientID)
         .subscribe(i =>{
             this.patientCtrl = new FormControl({patientID: i.patientID, name: i.name});
@@ -217,8 +220,13 @@ export class AppointmentComponent implements OnInit {
         this.data.visitPurposeID = this.event.visitPurposeID;
         this.data.gender = this.event.gender ;
         this.data.visitDepartmentID = this.event.visitDepartmentID;
-        this.data.patientID = this.patientCtrl.value.patientID;
-        this.data.visitDoctorID = this.doctorCtrl.value.dgUserID;
+        if (this.patientCtrl.value != undefined || this.patientCtrl.value != null){
+            this.data.patientID = this.patientCtrl.value.patientID;
+        }
+        if (this.doctorCtrl.value != undefined || this.doctorCtrl.value != null){
+            this.data.visitDoctorID = this.doctorCtrl.value.dgUserID;
+        }
+        
 
         this.onSave();
     }
@@ -237,10 +245,10 @@ export class AppointmentComponent implements OnInit {
                 this.msgs = [];
                 this.msgs.push({severity:'success', summary:'Info Message', detail:'"' + x.title + '" Created Sucessfully!'});
           });
-
-        this.MasterDataService.GetAppointment().subscribe(appointment => {
-            this.events = appointment;
-        });
+        
+        //Reset value, else keep in cache
+        this.patientCtrl = new FormControl({patientID: 0, name: ''});
+        this.doctorCtrl = new FormControl({dgUserID: 0, userFullName: ''});
     }
     
     deleteEvent() {
