@@ -4,11 +4,18 @@
         <md-card-title>Appointment</md-card-title>
       </md-card-header>
       <md-card-content>
-         {{data|json}}
-         <p-growl [(value)]="msgs" life=3000></p-growl>
+
+        <p-growl [(value)]="msgs" life=3000></p-growl>
+    
+        <md-select multiple="true" multiple="true" placeholder="Doctor List" name="DoctorList" class="input-full-width" >
+            <md-option *ngFor="let doctor of doctors" [value]="doctor.dgUserID">
+                {{doctor.userFullName}}
+            </md-option>
+        </md-select>
+
     <p-schedule [height]="500" [events]="events" [header]="header" [eventLimit]="4" [editable]="true" [eventDurationEditable]="true"
                 (onDayClick)="handleDayClick($event)" (onEventClick)="handleEventClick($event)"></p-schedule>
-    
+
     <p-dialog header="Appointment Details" [(visible)]="dialogVisible" [responsive]="true" showEffect="fade" [modal]="false" [contentStyle]="{'overflow':'visible'}"
         [style]="{'overflow':'visible'}" [resizable]="true" >
         <div class="ui-grid ui-grid-responsive ui-fluid" *ngIf="event">

@@ -237,6 +237,10 @@ export class AppointmentComponent implements OnInit {
                 this.msgs = [];
                 this.msgs.push({severity:'success', summary:'Info Message', detail:'"' + x.title + '" Created Sucessfully!'});
           });
+
+        this.MasterDataService.GetAppointment().subscribe(appointment => {
+            this.events = appointment;
+        });
     }
     
     deleteEvent() {
