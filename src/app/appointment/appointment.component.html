@@ -47,7 +47,7 @@
             </div>
             <div class="ui-grid-row">
               <md-input-container class="input-full-width">
-                <input mdInput placeholder="Visit Doctor" [mdAutocomplete]="reactiveDoctor" [formControl]="doctorCtrl"  [(ngModel)]="event.dgUserID" name="dgUserID">
+                <input mdInput placeholder="Visit Doctor" [mdAutocomplete]="reactiveDoctor" [formControl]="doctorCtrl"  [(ngModel)]="event.visitDoctorID" name="dgUserID">
               </md-input-container>
 
               <md-autocomplete #reactiveDoctor="mdAutocomplete" [displayWith]="displayDoctorFn">

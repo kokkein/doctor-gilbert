@@ -131,7 +131,9 @@ export class AppointmentComponent implements OnInit {
     }
     handleDayClick(event) {
         this.event = new MyEvent();
-        //this.event.start = event.date.format('YYYY-MM-DDTHH:mm');
+        this.patientCtrl = new FormControl({patientID: 0, name: ''});
+        this.doctorCtrl = new FormControl({dgUserID: 0, userFullName: ''});
+
         this.event.start = event.date.format('YYYY-MM-DD') + 'T' + event.date.format('HH:mm');
         this.event.end = moment(event.date.format('YYYY-MM-DD HH:mm')).add(30, 'm').format('YYYY-MM-DD') + 'T' + moment(event.date.format('YYYY-MM-DD HH:mm')).add(30, 'm').format('HH:mm');
         this.event.duration = 30;
@@ -158,14 +160,7 @@ export class AppointmentComponent implements OnInit {
         this.patientCtrl = new FormControl({patientID: 0, name: ''});
         this.doctorCtrl = new FormControl({dgUserID: 0, userFullName: ''});
 
-        this.MasterDataService.GetPatientByID(e.calEvent.patientID)
-        .subscribe(i =>{
-            this.patientCtrl = new FormControl({patientID: i.patientID, name: i.name});
-        })
-        this.MasterDataService.GetDGUserByID(e.calEvent.visitDoctorID)
-        .subscribe(i =>{
-            this.doctorCtrl = new FormControl({dgUserID: i.dgUserID, userFullName: i.userFullName});
-        })
+
 
         this.event.appointmentID = e.calEvent.appointmentID;
         this.event.start = e.calEvent.start;
@@ -180,7 +175,40 @@ export class AppointmentComponent implements OnInit {
         this.event.visitDepartmentID = e.calEvent.visitDepartmentID;
         this.event.start = moment(e.calEvent.start).format('YYYY-MM-DDTHH:mm');
         this.event.end = moment(e.calEvent.end).format('YYYY-MM-DDTHH:mm'); 
-        
+        if (e.calEvent.patientID != undefined || e.calEvent.patientID != null) {
+            let patientID
+            if (this.event.appointmentID < 900000000) {
+                patientID = e.calEvent.patientID;
+            }
+            else
+                {
+                patientID = e.calEvent.patientID.patientID;
+            }
+            this.event.patientID = patientID;
+            this.MasterDataService.GetPatientByID(patientID)
+            .subscribe(i =>{
+                this.patientCtrl = new FormControl({patientID: i.patientID, name: i.name});
+            })
+        }
+        if (e.calEvent.visitDoctorID != undefined || e.calEvent.visitDoctorID != null){
+            let visitDoctorID
+            if (this.event.appointmentID < 900000000) {
+                visitDoctorID = e.calEvent.visitDoctorID;
+            }
+            else
+                {
+                visitDoctorID = e.calEvent.visitDoctorID.dgUserID;
+            }
+
+            this.event.visitDoctorID = visitDoctorID;
+            this.MasterDataService.GetDGUserByID(visitDoctorID)
+            .subscribe(i =>{
+                this.doctorCtrl = new FormControl({dgUserID: i.dgUserID, userFullName: i.userFullName});
+            })
+        }
+
+
+
 
         this.dialogVisible = true;
     }
@@ -220,11 +248,11 @@ export class AppointmentComponent implements OnInit {
         this.data.visitPurposeID = this.event.visitPurposeID;
         this.data.gender = this.event.gender ;
         this.data.visitDepartmentID = this.event.visitDepartmentID;
-        if (this.patientCtrl.value != undefined || this.patientCtrl.value != null){
-            this.data.patientID = this.patientCtrl.value.patientID;
+        if (this.event.patientID != undefined || this.event.patientID != null){
+            this.data.patientID = this.event.patientID;
         }
-        if (this.doctorCtrl.value != undefined || this.doctorCtrl.value != null){
-            this.data.visitDoctorID = this.doctorCtrl.value.dgUserID;
+        if (this.event.visitDoctorID != undefined || this.event.visitDoctorID != null){
+            this.data.visitDoctorID = this.event.visitDoctorID;
         }
         
 
