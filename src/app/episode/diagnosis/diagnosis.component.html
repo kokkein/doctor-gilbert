@@ -5,7 +5,6 @@
     </div>
 </div>
 <section>
-
             <md-card>
               <md-card-content>
                   <div class="container">
@@ -15,7 +14,8 @@
                       </md-input-container>
                       <md-autocomplete #autoDiagnosis="mdAutocomplete">
                         <md-option *ngFor="let diagnosis of filteredDiagnosis | async" [value]="diagnosis">
-                          {{ diagnosis }}
+                          <span>{{ diagnosis.diagnosisCode }}</span>
+                          <span> ({{diagnosis.diagnosisDescription}}) </span>
                         </md-option>
                       </md-autocomplete>
                     </div>

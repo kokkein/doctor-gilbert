@@ -10,10 +10,11 @@ export class EpisodeComponent implements OnInit {
   public direction = "row";
   public mainAxis = "space-around";
   public crossAxis = "center";
+  public hgh=100;
 
-  layoutAlign () {
-      return `${this.mainAxis} ${this.crossAxis}`;
-  }
+//  layoutAlign () {
+//      return `${this.mainAxis} ${this.crossAxis}`;
+//  }
 
   constructor() { }
 
@@ -32,6 +33,7 @@ export class EpisodeComponent implements OnInit {
   ];
 
   togglePatientBar(){
-    this.hide = !this.hide;
+    //this.hide = !this.hide;
+    this.hgh = 20;
   }
 }

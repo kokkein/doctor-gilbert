@@ -1,0 +1,68 @@
+<div class="toolbar">
+    <div>
+        <button md-raised-button (click)="onSave()">Save</button>
+        <button md-raised-button>New</button>
+        <button md-raised-button>Save + New</button>
+    </div>
+  </div>
+  <p>
+    {{data | json}}
+  </p>
+  <section>
+  <p-growl [(value)]="msgs" life=3000></p-growl>
+    <md-card>
+      <md-card-header>
+        <md-card-title>Diagnosis</md-card-title>
+        <md-card-subtitle>New Diagnosis</md-card-subtitle>
+      </md-card-header>
+      <md-card-content>
+        <div class="ui-g">
+            <div class="ui-g-2">
+                <md-input-container class="input-full-width">
+                  <input mdInput placeholder="Diagnosis Code" [(ngModel)]="data.diagnosisCode" name="diagnosisCode">
+                </md-input-container>
+            </div>
+            <div class="ui-g-6">
+                <md-input-container class="input-full-width">
+                  <input mdInput placeholder="Diagnosis Description" [(ngModel)]="data.diagnosisDescription" name="diagnosisDescription">
+                </md-input-container>
+            </div>
+            <div class="ui-g-4">
+              <md-checkbox [(ngModel)]="data.active" name="active">Active</md-checkbox>
+            </div>
+        </div>
+      </md-card-content>
+    </md-card>
+
+    <div class="example-container mat-elevation-z8">
+      
+        <md-table #table [dataSource]="dataSource">
+      
+          <!--- Note that these columns can be defined in any order.
+                The actual rendered columns are set as a property on the row definition" -->
+      
+
+          <ng-container cdkColumnDef="diagnosisCode">
+            <md-header-cell *cdkHeaderCellDef> diagnosisCode </md-header-cell>
+            <md-cell *cdkCellDef="let row"> {{row.diagnosisCode}} </md-cell>
+          </ng-container>
+      
+
+          <ng-container cdkColumnDef="diagnosisDescription">
+            <md-header-cell *cdkHeaderCellDef> diagnosisDescription </md-header-cell>
+            <md-cell *cdkCellDef="let row"> {{row.diagnosisDescription}}% </md-cell>
+          </ng-container>
+
+      
+          <md-header-row *cdkHeaderRowDef="displayedColumns"></md-header-row>
+          <md-row *cdkRowDef="let row; columns: displayedColumns;"></md-row>
+        </md-table>
+        <md-paginator #paginator
+                [length]="exampleDatabase.data.length"
+                [pageIndex]="0"
+                [pageSize]="5"
+                [pageSizeOptions]="[5, 10, 25, 100]">
+        </md-paginator>
+      </div>
+        
+  </section>

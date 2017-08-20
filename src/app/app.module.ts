@@ -5,6 +5,8 @@ import { EventService } from './services/EventService';
 import { NodeService } from './services/NodeService';
 import { CarService } from './services/carService';
 import { MdDatepickerModule } from '@angular/material'
+import { MdTableModule } from '@angular/material';
+import { CdkTableModule } from '@angular/cdk';
 
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
@@ -59,6 +61,7 @@ import { InventoryCategoryComponent } from './masterData/inventory-category/inve
 import { InventorySubcategoryComponent } from './masterData/inventory-subcategory/inventory-subcategory.component';
 import { InventoryMedicationclassComponent } from './masterData/inventory-medicationclass/inventory-medicationclass.component';
 import { InventoryPregnancycategoryComponent } from './masterData/inventory-pregnancycategory/inventory-pregnancycategory.component';
+import { DiagnosisMasterComponent } from './masterData/diagnosis-master/diagnosis-master.component';
 
 const appRoutes: Routes = [
 { path: 'appointment', component: AppointmentComponent},
@@ -100,6 +103,8 @@ const appRoutes: Routes = [
 { path: 'speciality/:id', component: SpecialityComponent},
 { path: 'Appointment', component: AppointmentComponent},
 { path: 'Appointment/:id', component: AppointmentComponent},
+{ path: 'Diagnosis-master', component: DiagnosisMasterComponent},
+{ path: 'Diagnosis-master/:id', component: DiagnosisMasterComponent},
 ];
 
 @NgModule({
@@ -118,13 +123,13 @@ const appRoutes: Routes = [
     MedicationComponent,
     TimelineComponent,
     DiagnosisComponent, 
-    VitalSignsComponent, DialogResultExampleDialog, AppointmentComponent, DepartmentComponent, InsuranceComponent, PayorComponent, MOHVisitTypeComponent, PurposeOfVisitComponent, MasterDataComponent, InventoryBrandComponent, InventoryGenericComponent, InventoryAtcComponent, InventoryCategoryComponent, InventorySubcategoryComponent, InventoryMedicationclassComponent, InventoryPregnancycategoryComponent, SpecialityComponent
+    VitalSignsComponent, DialogResultExampleDialog, AppointmentComponent, DepartmentComponent, InsuranceComponent, PayorComponent, MOHVisitTypeComponent, PurposeOfVisitComponent, MasterDataComponent, InventoryBrandComponent, InventoryGenericComponent, InventoryAtcComponent, InventoryCategoryComponent, InventorySubcategoryComponent, InventoryMedicationclassComponent, InventoryPregnancycategoryComponent, SpecialityComponent, DiagnosisMasterComponent
   ],
   imports: [
     BrowserModule,
     FormsModule, ReactiveFormsModule,
     HttpModule, RouterModule.forRoot(appRoutes),
-    MaterialModule, MenuModule, MdNativeDateModule,
+    MaterialModule, MenuModule, MdNativeDateModule, MdTableModule, CdkTableModule,
     BrowserAnimationsModule, FlexLayoutModule, GrowlModule, TieredMenuModule,
     InputMaskModule, ChipsModule, EditorModule, SharedModule, CheckboxModule,
     Ng2GoogleChartsModule, TreeTableModule, DataTableModule, DialogModule, ScheduleModule, CalendarModule

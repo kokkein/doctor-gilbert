@@ -15,7 +15,8 @@ export class MasterDataComponent implements OnInit {
     {name: 'Purpose Of Visit', overview: '/purpose-of-visit', newRecord: '/purpose-of-visit'},
     {name: 'User', overview: '/user', newRecord: '/user'},
     {name: 'Speciality', overview: '/speciality', newRecord: '/speciality'},
-    {name: 'Insurance', overview: '/insurance', newRecord: '/insurance'}
+    {name: 'Insurance', overview: '/insurance', newRecord: '/insurance'},
+    {name: 'Diagnosis', overview: '/Diagnosis-master', newRecord: '/Diagnosis-master'}
   ];
 
   menuItemsTwo = [

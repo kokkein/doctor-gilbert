@@ -1,138 +1,142 @@
 <section>
 
-<div [hidden]="hide">
-      <div class="patientBanner">
+  <div [hidden]="hide" [style.height.px]="hgh" >
+    <div class="patientBanner" (click)="togglePatientBar()">
+        <div>
 
-          <div>
+          <md-list dense>
+            <md-list-item>
+                  <button md-icon-button (click)="togglePatientBar()">
+                  <i class="material-icons">visibility_off</i>
+                  </button>
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYNSdOcn2GYWS6XP8fS01a-bShnHGNcK3cKURyxIgEHjOZt9z4" height="80" width="80">
 
-  <md-list dense>
-    <md-list-item>
-          <button md-icon-button (click)="togglePatientBar()">
-          <i class="material-icons">visibility_off</i>
-          </button>
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYNSdOcn2GYWS6XP8fS01a-bShnHGNcK3cKURyxIgEHjOZt9z4" height="80" width="80">
-
-      <h4 md-line><strong>Tan Seri. Dato Seri. Barack Obama van Orange</strong></h4>
-      <p md-line>
-        <span>MRN0000020104, Outpatient - OPD-0000101027</span>
-      </p>
-      <p md-line>
-        <span>Female, 25-12-1979(36 years 5 months 21 days)</span>
-      </p>
-    </md-list-item>
-  </md-list>
-
-          </div>
-          <div>
-  <md-list dense> 
-    <md-list-item>
-      <h4 md-line><strong>Payment Mode</strong></h4>
-      <p md-line>
-        <span>AIA Premium Patient</span>
-      </p>
-      <p md-line>
-        <span>AIA Malaysia International (South East Asia Region) Berhard</span>
-      </p>
-      <p md-line>
-        <span>Current Bill: RM534.00 </span>
-      </p>
-    </md-list-item>
-  </md-list>
-            
-          </div>
-          <div>
-  <md-list dense>
-    <md-list-item>
-      <h4 md-line><strong>Warning</strong></h4>
-      <p md-line>
-        <span>Nuts</span>
-      </p>
-      <p md-line>
-        <span>Panadol, Uphamol, Paraceptamol, Seafood, Milk, Daily Products</span>
-      </p>
-    </md-list-item>
-  </md-list>
-          </div>
-      </div>
-</div>
-      <form>
-        <md-card>
-          <md-card-content>
-            <md-tab-group>
-              <md-tab>
-                <template md-tab-label>
-                  Timeline
-                </template>
-                <md-card>
-                  <md-card-content>
-                    <app-timeline></app-timeline>
-                  </md-card-content>
-                </md-card>
-              </md-tab>
-              <md-tab>
-                <template md-tab-label>
-                  Diagnosis
-                </template>
-                <md-card>
-                  <md-card-content>
-                    <app-diagnosis></app-diagnosis>
-                  </md-card-content>
-                </md-card>
-              </md-tab>
-              <md-tab>
-                <template md-tab-label>
-                  Vital Signs
-                </template>
-                <md-card>
-                  <md-card-content>
-                    <app-vital-signs></app-vital-signs>
-                  </md-card-content>
-                </md-card>
-              </md-tab>
-              <md-tab>
-                <template md-tab-label>
-                  Medication
-                </template>
-                <md-card>
-                  <md-card-content>
-                    <app-medication></app-medication>
-                  </md-card-content>
-                </md-card>
-              </md-tab>
-              <md-tab>
-                <template md-tab-label>
-                  Laboratory
-                </template>
-                <md-card>
-                  <md-card-content>
-                    <app-laboratory></app-laboratory>
-                  </md-card-content>
-                </md-card>
-              </md-tab>
-              <md-tab>
-                <template md-tab-label>
-                  Radiology
-                </template>
-                <md-card>
-                  <md-card-content>
-                    <app-radiology></app-radiology>
-                  </md-card-content>
-                </md-card>
-              </md-tab>
-              <md-tab>
-                <template md-tab-label>
-                  Document
-                </template>
-                <md-card>
-                  <md-card-content>
-                    <app-document></app-document>
-                  </md-card-content>
-                </md-card>
-              </md-tab>
-            </md-tab-group>
-          </md-card-content>
-        </md-card>
-      </form>
-
+              <h4 md-line><strong>Tan Seri. Dato Seri. Barack Obama van Orange</strong></h4>
+              <p md-line>
+                <span>MRN0000020104, Female</span>
+              </p>
+              <p md-line>
+                <span>Outpatient - OPD-0000101027</span>
+              </p>
+              <p md-line>
+                <span>D.O.B: 25-12-1979(36 yr 5 mth 21 d)</span>
+              </p>
+            </md-list-item>
+          </md-list>
+        </div>
+        <div>
+          <md-list dense> 
+            <md-list-item>
+              <h4 md-line><strong>Payment Mode</strong></h4>
+              <p md-line>
+                <span>AIA Premium Patient</span>
+              </p>
+              <p md-line>
+                <span>AIA Malaysia International (South East Asia Region) Berhard</span>
+              </p>
+              <p md-line>
+                <span>Current Bill: RM534.00 </span>
+              </p>
+              <p md-line>
+                <span>Outstanding Amount: RM534.00 </span>
+              </p>
+            </md-list-item>
+          </md-list>
+        </div>
+        <div>
+          <md-list dense>
+            <md-list-item>
+              <h4 md-line><strong>Warning</strong></h4>
+              <p md-line>
+                <span>Nuts</span>
+              </p>
+              <p md-line>
+                <span>Panadol, Uphamol, Paraceptamol, Seafood, Milk, Daily Products</span>
+              </p>
+            </md-list-item>
+          </md-list>
+        </div>
+    </div>
+  </div>
+  
+  <form>
+      
+    <md-card>
+      <md-card-content>
+        <md-tab-group>
+          <md-tab>
+            <template md-tab-label>
+              Timeline
+            </template>
+            <md-card>
+              <md-card-content>
+                <app-timeline></app-timeline>
+              </md-card-content>
+            </md-card>
+          </md-tab>
+          <md-tab>
+            <template md-tab-label>
+              Diagnosis
+            </template>
+            <md-card>
+              <md-card-content>
+                <app-diagnosis></app-diagnosis>
+              </md-card-content>
+            </md-card>
+          </md-tab>
+          <md-tab>
+            <template md-tab-label>
+              Vital Signs
+            </template>
+            <md-card>
+              <md-card-content>
+                <app-vital-signs></app-vital-signs>
+              </md-card-content>
+            </md-card>
+          </md-tab>
+          <md-tab>
+            <template md-tab-label>
+              Medication
+            </template>
+            <md-card>
+              <md-card-content>
+                <app-medication></app-medication>
+              </md-card-content>
+            </md-card>
+          </md-tab>
+          <md-tab>
+            <template md-tab-label>
+              Laboratory
+            </template>
+            <md-card>
+              <md-card-content>
+                <app-laboratory></app-laboratory>
+              </md-card-content>
+            </md-card>
+          </md-tab>
+          <md-tab>
+            <template md-tab-label>
+              Radiology
+            </template>
+            <md-card>
+              <md-card-content>
+                <app-radiology></app-radiology>
+              </md-card-content>
+            </md-card>
+          </md-tab>
+          <md-tab>
+            <template md-tab-label>
+              Document
+            </template>
+            <md-card>
+              <md-card-content>
+                <app-document></app-document>
+              </md-card-content>
+            </md-card>
+          </md-tab>
+        </md-tab-group>
+      </md-card-content>
+    </md-card>
+  </form>
 
 </section>
