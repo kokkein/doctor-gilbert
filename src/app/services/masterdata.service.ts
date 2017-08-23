@@ -175,6 +175,10 @@ export class MasterDataService {
         return this.http.get(this.sURL + 'Diagnosis/' + id)
                     .map(res => res.json());
     }
+    GetDiagnosisBySearch(searchKey) {
+        return this.http.get(this.sURL + 'DiagnosisSearch/' + searchKey)
+                    .map(res => res.json());
+    }
 
 
 //Add Data
