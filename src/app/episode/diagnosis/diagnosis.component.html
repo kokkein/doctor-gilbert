@@ -12,7 +12,7 @@
                       <md-input-container class="input-full-width">
                         <input mdInput placeholder="Diagnosis" [mdAutocomplete]="autoDiagnosis" [formControl]="diagnosisCtrl">
                       </md-input-container>
-                      <md-autocomplete #autoDiagnosis="mdAutocomplete">
+                      <md-autocomplete #autoDiagnosis="mdAutocomplete" [displayWith]="displayDiagnosisFn">
                         <md-option *ngFor="let diagnosis of filteredDiagnosis | async" [value]="diagnosis">
                           <span>{{ diagnosis.diagnosisCode }}</span>
                           <span> ({{diagnosis.diagnosisDescription}}) </span>

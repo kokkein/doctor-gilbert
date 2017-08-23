@@ -14,22 +14,50 @@ import 'rxjs/add/operator/startWith';
 })
 export class DiagnosisComponent implements OnInit {
     diagnosisCtrl: FormControl;
-    filteredDiagnosis: any;
-    diagnosis;
+    filteredDiagnosis: Observable<any[]>;
+    diagnosis: any[] = [];
+    filteredData: Observable<any[]>; // async pipe needs to be an Observable
+    myContent: any[] = [];
 
   constructor(private MasterDataService: MasterDataService, private route: ActivatedRoute, private router: Router) { 
         this.diagnosisCtrl = new FormControl({diagnosisID: 0, diagnosisCode: ''});
+  
+
+
   }
 
   ngOnInit() {
+    this.diagnosisCtrl = new FormControl({diagnosisID: 0, diagnosisCode: ''});
+  /*       
     this.MasterDataService.GetDiagnosis().subscribe(diagnosis => {
       this.diagnosis = diagnosis;
       //here only start filter
+ 
       this.filteredDiagnosis = this.diagnosisCtrl.valueChanges
           .startWith(this.diagnosisCtrl.value)
           .map(val => this.displayDiagnosisFn(val))
           .map(name => this.filterDiagnosis(name));
+       
       });
+ */  
+      this.filteredDiagnosis = this.diagnosisCtrl.valueChanges
+      .debounceTime(400)
+      .do(value => {
+     
+         // i don't want to make another request on value change if content placeholder already has it.
+         //let exist = this.myContent.findIndex(t => t.text === value);
+         //if (exist > -1) return;
+     
+         // get data from the server. my response is an array [{id:1, text:'hello world'}]
+         this.MasterDataService.GetDiagnosis().subscribe(res => { this.diagnosis = res; 
+          this.filteredDiagnosis = this.diagnosisCtrl.valueChanges
+          .startWith(this.diagnosisCtrl.value)
+          .map(val => this.displayDiagnosisFn(val))
+          .map(name => this.filterDiagnosis(name));
+        }); 
+     
+     }).delay(400).map(() => this.diagnosis);
+
   }
 
   diagnosisRecord = [
@@ -52,5 +80,8 @@ export class DiagnosisComponent implements OnInit {
     return val ? this.diagnosis.filter((s) => new RegExp(val, 'gi').test(s.diagnosisCode))
     : this.diagnosis;
   }
+////////////
 
+
+ 
 }
