@@ -15,6 +15,8 @@ import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
 import 'rxjs/add/observable/fromEvent';
 
+
+
 @Component({
   selector: 'app-diagnosis-master',
   templateUrl: './diagnosis-master.component.html',
@@ -26,7 +28,7 @@ export class DiagnosisMasterComponent implements OnInit {
   msgs: Message[] = [];
 
   displayedColumns = ['diagnosisCode', 'diagnosisDescription'];
-  exampleDatabase = new ExampleDatabase();
+  exampleDatabase = new ExampleDatabase(this.MasterDataService);
   dataSource: ExampleDataSource | null;
 
 
@@ -56,19 +58,7 @@ export class DiagnosisMasterComponent implements OnInit {
   }
 
   ngOnInit() {
-
-  this.MasterDataService.GetDiagnosis()
-  .subscribe(m => {
-    this.data = m;
     this.dataSource = new ExampleDataSource(this.exampleDatabase, this.paginator);
-  }, err => {
-    if (err.status == 404)
-      this.msgs = [];
-      this.msgs.push({severity:'error', summary:'Info Message', detail:'Record Not Found!'});
-      this.data = {};
-  } );
-
-  
 }
 
 onSave() {
@@ -99,38 +89,16 @@ export interface UserData {
 
 /** An example database that the data source uses to retrieve data for the table. */
 export class ExampleDatabase {
-/** Stream that emits whenever the data has been modified. */
-dataChange: BehaviorSubject<UserData[]> = new BehaviorSubject<UserData[]>([]);
-get data(): UserData[] { 
-  let data = [
-    {
-      "diagnosisID": 1,
-      "diagnosisCode": "A001",
-      "diagnosisDescription": "URTI"
 
-    },
-    {
-      "diagnosisID": 1,
-      "diagnosisCode": "A00.001",
-      "diagnosisDescription": "FEVER"
-    }
+  public dataChange: BehaviorSubject<UserData[]> = new BehaviorSubject<UserData[]>([]);
+  get data(): UserData[] { return this.dataChange.value }
 
-  ];
-  return data;
- }
+  constructor(private MasterDataService: MasterDataService) {
+    this.MasterDataService.GetDiagnosis().subscribe(data => this.dataChange.next(data));
+  }
 
-constructor() {
-  this.dataChange.next(this.data);
-}
 }
 
-/**
-* Data source to provide what data should be rendered in the table. Note that the data source
-* can retrieve its data in any way. In this case, the data source is provided a reference
-* to a common data base, ExampleDatabase. It is not the data source's responsibility to manage
-* the underlying data. Instead, it only needs to take the data and send the table exactly what
-* should be rendered.
-*/
 export class ExampleDataSource extends DataSource<any> {
   constructor(private _exampleDatabase: ExampleDatabase, private _paginator: MdPaginator) {
     super();
@@ -146,13 +114,12 @@ export class ExampleDataSource extends DataSource<any> {
     return Observable.merge(...displayDataChanges).map(() => {
       const data = this._exampleDatabase.data.slice();
 
-      
       // Grab the page's slice of data.
       const startIndex = this._paginator.pageIndex * this._paginator.pageSize;
       return data.splice(startIndex, this._paginator.pageSize);
     });
   }
 
-disconnect() {}
+  disconnect() {}
 }
 
