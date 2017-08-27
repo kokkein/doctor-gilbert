@@ -6,6 +6,8 @@ import { Observable } from 'rxjs/Observable';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MasterDataService } from "app/services/masterdata.service";
 import 'rxjs/add/operator/startWith';
+import ArrayStore from 'devextreme/data/array_store';
+
 
 @Component({
   selector: 'app-diagnosis',
@@ -18,11 +20,10 @@ export class DiagnosisComponent implements OnInit {
     diagnosis: any[] = [];
     filteredData: Observable<any[]>; // async pipe needs to be an Observable
     myContent: any[] = [];
+    diagnosisTypeData: any;
 
   constructor(private MasterDataService: MasterDataService, private route: ActivatedRoute, private router: Router) { 
         this.diagnosisCtrl = new FormControl({diagnosisID: 0, diagnosisCode: ''});
-  
-
 
   }
 
@@ -40,6 +41,8 @@ export class DiagnosisComponent implements OnInit {
 
         }); 
      }).delay(500).map(() => this.diagnosis);
+
+     
   }
 
   diagnosisRecord = [
@@ -52,6 +55,21 @@ export class DiagnosisComponent implements OnInit {
       version: 2,
       updated: new Date('1/1/16'),
       updatedBy: 'Doctor Chin',
+    },
+  ];
+
+  diagnosisTypes = [
+    {
+      diagnosisTypeID: 1,
+      diagnosisTypeDesc: 'Provisional',
+    },
+    {
+      diagnosisTypeID: 2,
+      diagnosisTypeDesc: 'Differential',
+    },
+    {
+      diagnosisTypeID: 3,
+      diagnosisTypeDesc: 'Provisional',
     },
   ];
 

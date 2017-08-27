@@ -15,8 +15,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { Routes, RouterModule } from '@angular/router';
 import { AppComponent, DialogResultExampleDialog } from './app.component';
-import { MaterialModule, MdNativeDateModule } from '@angular/material';
+import { MaterialModule, MdNativeDateModule, MdChipsModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { DxCheckBoxModule } from 'devextreme-angular';
 
 import 'hammerjs';
 
@@ -36,6 +37,8 @@ import { TimelineComponent } from './episode/timeline/timeline.component';
 import { DiagnosisComponent } from './episode/diagnosis/diagnosis.component';
 import { VitalSignsComponent } from './episode/vital-signs/vital-signs.component';
 import { AppointmentComponent } from './appointment/appointment.component';
+import { DxSelectBoxModule, DxTextBoxModule, DxTemplateModule } from 'devextreme-angular';
+import { DxBoxModule, DxTextAreaModule } from 'devextreme-angular';
 
 //Third Party Component
 import { Ng2GoogleChartsModule } from 'ng2-google-charts';
@@ -127,12 +130,13 @@ const appRoutes: Routes = [
   ],
   imports: [
     BrowserModule,
-    FormsModule, ReactiveFormsModule,
+    FormsModule, ReactiveFormsModule, MdChipsModule,
     HttpModule, RouterModule.forRoot(appRoutes),
     MaterialModule, MenuModule, MdNativeDateModule, MdTableModule, CdkTableModule,
     BrowserAnimationsModule, FlexLayoutModule, GrowlModule, TieredMenuModule,
     InputMaskModule, ChipsModule, EditorModule, SharedModule, CheckboxModule,
-    Ng2GoogleChartsModule, TreeTableModule, DataTableModule, DialogModule, ScheduleModule, CalendarModule
+    Ng2GoogleChartsModule, TreeTableModule, DataTableModule, DialogModule, ScheduleModule, CalendarModule,
+    DxCheckBoxModule, DxSelectBoxModule, DxTextBoxModule, DxTemplateModule, DxBoxModule, DxTextAreaModule
   ],
   providers: [NodeService, CarService, EventService, MasterDataService, SpeechRecognitionService],
   entryComponents: [DialogResultExampleDialog],

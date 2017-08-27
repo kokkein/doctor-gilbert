@@ -1,5 +1,7 @@
+
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormControl, Validators, FormGroup, FormArray, FormBuilder  } from '@angular/forms';
+import { MedicationList } from './MedicationList.interface';
 
 @Component({
   selector: 'app-medication',
@@ -14,7 +16,9 @@ export class MedicationComponent implements OnInit {
     orderByCtrl: FormControl;
     filteredOrderBys: any;
 
-  constructor() { 
+    public myForm: FormGroup; // our form model
+    
+  constructor(private _fb: FormBuilder) { 
         this.medicationCtrl = new FormControl();
         this.filteredMedications = this.medicationCtrl.valueChanges
         .startWith(null)
@@ -30,15 +34,65 @@ export class MedicationComponent implements OnInit {
         .startWith(null)
         .map(name => this.filterOrderBy(name));
   }
-
+  save(model: MedicationList) {
+    // call API to save customer
+    console.log(model);
+}
   ngOnInit() {
+    this.myForm = this._fb.group({
+      name: ['', [Validators.required, Validators.minLength(5)]],
+      prescribeList: this._fb.array([
+              this.initAddress(),
+          ])
+      });
+  
   }
+
+  initAddress() {
+    // initialize our address
+    return this._fb.group({
+        dosage: [''],
+        take: [''],
+        time: [''],
+        day: [''],
+        totalQty: [''],
+        uom: [''],
+        price: [''],
+        discPerc: [''],
+        discAmt: [''],
+        totalPrice: [''],
+        route: [''],
+        necessary: [''],
+        instructionOne: [''],
+        instructionTwo: [''],
+        indication: [''],
+    });
+}
+
+addAddress() {
+// add address to the list
+const control = <FormArray>this.myForm.controls['prescribeList'];
+control.push(this.initAddress());
+}
+
+removeAddress(i: number) {
+// remove address from the list
+const control = <FormArray>this.myForm.controls['prescribeList'];
+control.removeAt(i);
+}
 
   uoms = [
     {value: 'TAB', viewValue: 'TAB'},
     {value: 'ML', viewValue: 'ML'},
     {value: 'Box', viewValue: 'Box'},
     {value: 'Saches', viewValue: 'Saches'},
+  ];
+
+  routes = [
+    {value: 'ORAL', viewValue: 'ORAL'},
+    {value: 'MOUTH', viewValue: 'MOUTH'},
+    {value: 'EXTERNAL', viewValue: 'EXTERNAL'},
+    {value: 'ASS', viewValue: 'ASS'},
   ];
 
   diagnosisRecord = [

@@ -1,195 +1,231 @@
 <div class="toolbar">
-    <div>
-        <button md-raised-button>Save</button>
-        <button md-raised-button>New</button>
-    </div>
+  <div>
+      <button md-raised-button>Save</button>
+      <button md-raised-button>New</button>
+  </div>
 </div>
+<a (click)="addAddress()">
+    Add another address +
+  </a>
+
+  <pre>Is myForm valid?: <br>{{myForm.valid | json}}</pre>
+  <pre>form value: <br>{{myForm.value | json}}</pre>
 <section>
 
-  <md-card>
-    <md-card-content>
-        <div class="container">
-          <div> 
-            <md-input-container class="input-full-width">
-              <input mdInput placeholder="Medication" [mdAutocomplete]="autoMedication" [formControl]="medicationCtrl">
-            </md-input-container>
-            <md-autocomplete #autoMedication="mdAutocomplete">
-              <md-option *ngFor="let medication of filteredMedications | async" [value]="medication">
-                {{ medication }}
-              </md-option>
-            </md-autocomplete>
-          </div>
-          <div>
-            <md-input-container class="input-full-width">
-              <input mdInput placeholder="Medication Template" [mdAutocomplete]="autoMedicationTemplate" [formControl]="medicationTemplateCtrl">
-            </md-input-container>
-            <md-autocomplete #autoMedicationTemplate="mdAutocomplete">
-              <md-option *ngFor="let medicationTemplate of filteredMedicationTemplates | async" [value]="medicationTemplate">
-                {{ medicationTemplate }}
-              </md-option>
-            </md-autocomplete>
-          </div>
-          <div>
-            <md-select placeholder="UOM" name="uom" >
-              <md-option *ngFor="let uom of uoms" [value]="uom.value">
-                {{uom.viewValue}}
-              </md-option>
-            </md-select>
-          </div>
+<md-card>
+  <md-card-content>
+      <div class="container">
+        <div class="two"> 
+          <md-input-container class="input-full-width">
+            <input mdInput placeholder="Medication" [mdAutocomplete]="autoMedication" [formControl]="medicationCtrl">
+          </md-input-container>
+          <md-autocomplete #autoMedication="mdAutocomplete">
+            <md-option *ngFor="let medication of filteredMedications | async" [value]="medication">
+              {{ medication }}
+            </md-option>
+          </md-autocomplete>
         </div>
-        <div class="container">
-          <div>
-            <md-input-container class="input-full-width">
-              <input mdInput placeholder="Dosage">
-            </md-input-container>
-          </div>
-          <div>
-            <md-select placeholder="Route of Administration" name="route" >
-              <md-option *ngFor="let uom of uoms" [value]="uom.value">
-                {{uom.viewValue}}
-              </md-option>
-            </md-select>
-          </div>
-          <div class="two">
-            <md-input-container class="input-full-width">
-              <input mdInput placeholder="Dosage Label">
-            </md-input-container>
-          </div>
+        <div>
+          <md-input-container class="input-full-width">
+            <input mdInput placeholder="Medication Template" [mdAutocomplete]="autoMedicationTemplate" [formControl]="medicationTemplateCtrl">
+          </md-input-container>
+          <md-autocomplete #autoMedicationTemplate="mdAutocomplete">
+            <md-option *ngFor="let medicationTemplate of filteredMedicationTemplates | async" [value]="medicationTemplate">
+              {{ medicationTemplate }}
+            </md-option>
+          </md-autocomplete>
         </div>
-        <div class="container">
-          <div>
-            <md-input-container class="input-full-width">
-              <input mdInput type="number" placeholder="Take/Apply">
-            </md-input-container>
-          </div>
-          <div>
-            <md-input-container class="input-full-width">
-              <input mdInput type="number" placeholder="Time per Day">
-            </md-input-container>
-          </div>
-          <div>
-            <md-input-container class="input-full-width">
-              <input mdInput type="number" placeholder="Number of Day">
-            </md-input-container>
-          </div>
-          <div>
-            <md-input-container class="input-full-width">
-              <input mdInput type="number" placeholder="Total Quantity">
-              <md-hint align="end">avail.QTY: 503</md-hint>
-            </md-input-container>
-          </div>
-        </div>
-        <div class="container">
-          <div>
-            <md-input-container class="input-full-width">
-              <input mdInput placeholder="Instruction #1">
-            </md-input-container>
-          </div>
-          <div>
-            <md-input-container class="input-full-width">
-              <input mdInput placeholder="Instruction #2">
-            </md-input-container>
-          </div>
-          <div>
-            <md-input-container class="input-full-width">
-              <input mdInput placeholder="Indication">
-            </md-input-container>
-          </div>
-        </div>
-        <div class="container">
-          <div>
-            <md-input-container class="input-full-width">
-              <input mdInput type="number" placeholder="Selling Price">
-            </md-input-container>
-          </div>
-          <div>
-            <md-input-container class="input-full-width">
-              <input mdInput type="number" placeholder="Total Price">
-              <md-hint align="end">Before discount: RM503.00</md-hint>
-            </md-input-container>
-          </div>
-          <div>
-            <md-input-container class="input-full-width">
-              <input mdInput type="number" placeholder="Discount Apply">
-            </md-input-container>
-          </div>
-          <div>
-            <md-input-container class="input-full-width">
-              <input mdInput placeholder="Order By" [mdAutocomplete]="autoOrderBy" [formControl]="orderByCtrl">
-            </md-input-container>
-            <md-autocomplete #autoOrderBy="mdAutocomplete">
-              <md-option *ngFor="let orderBy of filteredOrderBys | async" [value]="orderBy">
-                {{ orderBy }}
-              </md-option>
-            </md-autocomplete>
-          </div>
-        </div>
-        <div class="container">
-          <div>
-            <md-input-container class="input-full-width">
-              <textarea mdInput placeholder="Medication Note"></textarea>
-            </md-input-container>
-          </div>
-        </div>
-    </md-card-content>
-  </md-card>
+      </div>
 
-  <md-list>
-    <h3 md-subheader>Records List</h3>
-    <md-list-item *ngFor="let medication of medicationRecord" >
-      <h4 md-line><i class="material-icons">timer</i> {{medication.id}} <strong>{{medication.medicationCode}}</strong></h4>
-        <button md-icon-button (click)="open()">
-          <i class="material-icons">mode_edit</i>
-        </button>
-        <button md-icon-button (click)="open()">
-          <i class="material-icons">delete</i>
-        </button>
-      <p md-line>
-        <span> <b><small>Dosage: </small></b>{{medication.dosage}} </span>
-        <span> <b><small>UOM: </small></b>{{medication.uom}} </span>
-        <span> <b><small>Route: </small></b>{{medication.route}} </span>
-        <span> <b><small>Dosage Label: </small></b>{{medication.dosageLabel}} </span>
-      </p>
-      <p md-line>
-        <span> <b><small>Take/Apply: </small></b>{{medication.take}} </span>
-        <span> <b><small>Time per Day: </small></b>{{medication.time}} </span>
-        <span> <b><small>Number of Day: </small></b>{{medication.numberOfDay}} </span>
-        <span> <b><small>Total Quantity: </small></b>{{medication.totalQty}} </span>
-      </p>
-      <p md-line>
-        <span> <b><small>Instruction #1: </small></b>{{medication.instruction1}} </span>
-        <span> <b><small>Instruction #2: </small></b>{{medication.instruction2}} </span>
-        <span> <b><small>Indication: </small></b>{{medication.indication}} </span>
-      </p>
-      <p md-line>
-        <span> <b><small>Selling Price: </small></b>{{medication.price}} </span>
-        <span> <b><small>Total Price: </small></b>{{medication.totalPrice}} </span>
-        <span> <b><small>Discount Apply: </small></b>{{medication.discount}} </span>
-        <span> <b><small>Order By: </small></b>{{medication.orderBy}} </span>
-      </p>
-      <p md-line>
-        <span> {{medication.note}} </span>
-      </p>
-      <p md-line class="pRight"> 
-        <small>
-          <span><b>Current Version: </b><i>{{medication.version}}</i></span>
-        </small>
-      </p>
-      <p md-line class="pRight">
-        <small>      
-          <span><b>Updated: </b><i>{{medication.updated | date:'medium'}}</i> </span>
-          <span>, <b>By: </b><i>{{medication.updatedBy}}</i></span>
-        </small>
-      </p>
-      <p md-line class="pRight">
-        <small>
-          <span><b>Created: </b><i>{{medication.created | date:'medium'}}</i> </span>
-          <span>, <b>By: </b><i>{{medication.createdBy}}</i></span>
-        </small>
-      </p>
+<br>
 
-    </md-list-item>
-  </md-list>
+<form [formGroup]="myForm" novalidate (ngSubmit)="save(myForm)">
 
-  </section>
+        <!--addresses-->
+        <div formArrayName="prescribeList">
+          <div *ngFor="let address of myForm.controls.prescribeList.controls; let i=index" >
+              <md-card>
+                  <md-card-content>
+            <div>
+              <span>Drug Item {{i + 1}}</span>
+              <span *ngIf="myForm.controls.prescribeList.controls.length > 1" (click)="removeAddress(i)">xxx</span>
+            </div>
+            <div [formGroupName]="i">
+                <div class="container">
+                    <div class="two">
+                        <md-input-container class="input-full-width">
+                            <input mdInput placeholder="Dosage" formControlName="dosage">
+                            <md-hint align="end">1 tablet(s) 1 times(s) a day for 1 days(s)</md-hint>
+                          </md-input-container>
+                    </div>
+                    <div>
+                        <md-input-container class="input-full-width">
+                          <input mdInput type="number" placeholder="Take/Apply" formControlName="take">
+                        </md-input-container>
+                      </div>
+                      <div>
+                        <md-input-container class="input-full-width">
+                          <input mdInput type="number" placeholder="Time per Day" formControlName="time">
+                        </md-input-container>
+                      </div>
+                      <div>
+                        <md-input-container class="input-full-width">
+                          <input mdInput type="number" placeholder="Number of Day" formControlName="day">
+                        </md-input-container>
+                      </div>
+                      <div>
+                          <md-input-container class="input-full-width">
+                            <input mdInput type="number" placeholder="Total Quantity" formControlName="totalQty">
+                            <md-hint align="end">Avail Qty: 503</md-hint>
+                          </md-input-container>
+                      </div>
+                      <div>
+                          <md-select placeholder="UOM" name="uom" formControlName="uom">
+                            <md-option *ngFor="let uom of uoms" [value]="uom.value" >
+                              {{uom.viewValue}}
+                            </md-option>
+                          </md-select>
+                      </div>
+                      <div>
+                          <md-checkbox formControlName="necessary">When Necessary</md-checkbox>
+                      </div>
+                </div>
+                <br>
+                <div class="container">
+                    <div>
+                        <md-input-container class="input-full-width">
+                          <input mdInput type="number" placeholder="Selling Price" name="price" disabled="true" value="103.00" formControlName="price">
+                        </md-input-container>
+                      </div>
+                      <div>
+                          <md-input-container class="input-full-width">
+                            <input mdInput type="number" placeholder="Discount Apply (%)" formControlName="discPerc">
+                          </md-input-container>
+                      </div>
+                      <div>
+                          <md-input-container class="input-full-width">
+                            <input mdInput type="number" placeholder="Discount Apply (Amount)" formControlName="discAmt">
+                          </md-input-container>
+                      </div>
+                      <div>
+                        <md-input-container class="input-full-width">
+                          <input mdInput type="number" placeholder="Total Price" name="totalPrice" disabled="true" value="403.00" formControlName="totalPrice">
+                        </md-input-container>
+                      </div>
+                </div>
+                <br>
+                <div class="container"> 
+                    <div>
+                        <md-select placeholder="Route of Adminitration" name="route" formControlName="route">
+                            <md-option *ngFor="let route of routes" [value]="route.value" >
+                              {{route.viewValue}}
+                            </md-option>
+                        </md-select>
+                    </div>
+
+                    <div>
+                      <md-input-container class="input-full-width">
+                        <input mdInput placeholder="Instruction #1" formControlName="instructionOne">
+                      </md-input-container>
+                    </div>
+                    <div>
+                      <md-input-container class="input-full-width">
+                        <input mdInput placeholder="Instruction #2" formControlName="instructionTwo">
+                      </md-input-container>
+                    </div>
+                    <div>
+                      <md-input-container class="input-full-width">
+                        <input mdInput placeholder="Indication" formControlName="indication">
+                      </md-input-container>
+                    </div>
+                  </div>
+            </div>
+          </md-card-content>
+        </md-card>
+        <br>
+          </div>
+        </div>
+
+      </form>
+
+      <div class="container">
+        <div>
+          <md-input-container class="input-full-width">
+            <input mdInput placeholder="Order By" [mdAutocomplete]="autoOrderBy" [formControl]="orderByCtrl">
+          </md-input-container>
+          <md-autocomplete #autoOrderBy="mdAutocomplete">
+            <md-option *ngFor="let orderBy of filteredOrderBys | async" [value]="orderBy">
+              {{ orderBy }}
+            </md-option>
+          </md-autocomplete>
+        </div>
+      </div>
+      <div class="container">
+        <div>
+          <md-input-container class="input-full-width">
+            <textarea mdInput placeholder="Medication Note"></textarea>
+          </md-input-container>
+        </div>
+      </div>
+  </md-card-content>
+</md-card>
+
+<md-list>
+  <h3 md-subheader>Records List</h3>
+  <md-list-item *ngFor="let medication of medicationRecord" >
+    <h4 md-line><i class="material-icons">timer</i> {{medication.id}} <strong>{{medication.medicationCode}}</strong></h4>
+      <button md-icon-button (click)="open()">
+        <i class="material-icons">mode_edit</i>
+      </button>
+      <button md-icon-button (click)="open()">
+        <i class="material-icons">delete</i>
+      </button>
+    <p md-line>
+      <span> <b><small>Dosage: </small></b>{{medication.dosage}} </span>
+      <span> <b><small>UOM: </small></b>{{medication.uom}} </span>
+      <span> <b><small>Route: </small></b>{{medication.route}} </span>
+      <span> <b><small>Dosage Label: </small></b>{{medication.dosageLabel}} </span>
+    </p>
+    <p md-line>
+      <span> <b><small>Take/Apply: </small></b>{{medication.take}} </span>
+      <span> <b><small>Time per Day: </small></b>{{medication.time}} </span>
+      <span> <b><small>Number of Day: </small></b>{{medication.numberOfDay}} </span>
+      <span> <b><small>Total Quantity: </small></b>{{medication.totalQty}} </span>
+    </p>
+    <p md-line>
+      <span> <b><small>Instruction #1: </small></b>{{medication.instruction1}} </span>
+      <span> <b><small>Instruction #2: </small></b>{{medication.instruction2}} </span>
+      <span> <b><small>Indication: </small></b>{{medication.indication}} </span>
+    </p>
+    <p md-line>
+      <span> <b><small>Selling Price: </small></b>{{medication.price}} </span>
+      <span> <b><small>Total Price: </small></b>{{medication.totalPrice}} </span>
+      <span> <b><small>Discount Apply: </small></b>{{medication.discount}} </span>
+      <span> <b><small>Order By: </small></b>{{medication.orderBy}} </span>
+    </p>
+    <p md-line>
+      <span> {{medication.note}} </span>
+    </p>
+    <p md-line class="pRight"> 
+      <small>
+        <span><b>Current Version: </b><i>{{medication.version}}</i></span>
+      </small>
+    </p>
+    <p md-line class="pRight">
+      <small>      
+        <span><b>Updated: </b><i>{{medication.updated | date:'medium'}}</i> </span>
+        <span>, <b>By: </b><i>{{medication.updatedBy}}</i></span>
+      </small>
+    </p>
+    <p md-line class="pRight">
+      <small>
+        <span><b>Created: </b><i>{{medication.created | date:'medium'}}</i> </span>
+        <span>, <b>By: </b><i>{{medication.createdBy}}</i></span>
+      </small>
+    </p>
+
+  </md-list-item>
+</md-list>
+
+</section>
 

@@ -1,71 +1,106 @@
 <div class="toolbar">
-    <div>
-        <button md-raised-button>Save</button>
-        <button md-raised-button>New</button>
-    </div>
+  <div>
+      <button md-raised-button>Save</button>
+      <button md-raised-button>New</button>
+  </div>
 </div>
 <section>
-            <md-card>
-              <md-card-content>
-                  <div class="container">
-                    <div> 
-                      <md-input-container class="input-full-width">
-                        <input mdInput placeholder="Diagnosis" [mdAutocomplete]="autoDiagnosis" [formControl]="diagnosisCtrl">
-                      </md-input-container>
-                      <md-autocomplete #autoDiagnosis="mdAutocomplete" [displayWith]="displayDiagnosisFn">
-                        <md-option *ngFor="let diagnosis of filteredDiagnosis | async" [value]="diagnosis">
-                          <span>{{ diagnosis.diagnosisCode }}</span>
-                          <span> ({{diagnosis.diagnosisDescription}}) </span>
-                        </md-option>
-                      </md-autocomplete>
-                    </div>
-                    <div>
-                      <md-input-container class="input-full-width">
-                        <input mdInput placeholder="Diagnosis Description">
-                      </md-input-container>
-                    </div>
+          <md-card>
+            <md-card-content>
+                <div class="container">
+                  <div> 
+                    <md-input-container class="input-full-width">
+                      <input mdInput placeholder="Diagnosis" [mdAutocomplete]="autoDiagnosis" [formControl]="diagnosisCtrl">
+                    </md-input-container>
+                    <md-autocomplete #autoDiagnosis="mdAutocomplete" [displayWith]="displayDiagnosisFn">
+                      <md-option *ngFor="let diagnosis of filteredDiagnosis | async" [value]="diagnosis">
+                        <span>{{ diagnosis.diagnosisCode }}</span>
+                        <span> ({{diagnosis.diagnosisDescription}}) </span>
+                      </md-option>
+                    </md-autocomplete>
                   </div>
-                    <div class="container">
-                      <div>
+                  <div>
+                    <md-input-container class="input-full-width">
+                      <input mdInput placeholder="Diagnosis Description">
+                    </md-input-container>
+                  </div>
+                </div>
+                <div class="container">
+                  <div> 
+                    <md-select placeholder="Diagnosis Type" [(ngModel)]="diagnosisType" name="diagnosisType">
+                      <md-option *ngFor="let dt of diagnosisTypes" [value]="dt.diagnosisTypeID">
+                        {{dt.diagnosisTypeDesc}}
+                      </md-option>
+                    </md-select>
+                  </div>
+                  <div>
+                    <md-checkbox [(ngModel)]="checked">Contact Diagnosis</md-checkbox>
+                  </div>
+                  <div>
+                    <md-checkbox [(ngModel)]="checked">Main Diagnosis</md-checkbox>
+                  </div>
+                  <div>
+                    <md-checkbox [(ngModel)]="checked">Secondary Diagnosis</md-checkbox>
+                  </div>
+                </div>
+                <div class="container">
+                  <div>
+                    <md-checkbox [(ngModel)]="checked">External Cause</md-checkbox>
+                  </div>
+                  <div>
+                    <md-checkbox [(ngModel)]="checked">Chronic</md-checkbox>
+                  </div>
+                  <div>
+                    <md-input-container class="input-full-width">
+                      <input mdInput placeholder="Since">
+                    </md-input-container>
+                  </div>
+                  <div>
+                  </div>
+                </div>
+                <div class="container">
+                    <div>
                         <md-input-container class="input-full-width">
-                          <textarea mdInput placeholder="Medical Note"></textarea>
-                        </md-input-container>
-                      </div>
+                            <textarea mdInput placeholder="Medical Note"></textarea>
+                          </md-input-container>
                     </div>
-              </md-card-content>
-            </md-card>
+                </div>
 
-  <md-list>
-    <h3 md-subheader>Records List</h3>
-    <md-list-item *ngFor="let dia of diagnosisRecord" >
-      <h4 md-line><strong>{{dia.diagnosisCode}} - {{dia.diagnosisDesc}}</strong></h4>
-        <button md-icon-button (click)="open()">
-          <i class="material-icons">mode_edit</i>
-        </button>
-        <button md-icon-button (click)="open()">
-          <i class="material-icons">delete</i>
-        </button>
-      <p md-line>
-        <span> {{dia.Note}} </span>
-      </p>
-      <p md-line class="pRight"> 
-        <small>
-          <span><b>Current Version: </b><i>{{dia.version}}</i></span>
-        </small>
-      </p>
-      <p md-line class="pRight">
-        <small>      
-          <span><b>Updated: </b><i>{{dia.updated | date:'medium'}}</i> </span>
-          <span>, <b>By: </b><i>{{dia.updatedBy}}</i></span>
-        </small>
-      </p>
-      <p md-line class="pRight">
-        <small>
-          <span><b>Created: </b><i>{{dia.created | date:'medium'}}</i> </span>
-          <span>, <b>By: </b><i>{{dia.createdBy}}</i></span>
-        </small>
-      </p>
 
-    </md-list-item>
-  </md-list>
+            </md-card-content>
+          </md-card>
+
+<md-list>
+  <h3 md-subheader>Records List</h3>
+  <md-list-item *ngFor="let dia of diagnosisRecord" >
+    <h4 md-line><strong>{{dia.diagnosisCode}} - {{dia.diagnosisDesc}}</strong></h4>
+      <button md-icon-button (click)="open()">
+        <i class="material-icons">mode_edit</i>
+      </button>
+      <button md-icon-button (click)="open()">
+        <i class="material-icons">delete</i>
+      </button>
+    <p md-line>
+      <span> {{dia.Note}} </span>
+    </p>
+    <p md-line class="pRight"> 
+      <small>
+        <span><b>Current Version: </b><i>{{dia.version}}</i></span>
+      </small>
+    </p>
+    <p md-line class="pRight">
+      <small>      
+        <span><b>Updated: </b><i>{{dia.updated | date:'medium'}}</i> </span>
+        <span>, <b>By: </b><i>{{dia.updatedBy}}</i></span>
+      </small>
+    </p>
+    <p md-line class="pRight">
+      <small>
+        <span><b>Created: </b><i>{{dia.created | date:'medium'}}</i> </span>
+        <span>, <b>By: </b><i>{{dia.createdBy}}</i></span>
+      </small>
+    </p>
+
+  </md-list-item>
+</md-list>
 </section>
